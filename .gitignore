@@ -1,5 +1,5 @@
-.DS_Store
 Gemfile.lock
+rspec.log
 .ruby-version
 /.bundle
 /log
@@ -11,3 +11,8 @@ pkg/
 /spec/dummy/log
 /spec/dummy/tmp
 /spec/dummy/.sass-cache
+/spec/examples.txt
+.DS_Store
+Desktop.ini
+Thumbs.db
+.Trashes
