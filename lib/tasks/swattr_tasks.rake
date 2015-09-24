@@ -1,4 +1,5 @@
-# desc "Explaining what the task does"
 # task :swattr do
-#   # Task goes here
+#   desc "Explaining what the task does"
+#   task :something do
+#   end
 # end
