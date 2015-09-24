@@ -7,7 +7,7 @@ module Swattr
       source_root File.expand_path("../templates", __FILE__)
 
       class_option :migrate, type: :boolean, default: true
-      class_option :seed, type: :boolean, default: false
+      class_option :seed, type: :boolean, default: true
 
       def add_env_file
         say "Copying example .env file..."
@@ -51,11 +51,12 @@ module Swattr
       end
 
       def seed_database
-        if options[:seed] ||
-          agree("Would you like to seed the database? (y/N)", false)
+        if options[:seed]
           say "Inseminating..."
 
           quietly { rake "rake db:seed" }
+        else
+          say "  Skipping seed. Run `rake db:seed` later"
         end
       end
 
