@@ -25,7 +25,21 @@ module Swattr
       def add_swattr_seed
         say "Seeding local seeds.rb..."
 
-        append_file "db/seeds.rb", "Swattr::Engine.load_seed\n"
+        unless File.exists? File.join(destination_root, "db", "seeds.rb")
+          say "Creating db/seeds.rb first..."
+
+          create_file "db/seeds.rb"
+
+          say "Ok, NOW seeding local seeds.rb..."
+        end
+
+        append_file "db/seeds.rb", verbose: true do
+          <<-SEED
+# Swattr seed data
+Swattr::Engine.load_seed
+
+          SEED
+        end
       end
 
       def install_migrations
