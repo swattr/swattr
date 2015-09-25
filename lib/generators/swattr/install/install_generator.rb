@@ -7,7 +7,7 @@ module Swattr
       source_root File.expand_path("../templates", __FILE__)
 
       class_option :migrate, type: :boolean, default: true
-      class_option :seed, type: :boolean, default: true
+      class_option :seed, type: :boolean, default: false
 
       def add_env_file
         say "Copying example .env file..."
@@ -60,17 +60,17 @@ Swattr::Engine.load_seed
 
           silence_warnings { rake "db:migrate" }
         else
-          say "  Skipping migrations. Be sure to run `rake db:migrate` yourself"
+          say "Skipping migrations. Be sure to run `rake db:migrate` yourself."
         end
       end
 
       def seed_database
-        if options[:seed]
+        if options[:migrate] && options[:seed]
           say "Inseminating..."
 
           quietly { rake "rake db:seed" }
         else
-          say "  Skipping seed. Run `rake db:seed` later"
+          say "Skipping seed data. Run `rake db:seed` yourself."
         end
       end
 
@@ -79,20 +79,22 @@ Swattr::Engine.load_seed
 
         insert_into_file File.join("config", "routes.rb"),
           after: "Rails.application.routes.draw do\n" do
-            %Q{
+            <<-ROUTES
   # This line mounts Swattr's routes at the root of your application. If you
   # would like to change where this engine is mounted, simply change the :at
   # option to reflect your needs.
   mount Swattr::Engine, at: "/"
 
-}
+            ROUTES
         end
 
-        say "  Your application's config/routes.rb has been updated."
+        say "Your application's config/routes.rb has been updated."
       end
 
       def complete
-        say "Done, sir! Done! Swattr has been installed!"
+        say "*" * 50
+        say "  Done, sir! Done! Swattr has been installed!"
+        say "*" * 50
       end
     end
   end
