@@ -1,0 +1,13 @@
+---
+en:
+  activerecord:
+    models:
+      swattr/user:
+        one: User
+        other: Users
+    attributes:
+      swattr/user:
+        name: Name
+        email: Email
+        password: Password
+        password_confirmation: Confirm Password
