@@ -1,0 +1,22 @@
+AllCops:
+  Includes:
+    - Rakefile
+    - config.ru
+  Exclude:
+    - "bin/**/*"
+    - "spec/dummy/**/*"
+
+Metrics/LineLength:
+  Max: 80
+
+Documentation:
+  Enabled: false
+
+DotPosition:
+  EnforcedStyle: leading
+
+StringLiterals:
+  EnforcedStyle: double_quotes
+
+StringLiteralsInInterpolation:
+  EnforcedStyle: double_quotes
