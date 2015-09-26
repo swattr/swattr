@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency "highline", "~> 1.7.7"
 
   s.add_development_dependency "rspec-rails", "~> 3.3.3"
   s.add_development_dependency "factory_girl_rails", "~> 4.5.0"
