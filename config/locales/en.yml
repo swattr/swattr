@@ -1,0 +1,15 @@
+---
+en:
+  swattr:
+    swattr: Swattr
+    and: and
+    or: or
+    actions:
+      back: Back
+      cancel: Cancel
+      create: Create
+      destroy: Destroy
+      edit: Edit
+      new: New
+      save: Save
+      update: Update
