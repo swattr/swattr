@@ -18,7 +18,7 @@ module Swattr
       if method[-1] == "?"
         column = method.sub("?", "")
 
-        self.send(column.to_sym, *args) != DEFAULT_VALUE
+        send(column.to_sym, *args) != DEFAULT_VALUE
       else
         DEFAULT_VALUE
       end

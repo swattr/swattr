@@ -10,7 +10,7 @@ module Swattr
       options[:scope] = [*options[:scope]].unshift(:swattr)
       args << options
 
-      super *args
+      super(*args)
     end
     alias_method :t, :translate
   end

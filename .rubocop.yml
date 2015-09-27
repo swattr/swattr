@@ -4,7 +4,9 @@ AllCops:
     - config.ru
   Exclude:
     - "bin/**/*"
+    - "db/migrate/**/*"
     - "spec/dummy/**/*"
+    - "config/initializers/devise.rb"
 
 Metrics/LineLength:
   Max: 80
