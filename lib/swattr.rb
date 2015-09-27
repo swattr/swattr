@@ -1,3 +1,7 @@
+require "devise"
+require "pundit"
+require "validates"
+
 require "swattr/engine"
 require "swattr/configuration"
 require "swattr/i18n"

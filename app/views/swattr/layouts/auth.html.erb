@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Swattr</title>
+  <%= stylesheet_link_tag "swattr/auth", media: "all" %>
+  <%= javascript_include_tag "swattr/auth" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<%= render "swattr/shared/flash_messages" %>
+
+<%= yield %>
+
+</body>
+</html>

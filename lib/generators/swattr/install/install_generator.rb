@@ -22,16 +22,23 @@ module Swattr
                   "config/initializers/swattr.rb")
       end
 
+      def add_devise_initializer
+        say "Copying Devise initializer..."
+
+        template("config/initializers/devise.rb",
+                 "config/initializers/devise.rb")
+      end
+
+      def create_local_seeds_file
+        return if File.exist?(File.join(destination_root, "db", "seeds.rb"))
+
+        say "Creating db/seeds.rb..."
+
+        create_file "db/seeds.rb"
+      end
+
       def add_swattr_seed
         say "Seeding local seeds.rb..."
-
-        unless File.exists? File.join(destination_root, "db", "seeds.rb")
-          say "Creating db/seeds.rb first..."
-
-          create_file "db/seeds.rb"
-
-          say "Ok, NOW seeding local seeds.rb..."
-        end
 
         append_file "db/seeds.rb", verbose: true do
           <<-SEED
@@ -78,8 +85,8 @@ Swattr::Engine.load_seed
         say "Adding Swattr routes..."
 
         insert_into_file File.join("config", "routes.rb"),
-          after: "Rails.application.routes.draw do\n" do
-            <<-ROUTES
+                         after: "Rails.application.routes.draw do\n" do
+          <<-ROUTES
   # This line mounts Swattr's routes at the root of your application. If you
   # would like to change where this engine is mounted, simply change the :at
   # option to reflect your needs.
