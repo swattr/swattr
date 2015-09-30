@@ -13,5 +13,7 @@ Swattr::Engine.routes.draw do
                sign_up: "signup"
              }
 
+  resources :users
+
   root to: "dashboards#show"
 end

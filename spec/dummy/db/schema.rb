@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150924053728) do
     t.datetime "locked_at"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-    t.string   "name"
+    t.string   "name",                   default: ""
   end
 
   add_index "swattr_users", ["confirmation_token"], name: "index_swattr_users_on_confirmation_token", unique: true
