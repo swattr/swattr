@@ -9,7 +9,8 @@ module Swattr
     validates :password, presence: true,
                          length: { minimum: 5, maximum: 120 },
                          on: :create
-    validates :password, length: { minimum: 5, maximum: 120 },
+    validates :password, allow_blank: true,
+                         length: { minimum: 5, maximum: 120 },
                          on: :update
 
     # Default scope
