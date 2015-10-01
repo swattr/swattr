@@ -11,7 +11,81 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150924053728) do
+ActiveRecord::Schema.define(version: 20150928230442) do
+
+  create_table "swattr_issue_tags", force: :cascade do |t|
+    t.integer  "issue_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "swattr_issues", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "project_id"
+    t.integer  "author_id"
+    t.integer  "assignee_id"
+    t.integer  "priority_id"
+    t.integer  "status_id"
+    t.integer  "resolution_id"
+    t.datetime "due_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  create_table "swattr_priorities", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "position",    default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "swattr_projects", force: :cascade do |t|
+    t.string   "name"
+    t.string   "slug"
+    t.string   "description"
+    t.string   "location"
+    t.integer  "author_id"
+    t.integer  "owner_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "swattr_resolutions", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "position",    default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "swattr_statuses", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.integer  "position",    default: 0
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  create_table "swattr_tags", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.string   "color"
+    t.integer  "position"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "swattr_tasks", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "issue_id"
+    t.integer  "author_id"
+    t.integer  "position"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "swattr_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

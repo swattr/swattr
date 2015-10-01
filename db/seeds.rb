@@ -13,3 +13,8 @@ unless user
                              password_confirmation: password,
                              confirmed_at: Time.current)
 end
+
+# Priorities
+# Resolutions
+# Statuses
+# Tags

@@ -13,6 +13,16 @@ Swattr::Engine.routes.draw do
                sign_up: "signup"
              }
 
+  resources :projects do
+    resources :issues do
+      resources :tasks
+    end
+  end
+
+  resources :priorities
+  resources :tags
+  resources :resolutions
+  resources :statuses
   resources :users
 
   resource :profile, except: [:new, :create]
