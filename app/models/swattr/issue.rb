@@ -17,6 +17,6 @@ module Swattr
     validates :due_at, date: { allow_blank: true }
 
     # Default scope
-    default_scope { order(created_at: :desc) }
+    # default_scope { order(created_at: :desc) }
   end
 end

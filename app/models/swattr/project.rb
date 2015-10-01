@@ -11,6 +11,6 @@ module Swattr
     validates :location, url: true, allow_blank: true
 
     # Default scope
-    default_scope { order(name: :asc, slug: :asc) }
+    # default_scope { order(name: :asc, slug: :asc) }
   end
 end

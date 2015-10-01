@@ -8,6 +8,6 @@ module Swattr
     validates :title, presence: true
 
     # Default scope
-    default_scope { order(position: :asc, created_at: :desc) }
+    # default_scope { order(position: :asc, created_at: :desc) }
   end
 end
