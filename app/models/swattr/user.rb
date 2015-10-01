@@ -14,6 +14,6 @@ module Swattr
                          on: :update
 
     # Default scope
-    default_scope { order(name: :asc, email: :asc) }
+    # default_scope { order(name: :asc, email: :asc) }
   end
 end

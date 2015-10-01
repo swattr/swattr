@@ -15,5 +15,7 @@ Swattr::Engine.routes.draw do
 
   resources :users
 
+  resource :profile, except: [:new, :create]
+
   root to: "dashboards#show"
 end
