@@ -3,6 +3,7 @@ Swattr::Engine.routes.draw do
              module: :devise,
              class_name: "Swattr::User",
              path: "",
+             skip: [:omniauth_callbacks],
              path_names: {
                sign_in: "login",
                sign_out: "logout",
