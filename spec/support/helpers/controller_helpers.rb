@@ -22,7 +22,7 @@ module Swattr
       process_swattr_action(action, parameters, session, flash, "DELETE")
     end
 
-    protected
+    private
 
     def process_swattr_action(action,
                               parameters = nil,

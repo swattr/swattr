@@ -3,6 +3,7 @@ Swattr::Engine.routes.draw do
              module: :devise,
              class_name: "Swattr::User",
              path: "",
+             skip: [:omniauth_callbacks],
              path_names: {
                sign_in: "login",
                sign_out: "logout",
@@ -13,6 +14,13 @@ Swattr::Engine.routes.draw do
                sign_up: "signup"
              }
 
+  resources :projects
+  resources :issues
+  resources :priorities
+  resources :tags
+  resources :tasks
+  resources :resolutions
+  resources :statuses
   resources :users
 
   resource :profile, except: [:new, :create]

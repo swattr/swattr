@@ -1,3 +1,4 @@
+require "date_validator"
 require "devise"
 require "pundit"
 require "validates"

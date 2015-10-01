@@ -19,10 +19,11 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency "date_validator", "~> 0.8.1"
   s.add_dependency "devise", "~> 3.5.2"
+  s.add_dependency "highline", "~> 1.7.7"
   s.add_dependency "pundit", "~> 1.0.1"
   s.add_dependency "validates", "~> 1.0.0"
-  s.add_dependency "highline", "~> 1.7.7"
   s.add_dependency "jquery-rails", "~> 4.0.5"
 
   s.add_development_dependency "rspec-rails", "~> 3.3.3"
