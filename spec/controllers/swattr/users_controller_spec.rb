@@ -16,7 +16,7 @@ module Swattr
 
         swattr_get :index
 
-        expect(assigns[:users].size).to eq 2
+        expect(assigns(:users)).to eq([user])
       end
     end
 
