@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence(:title) { |n| "Issue #{n}" }
     content "Content of issue."
     project
-    association :author, factory: :user
+    author
     priority
     status
 
@@ -12,7 +12,7 @@ FactoryGirl.define do
     end
 
     trait :assigned do
-      association :assignee, factory: :user
+      assignee
     end
 
     trait :past_due do

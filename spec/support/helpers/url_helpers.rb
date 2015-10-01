@@ -1,7 +1,11 @@
 module Swattr
   module UrlHelpers
-    def spree
+    def swattr
       Swattr::Engine.routes.url_helpers
     end
   end
+end
+
+RSpec.configure do |config|
+  config.include Swattr::UrlHelpers
 end

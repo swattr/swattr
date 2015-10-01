@@ -13,14 +13,11 @@ Swattr::Engine.routes.draw do
                sign_up: "signup"
              }
 
-  resources :projects do
-    resources :issues do
-      resources :tasks
-    end
-  end
-
+  resources :projects
+  resources :issues
   resources :priorities
   resources :tags
+  resources :tasks
   resources :resolutions
   resources :statuses
   resources :users
