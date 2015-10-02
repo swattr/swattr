@@ -2,6 +2,7 @@ require "date_validator"
 require "devise"
 require "pundit"
 require "responders"
+require "simple_form"
 require "validates"
 
 require "swattr/engine"

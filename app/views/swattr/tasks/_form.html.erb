@@ -1,33 +1,16 @@
-<%= form_for(@task) do |f| %>
-  <% if @task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h2>
+<%= simple_form_for(@task,
+                    wrapper: :vertical_form,
+                    html: { class: "form-vertical" }) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.association :issue, as: :select %>
+    <%= f.association :author, as: :select %>
+    <%= f.input :position, as: :integer %>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :issue_id %><br>
-    <%= f.number_field :issue_id %>
-  </div>
-  <div class="field">
-    <%= f.label :author_id %><br>
-    <%= f.number_field :author_id %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

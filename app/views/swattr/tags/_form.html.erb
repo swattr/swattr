@@ -1,33 +1,16 @@
-<%= form_for(@tag) do |f| %>
-  <% if @tag.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@tag.errors.count, "error") %> prohibited this tag from being saved:</h2>
+<%= simple_form_for(@tag,
+                    wrapper: :vertical_form,
+                    html: { class: "form-vertical" }) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @tag.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :description %>
+    <%= f.input :color %>
+    <%= f.input :position, as: :integer %>
+  </div>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description %>
-  </div>
-  <div class="field">
-    <%= f.label :color %><br>
-    <%= f.text_field :color %>
-  </div>
-  <div class="field">
-    <%= f.label :position %><br>
-    <%= f.number_field :position %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
