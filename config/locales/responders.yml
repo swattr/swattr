@@ -8,3 +8,7 @@ en:
       destroy:
         notice: "%{resource_name} was successfully destroyed."
         alert: "%{resource_name} could not be destroyed."
+    swattr:
+      users:
+        create:
+          notice: An email will be sent to the new user to help them set up their account.

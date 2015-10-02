@@ -23,10 +23,9 @@ module Swattr
     end
 
     def create
-      # TODO: Off the beaten path. Send custom flash message saying the userwas invited.
       @user = Swattr::User.invite!(user_params)
 
-      respond_with @user, location: -> { users_path }
+      respond_with @user, location: -> { user_path(@user) }
     end
 
     def update
