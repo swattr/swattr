@@ -3,54 +3,53 @@ module Swattr
     before_action :set_priority, only: [:show, :edit, :update, :destroy]
 
     def index
-      @priorities = Priority.all
+      @priorities = Swattr::Priority.all
+
+      respond_with @priorities
     end
 
     def show
+      respond_with @priority
     end
 
     def new
-      @priority = Priority.new
+      @priority = Swattr::Priority.new
+
+      respond_with @priority
     end
 
     def edit
+      respond_with @priority
     end
 
     def create
-      @priority = Priority.new(priority_params)
+      @priority = Swattr::Priority.create(priority_params)
 
-      if @priority.save
-        redirect_to @priority, notice: "Priority was successfully created."
-      else
-        render :new
-      end
+      respond_with @priority, location: -> { priority_path(@priority) }
     end
 
     def update
-      if @priority.update(priority_params)
-        redirect_to @priority, notice: "Priority was successfully updated."
-      else
-        render :edit
-      end
+      @priority.update(priority_params)
+
+      respond_with @priority, location: -> { priority_path(@priority) }
     end
 
     def destroy
       @priority.destroy
-      redirect_to priorities_url, notice: "Priority was successfully destroyed."
+
+      respond_with @priority, location: -> { priorities_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :description,
-        :position,
+        :name, :description, :position
       ]
     end
 
     def set_priority
-      @priority = Priority.find(params[:id])
+      @priority = Swattr::Priority.find(params[:id])
     end
 
     def priority_params

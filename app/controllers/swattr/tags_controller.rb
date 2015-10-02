@@ -3,55 +3,53 @@ module Swattr
     before_action :set_tag, only: [:show, :edit, :update, :destroy]
 
     def index
-      @tags = Tag.all
+      @tags = Swattr::Tag.all
+
+      respond_with @tags
     end
 
     def show
+      respond_with @tag
     end
 
     def new
-      @tag = Tag.new
+      @tag = Swattr::Tag.new
+
+      respond_with @tag
     end
 
     def edit
+      respond_with @tag
     end
 
     def create
-      @tag = Tag.new(tag_params)
+      @tag = Swattr::Tag.create(tag_params)
 
-      if @tag.save
-        redirect_to @tag, notice: "Tag was successfully created."
-      else
-        render :new
-      end
+      respond_with @tag, location: -> { tag_path(@tag) }
     end
 
     def update
-      if @tag.update(tag_params)
-        redirect_to @tag, notice: "Tag was successfully updated."
-      else
-        render :edit
-      end
+      @tag.update(tag_params)
+
+      respond_with @tag, location: -> { tag_path(@tag) }
     end
 
     def destroy
       @tag.destroy
-      redirect_to tags_url, notice: "Tag was successfully destroyed."
+
+      respond_with @tag, location: -> { tags_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :description,
-        :color,
-        :position,
+        :name, :description, :color, :position
       ]
     end
 
     def set_tag
-      @tag = Tag.find(params[:id])
+      @tag = Swattr::Tag.find(params[:id])
     end
 
     def tag_params

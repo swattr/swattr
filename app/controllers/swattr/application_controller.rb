@@ -1,3 +1,5 @@
+require "swattr/application_responder"
+
 module Swattr
   class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
@@ -7,6 +9,9 @@ module Swattr
     before_action :authenticate_user!
 
     layout :set_layout
+
+    respond_to :html, :json
+    responders :flash, :http_cache
 
     rescue_from Exception, with: :render_500
     rescue_from ActionController::UnknownController,

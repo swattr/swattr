@@ -3,27 +3,29 @@ module Swattr
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
-      @users = User.all
+      @users = Swattr::User.all
+
+      respond_with @users
     end
 
     def show
+      respond_with @user
     end
 
     def new
-      @user = User.new
+      @user = Swattr::User.new
+
+      respond_with @user
     end
 
     def edit
+      respond_with @user
     end
 
     def create
-      @user = User.new(user_params)
+      @user = Swattr::User.create(user_params)
 
-      if @user.save
-        redirect_to @user, notice: "User was successfully created."
-      else
-        render :new
-      end
+      respond_with @user, location: -> { user_path(@user) }
     end
 
     def update
@@ -35,33 +37,29 @@ module Swattr
                                @user.update_without_password(user_params)
                              end
 
-      if successfully_updated
-        sign_in(@user, bypass: true) if @user == current_user
-
-        redirect_to user_path(@user), notice: "User was successfully updated."
-      else
-        render :edit
+      if successfully_updated && @user == current_user
+        sign_in(@user, bypass: true)
       end
+
+      respond_with @user, location: -> { user_path(@user) }
     end
 
     def destroy
       @user.destroy
 
-      redirect_to users_url, notice: "User was successfully destroyed."
+      respond_with @user, location: -> { users_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :email,
-        :password,
+        :name, :email, :password
       ]
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = Swattr::User.find(params[:id])
     end
 
     def user_params

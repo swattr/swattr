@@ -1,6 +1,7 @@
 require "date_validator"
 require "devise"
 require "pundit"
+require "responders"
 require "validates"
 
 require "swattr/engine"

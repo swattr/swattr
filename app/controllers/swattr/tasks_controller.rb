@@ -3,55 +3,53 @@ module Swattr
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
     def index
-      @tasks = Task.all
+      @tasks = Swattr::Task.all
+
+      respond_with @tasks
     end
 
     def show
+      respond_with @task
     end
 
     def new
-      @task = Task.new
+      @task = Swattr::Task.new
+
+      respond_with @task
     end
 
     def edit
+      respond_with @task
     end
 
     def create
-      @task = Task.new(task_params)
+      @task = Swattr::Task.create(task_params)
 
-      if @task.save
-        redirect_to @task, notice: "Task was successfully created."
-      else
-        render :new
-      end
+      respond_with @task, location: -> { task_path(@task) }
     end
 
     def update
-      if @task.update(task_params)
-        redirect_to @task, notice: "Task was successfully updated."
-      else
-        render :edit
-      end
+      @task.update(task_params)
+
+      respond_with @task, location: -> { task_path(@task) }
     end
 
     def destroy
       @task.destroy
-      redirect_to tasks_url, notice: "Task was successfully destroyed."
+
+      respond_with @task, location: -> { tasks_path }
     end
 
-    private
+    protected
 
     def permitted_attributes
       [
-        :title,
-        :issue_id,
-        :author_id,
-        :position,
+        :title, :task_id, :author_id, :position
       ]
     end
 
     def set_task
-      @task = Task.find(params[:id])
+      @task = Swattr::Task.find(params[:id])
     end
 
     def task_params

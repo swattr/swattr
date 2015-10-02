@@ -3,54 +3,53 @@ module Swattr
     before_action :set_status, only: [:show, :edit, :update, :destroy]
 
     def index
-      @statuses = Status.all
+      @statuses = Swattr::Status.all
+
+      respond_with @statuses
     end
 
     def show
+      respond_with @status
     end
 
     def new
-      @status = Status.new
+      @status = Swattr::Status.new
+
+      respond_with @status
     end
 
     def edit
+      respond_with @status
     end
 
     def create
-      @status = Status.new(status_params)
+      @status = Swattr::Status.create(status_params)
 
-      if @status.save
-        redirect_to @status, notice: "Status was successfully created."
-      else
-        render :new
-      end
+      respond_with @status, location: -> { status_path(@status) }
     end
 
     def update
-      if @status.update(status_params)
-        redirect_to @status, notice: "Status was successfully updated."
-      else
-        render :edit
-      end
+      @status.update(status_params)
+
+      respond_with @status, location: -> { status_path(@status) }
     end
 
     def destroy
       @status.destroy
-      redirect_to statuses_url, notice: "Status was successfully destroyed."
+
+      respond_with @status, location: -> { statuses_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :description,
-        :position,
+        :name, :description, :position
       ]
     end
 
     def set_status
-      @status = Status.find(params[:id])
+      @status = Swattr::Status.find(params[:id])
     end
 
     def status_params
