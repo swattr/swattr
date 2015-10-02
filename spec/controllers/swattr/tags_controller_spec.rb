@@ -49,20 +49,20 @@ module Swattr
         end
 
         it "creates a new Tag" do
-          expect {
-            swattr_post :create, { tag: params }
-          }.to change(Tag, :count).by(1)
+          expect do
+            swattr_post :create, tag: params
+          end.to change(Tag, :count).by(1)
         end
 
         it "assigns a newly created tag as @tag" do
-          swattr_post :create, { tag: params }
+          swattr_post :create, tag: params
 
           expect(assigns(:tag)).to be_a(Tag)
           expect(assigns(:tag)).to be_persisted
         end
 
         it "redirects to the created tag" do
-          swattr_post :create, { tag: params }
+          swattr_post :create, tag: params
 
           expect(response).to redirect_to(Tag.last)
         end
@@ -74,13 +74,13 @@ module Swattr
         end
 
         it "assigns a newly created but unsaved tag as @tag" do
-          swattr_post :create, { tag: params }
+          swattr_post :create, tag: params
 
           expect(assigns(:tag)).to be_a_new(Tag)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, { tag: params }
+          swattr_post :create, tag: params
 
           expect(response).to render_template(:new)
         end
@@ -96,7 +96,7 @@ module Swattr
         it "updates the requested tag" do
           tag = create(:tag)
 
-          swattr_put :update, { id: tag, tag: params }
+          swattr_put :update, id: tag, tag: params
 
           tag.reload
 
@@ -106,7 +106,7 @@ module Swattr
         it "assigns the requested tag as @tag" do
           tag = create(:tag)
 
-          swattr_put :update, { id: tag, tag: params }
+          swattr_put :update, id: tag, tag: params
 
           expect(assigns(:tag)).to eq(tag)
         end
@@ -114,7 +114,7 @@ module Swattr
         it "redirects to the tag" do
           tag = create(:tag)
 
-          swattr_put :update, { id: tag, tag: params }
+          swattr_put :update, id: tag, tag: params
 
           expect(response).to redirect_to(tag)
         end
@@ -128,7 +128,7 @@ module Swattr
         it "assigns the tag as @tag" do
           tag = create(:tag)
 
-          swattr_put :update, { id: tag, tag: params }
+          swattr_put :update, id: tag, tag: params
 
           expect(assigns(:tag)).to eq(tag)
         end
@@ -136,7 +136,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           tag = create(:tag)
 
-          swattr_put :update, { id: tag, tag: params }
+          swattr_put :update, id: tag, tag: params
 
           expect(response).to render_template(:edit)
         end
@@ -147,15 +147,15 @@ module Swattr
       it "destroys the requested tag" do
         tag = create(:tag)
 
-        expect {
-          swattr_delete :destroy, { id: tag }
-        }.to change(Tag, :count).by(-1)
+        expect do
+          swattr_delete :destroy, id: tag
+        end.to change(Tag, :count).by(-1)
       end
 
       it "redirects to the tags list" do
         tag = create(:tag)
 
-        swattr_delete :destroy, { id: tag }
+        swattr_delete :destroy, id: tag
 
         expect(response).to redirect_to(tags_url)
       end

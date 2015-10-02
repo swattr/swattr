@@ -28,10 +28,12 @@ module Swattr
 
     describe "PUT #update" do
       context "with valid params, with password" do
-        let(:attributes) { {
-          name: "Fancy Name",
-          password: "new password"
-        } }
+        let(:attributes) do
+          {
+            name: "Fancy Name",
+            password: "new password"
+          }
+        end
 
         it "assigns the current user as @profile" do
           swattr_put :update, user: attributes
@@ -41,9 +43,9 @@ module Swattr
       end
 
       context "with valid params, without password" do
-        let(:attributes) { {
-          name: "Fancy Name"
-        } }
+        let(:attributes) do
+          { name: "Fancy Name" }
+        end
 
         it "assigns the current user as @profile" do
           swattr_put :update, user: attributes
@@ -53,10 +55,12 @@ module Swattr
       end
 
       context "with invalid params" do
-        let(:attributes) { {
-          name: "Fancy Name",
-          password: "no"
-        } }
+        let(:attributes) do
+          {
+            name: "Fancy Name",
+            password: "no"
+          }
+        end
 
         it "assigns the current_user as @profile" do
           swattr_put :update, user: attributes
@@ -74,9 +78,9 @@ module Swattr
 
     describe "DELETE #destroy" do
       it "destroys the current user" do
-        expect {
+        expect do
           delete :destroy
-        }.to change(User, :count).by(-1)
+        end.to change(User, :count).by(-1)
       end
 
       it "redirects to the root" do

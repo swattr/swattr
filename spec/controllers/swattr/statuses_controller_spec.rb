@@ -49,20 +49,20 @@ module Swattr
         end
 
         it "creates a new Status" do
-          expect {
-            swattr_post :create, { status: params }
-          }.to change(Status, :count).by(1)
+          expect do
+            swattr_post :create, status: params
+          end.to change(Status, :count).by(1)
         end
 
         it "assigns a newly created status as @status" do
-          swattr_post :create, { status: params }
+          swattr_post :create, status: params
 
           expect(assigns(:status)).to be_a(Status)
           expect(assigns(:status)).to be_persisted
         end
 
         it "redirects to the created status" do
-          swattr_post :create, { status: params }
+          swattr_post :create, status: params
 
           expect(response).to redirect_to(Status.last)
         end
@@ -74,13 +74,13 @@ module Swattr
         end
 
         it "assigns a newly created but unsaved status as @status" do
-          swattr_post :create, { status: params }
+          swattr_post :create, status: params
 
           expect(assigns(:status)).to be_a_new(Status)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, { status: params }
+          swattr_post :create, status: params
 
           expect(response).to render_template(:new)
         end
@@ -96,7 +96,7 @@ module Swattr
         it "updates the requested status" do
           status = create(:status)
 
-          swattr_put :update, { id: status, status: params }
+          swattr_put :update, id: status, status: params
 
           status.reload
 
@@ -106,7 +106,7 @@ module Swattr
         it "assigns the requested status as @status" do
           status = create(:status)
 
-          swattr_put :update, { id: status, status: params }
+          swattr_put :update, id: status, status: params
 
           expect(assigns(:status)).to eq(status)
         end
@@ -114,7 +114,7 @@ module Swattr
         it "redirects to the status" do
           status = create(:status)
 
-          swattr_put :update, { id: status, status: params }
+          swattr_put :update, id: status, status: params
 
           expect(response).to redirect_to(status)
         end
@@ -128,7 +128,7 @@ module Swattr
         it "assigns the status as @status" do
           status = create(:status)
 
-          swattr_put :update, { id: status, status: params }
+          swattr_put :update, id: status, status: params
 
           expect(assigns(:status)).to eq(status)
         end
@@ -136,7 +136,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           status = create(:status)
 
-          swattr_put :update, { id: status, status: params }
+          swattr_put :update, id: status, status: params
 
           expect(response).to render_template(:edit)
         end
@@ -147,15 +147,15 @@ module Swattr
       it "destroys the requested status" do
         status = create(:status)
 
-        expect {
-          swattr_delete :destroy, { id: status }
-        }.to change(Status, :count).by(-1)
+        expect do
+          swattr_delete :destroy, id: status
+        end.to change(Status, :count).by(-1)
       end
 
       it "redirects to the statuses list" do
         status = create(:status)
 
-        swattr_delete :destroy, { id: status }
+        swattr_delete :destroy, id: status
 
         expect(response).to redirect_to(statuses_url)
       end

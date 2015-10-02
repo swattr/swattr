@@ -49,20 +49,20 @@ module Swattr
         end
 
         it "creates a new Resolution" do
-          expect {
-            swattr_post :create, { resolution: params }
-          }.to change(Resolution, :count).by(1)
+          expect do
+            swattr_post :create, resolution: params
+          end.to change(Resolution, :count).by(1)
         end
 
         it "assigns a newly created resolution as @resolution" do
-          swattr_post :create, { resolution: params }
+          swattr_post :create, resolution: params
 
           expect(assigns(:resolution)).to be_a(Resolution)
           expect(assigns(:resolution)).to be_persisted
         end
 
         it "redirects to the created resolution" do
-          swattr_post :create, { resolution: params }
+          swattr_post :create, resolution: params
 
           expect(response).to redirect_to(Resolution.last)
         end
@@ -74,13 +74,13 @@ module Swattr
         end
 
         it "assigns a newly created but unsaved resolution as @resolution" do
-          swattr_post :create, { resolution: params }
+          swattr_post :create, resolution: params
 
           expect(assigns(:resolution)).to be_a_new(Resolution)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, { resolution: params }
+          swattr_post :create, resolution: params
 
           expect(response).to render_template(:new)
         end
@@ -96,7 +96,7 @@ module Swattr
         it "updates the requested resolution" do
           resolution = create(:resolution)
 
-          swattr_put :update, { id: resolution, resolution: params }
+          swattr_put :update, id: resolution, resolution: params
 
           resolution.reload
 
@@ -106,7 +106,7 @@ module Swattr
         it "assigns the requested resolution as @resolution" do
           resolution = create(:resolution)
 
-          swattr_put :update, { id: resolution, resolution: params }
+          swattr_put :update, id: resolution, resolution: params
 
           expect(assigns(:resolution)).to eq(resolution)
         end
@@ -114,7 +114,7 @@ module Swattr
         it "redirects to the resolution" do
           resolution = create(:resolution)
 
-          swattr_put :update, { id: resolution, resolution: params }
+          swattr_put :update, id: resolution, resolution: params
 
           expect(response).to redirect_to(resolution)
         end
@@ -128,7 +128,7 @@ module Swattr
         it "assigns the resolution as @resolution" do
           resolution = create(:resolution)
 
-          swattr_put :update, { id: resolution, resolution: params }
+          swattr_put :update, id: resolution, resolution: params
 
           expect(assigns(:resolution)).to eq(resolution)
         end
@@ -136,7 +136,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           resolution = create(:resolution)
 
-          swattr_put :update, { id: resolution, resolution: params }
+          swattr_put :update, id: resolution, resolution: params
 
           expect(response).to render_template(:edit)
         end
@@ -147,15 +147,15 @@ module Swattr
       it "destroys the requested resolution" do
         resolution = create(:resolution)
 
-        expect {
-          swattr_delete :destroy, { id: resolution }
-        }.to change(Resolution, :count).by(-1)
+        expect do
+          swattr_delete :destroy, id: resolution
+        end.to change(Resolution, :count).by(-1)
       end
 
       it "redirects to the resolutions list" do
         resolution = create(:resolution)
 
-        swattr_delete :destroy, { id: resolution }
+        swattr_delete :destroy, id: resolution
 
         expect(response).to redirect_to(resolutions_url)
       end

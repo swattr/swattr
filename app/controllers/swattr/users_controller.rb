@@ -71,7 +71,7 @@ module Swattr
       user_params.delete(:password_confirmation)
     end
 
-    def needs_password?(user, params)
+    def needs_password?(_user, params)
       params[:password].present?
     end
   end

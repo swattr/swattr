@@ -49,20 +49,20 @@ module Swattr
         end
 
         it "creates a new Priority" do
-          expect {
-            swattr_post :create, { priority: params }
-          }.to change(Priority, :count).by(1)
+          expect do
+            swattr_post :create, priority: params
+          end.to change(Priority, :count).by(1)
         end
 
         it "assigns a newly created priority as @priority" do
-          swattr_post :create, { priority: params }
+          swattr_post :create, priority: params
 
           expect(assigns(:priority)).to be_a(Priority)
           expect(assigns(:priority)).to be_persisted
         end
 
         it "redirects to the created priority" do
-          swattr_post :create, { priority: params }
+          swattr_post :create, priority: params
 
           expect(response).to redirect_to(Priority.last)
         end
@@ -74,13 +74,13 @@ module Swattr
         end
 
         it "assigns a newly created but unsaved priority as @priority" do
-          swattr_post :create, { priority: params }
+          swattr_post :create, priority: params
 
           expect(assigns(:priority)).to be_a_new(Priority)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, { priority: params }
+          swattr_post :create, priority: params
 
           expect(response).to render_template(:new)
         end
@@ -96,7 +96,7 @@ module Swattr
         it "updates the requested priority" do
           priority = create(:priority)
 
-          swattr_put :update, { id: priority, priority: params }
+          swattr_put :update, id: priority, priority: params
 
           priority.reload
 
@@ -106,7 +106,7 @@ module Swattr
         it "assigns the requested priority as @priority" do
           priority = create(:priority)
 
-          swattr_put :update, { id: priority, priority: params }
+          swattr_put :update, id: priority, priority: params
 
           expect(assigns(:priority)).to eq(priority)
         end
@@ -114,7 +114,7 @@ module Swattr
         it "redirects to the priority" do
           priority = create(:priority)
 
-          swattr_put :update, { id: priority, priority: params }
+          swattr_put :update, id: priority, priority: params
 
           expect(response).to redirect_to(priority)
         end
@@ -128,7 +128,7 @@ module Swattr
         it "assigns the priority as @priority" do
           priority = create(:priority)
 
-          swattr_put :update, { id: priority, priority: params }
+          swattr_put :update, id: priority, priority: params
 
           expect(assigns(:priority)).to eq(priority)
         end
@@ -136,7 +136,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           priority = create(:priority)
 
-          swattr_put :update, { id: priority, priority: params }
+          swattr_put :update, id: priority, priority: params
 
           expect(response).to render_template(:edit)
         end
@@ -147,15 +147,15 @@ module Swattr
       it "destroys the requested priority" do
         priority = create(:priority)
 
-        expect {
-          swattr_delete :destroy, { id: priority }
-        }.to change(Priority, :count).by(-1)
+        expect do
+          swattr_delete :destroy, id: priority
+        end.to change(Priority, :count).by(-1)
       end
 
       it "redirects to the priorities list" do
         priority = create(:priority)
 
-        swattr_delete :destroy, { id: priority }
+        swattr_delete :destroy, id: priority
 
         expect(response).to redirect_to(priorities_url)
       end

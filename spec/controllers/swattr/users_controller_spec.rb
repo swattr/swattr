@@ -1,7 +1,7 @@
 require "rails_helper"
 
 module Swattr
-  RSpec.describe UsersController, type: :controller do
+  RSpec.describe Swattr::UsersController, type: :controller do
     before { stub_authorization! }
 
     it "uses correct layout" do
@@ -51,15 +51,17 @@ module Swattr
 
     describe "POST #create" do
       context "with valid params" do
-        let(:attributes) { {
-          email: "fake_email@example.com",
-          password: "password"
-        } }
+        let(:attributes) do
+          {
+            email: "fake_email@example.com",
+            password: "password"
+          }
+        end
 
         it "creates a new User" do
-          expect {
+          expect do
             swattr_post :create, user: attributes
-          }.to change(User, :count).by(1)
+          end.to change(User, :count).by(1)
         end
 
         it "assigns a newly created user as @user" do
@@ -95,10 +97,12 @@ module Swattr
 
     describe "PUT #update" do
       context "with valid params, with password" do
-        let(:attributes) { {
-          name: "Fancy Name",
-          password: "new password"
-        } }
+        let(:attributes) do
+          {
+            name: "Fancy Name",
+            password: "new password"
+          }
+        end
 
         it "assigns the requested user as @user" do
           user = create(:user)
@@ -118,9 +122,9 @@ module Swattr
       end
 
       context "with valid params, without password" do
-        let(:attributes) { {
-          name: "Fancy Name"
-        } }
+        let(:attributes) do
+          { name: "Fancy Name" }
+        end
 
         it "assigns the requested user as @user" do
           user = create(:user)
@@ -140,10 +144,12 @@ module Swattr
       end
 
       context "with invalid params" do
-        let(:attributes) { {
-          name: "Fancy Name",
-          password: "no"
-        } }
+        let(:attributes) do
+          {
+            name: "Fancy Name",
+            password: "no"
+          }
+        end
 
         it "assigns the user as @user" do
           user = create(:user)
@@ -167,15 +173,15 @@ module Swattr
       it "destroys the requested user" do
         user = create(:user)
 
-        expect {
-          delete :destroy, { id: user.to_param }
-        }.to change(User, :count).by(-1)
+        expect do
+          delete :destroy, id: user.to_param
+        end.to change(User, :count).by(-1)
       end
 
       it "redirects to the users list" do
         user = create(:user)
 
-        delete :destroy, { id: user.to_param }
+        delete :destroy, id: user.to_param
 
         expect(response).to redirect_to(users_url)
       end

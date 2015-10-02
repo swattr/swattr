@@ -51,20 +51,20 @@ module Swattr
         end
 
         it "creates a new Task" do
-          expect {
-            swattr_post :create, { task: params }
-          }.to change(Task, :count).by(1)
+          expect do
+            swattr_post :create, task: params
+          end.to change(Task, :count).by(1)
         end
 
         it "assigns a newly created task as @task" do
-          swattr_post :create, { task: params }
+          swattr_post :create, task: params
 
           expect(assigns(:task)).to be_a(Task)
           expect(assigns(:task)).to be_persisted
         end
 
         it "redirects to the created task" do
-          swattr_post :create, { task: params }
+          swattr_post :create, task: params
 
           expect(response).to redirect_to(Task.last)
         end
@@ -76,13 +76,13 @@ module Swattr
         end
 
         it "assigns a newly created but unsaved task as @task" do
-          swattr_post :create, { task: params }
+          swattr_post :create, task: params
 
           expect(assigns(:task)).to be_a_new(Task)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, { task: params }
+          swattr_post :create, task: params
 
           expect(response).to render_template(:new)
         end
@@ -98,7 +98,7 @@ module Swattr
         it "updates the requested task" do
           task = create(:task)
 
-          swattr_put :update, { id: task, task: params }
+          swattr_put :update, id: task, task: params
 
           task.reload
 
@@ -108,7 +108,7 @@ module Swattr
         it "assigns the requested task as @task" do
           task = create(:task)
 
-          swattr_put :update, { id: task, task: params }
+          swattr_put :update, id: task, task: params
 
           expect(assigns(:task)).to eq(task)
         end
@@ -116,7 +116,7 @@ module Swattr
         it "redirects to the task" do
           task = create(:task)
 
-          swattr_put :update, { id: task, task: params }
+          swattr_put :update, id: task, task: params
 
           expect(response).to redirect_to(task)
         end
@@ -130,7 +130,7 @@ module Swattr
         it "assigns the task as @task" do
           task = create(:task)
 
-          swattr_put :update, { id: task, task: params }
+          swattr_put :update, id: task, task: params
 
           expect(assigns(:task)).to eq(task)
         end
@@ -138,7 +138,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           task = create(:task)
 
-          swattr_put :update, { id: task, task: params }
+          swattr_put :update, id: task, task: params
 
           expect(response).to render_template(:edit)
         end
@@ -149,15 +149,15 @@ module Swattr
       it "destroys the requested task" do
         task = create(:task)
 
-        expect {
-          swattr_delete :destroy, { id: task }
-        }.to change(Task, :count).by(-1)
+        expect do
+          swattr_delete :destroy, id: task
+        end.to change(Task, :count).by(-1)
       end
 
       it "redirects to the tasks list" do
         task = create(:task)
 
-        swattr_delete :destroy, { id: task }
+        swattr_delete :destroy, id: task
 
         expect(response).to redirect_to(tasks_url)
       end

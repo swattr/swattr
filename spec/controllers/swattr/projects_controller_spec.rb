@@ -52,20 +52,20 @@ module Swattr
         end
 
         it "creates a new Project" do
-          expect {
-            swattr_post :create, { project: params }
-          }.to change(Project, :count).by(1)
+          expect do
+            swattr_post :create, project: params
+          end.to change(Project, :count).by(1)
         end
 
         it "assigns a newly created project as @project" do
-          swattr_post :create, { project: params }
+          swattr_post :create, project: params
 
           expect(assigns(:project)).to be_a(Project)
           expect(assigns(:project)).to be_persisted
         end
 
         it "redirects to the created project" do
-          swattr_post :create, { project: params }
+          swattr_post :create, project: params
 
           expect(response).to redirect_to(Project.last)
         end
@@ -77,13 +77,13 @@ module Swattr
         end
 
         it "assigns a newly created but unsaved project as @project" do
-          swattr_post :create, { project: params }
+          swattr_post :create, project: params
 
           expect(assigns(:project)).to be_a_new(Project)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, { project: params }
+          swattr_post :create, project: params
 
           expect(response).to render_template(:new)
         end
@@ -99,7 +99,7 @@ module Swattr
         it "updates the requested project" do
           project = create(:project)
 
-          swattr_put :update, { id: project, project: params }
+          swattr_put :update, id: project, project: params
 
           project.reload
 
@@ -109,7 +109,7 @@ module Swattr
         it "assigns the requested project as @project" do
           project = create(:project)
 
-          swattr_put :update, { id: project, project: params }
+          swattr_put :update, id: project, project: params
 
           expect(assigns(:project)).to eq(project)
         end
@@ -117,7 +117,7 @@ module Swattr
         it "redirects to the project" do
           project = create(:project)
 
-          swattr_put :update, { id: project, project: params }
+          swattr_put :update, id: project, project: params
 
           expect(response).to redirect_to(project)
         end
@@ -131,7 +131,7 @@ module Swattr
         it "assigns the project as @project" do
           project = create(:project)
 
-          swattr_put :update, { id: project, project: params }
+          swattr_put :update, id: project, project: params
 
           expect(assigns(:project)).to eq(project)
         end
@@ -139,7 +139,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           project = create(:project)
 
-          swattr_put :update, { id: project, project: params }
+          swattr_put :update, id: project, project: params
 
           expect(response).to render_template(:edit)
         end
@@ -150,15 +150,15 @@ module Swattr
       it "destroys the requested project" do
         project = create(:project)
 
-        expect {
-          swattr_delete :destroy, { id: project }
-        }.to change(Project, :count).by(-1)
+        expect do
+          swattr_delete :destroy, id: project
+        end.to change(Project, :count).by(-1)
       end
 
       it "redirects to the projects list" do
         project = create(:project)
 
-        swattr_delete :destroy, { id: project }
+        swattr_delete :destroy, id: project
 
         expect(response).to redirect_to(projects_url)
       end
