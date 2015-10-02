@@ -3,54 +3,53 @@ module Swattr
     before_action :set_resolution, only: [:show, :edit, :update, :destroy]
 
     def index
-      @resolutions = Resolution.all
+      @resolutions = Swattr::Resolution.all
+
+      respond_with @resolutions
     end
 
     def show
+      respond_with @resolution
     end
 
     def new
-      @resolution = Resolution.new
+      @resolution = Swattr::Resolution.new
+
+      respond_with @resolution
     end
 
     def edit
+      respond_with @resolution
     end
 
     def create
-      @resolution = Resolution.new(resolution_params)
+      @resolution = Swattr::Resolution.create(resolution_params)
 
-      if @resolution.save
-        redirect_to @resolution, notice: "Resolution was successfully created."
-      else
-        render :new
-      end
+      respond_with @resolution, location: -> { resolution_path(@resolution) }
     end
 
     def update
-      if @resolution.update(resolution_params)
-        redirect_to @resolution, notice: "Resolution was successfully updated."
-      else
-        render :edit
-      end
+      @resolution.update(resolution_params)
+
+      respond_with @resolution, location: -> { resolution_path(@resolution) }
     end
 
     def destroy
       @resolution.destroy
-      redirect_to resolutions_url, notice: "Resolution was successfully destroyed."
+
+      respond_with @resolution, location: -> { resolutions_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :description,
-        :position,
+        :name, :description, :position
       ]
     end
 
     def set_resolution
-      @resolution = Resolution.find(params[:id])
+      @resolution = Swattr::Resolution.find(params[:id])
     end
 
     def resolution_params

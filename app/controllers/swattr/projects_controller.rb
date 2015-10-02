@@ -3,57 +3,53 @@ module Swattr
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-      @projects = Project.all
+      @projects = Swattr::Project.all
+
+      respond_with @projects
     end
 
     def show
+      respond_with @project
     end
 
     def new
-      @project = Project.new
+      @project = Swattr::Project.new
+
+      respond_with @project
     end
 
     def edit
+      respond_with @project
     end
 
     def create
-      @project = Project.new(project_params)
+      @project = Swattr::Project.create(project_params)
 
-      if @project.save
-        redirect_to @project, notice: "Project was successfully created."
-      else
-        render :new
-      end
+      respond_with @project, location: -> { project_path(@project) }
     end
 
     def update
-      if @project.update(project_params)
-        redirect_to @project, notice: "Project was successfully updated."
-      else
-        render :edit
-      end
+      @project.update(project_params)
+
+      respond_with @project, location: -> { project_path(@project) }
     end
 
     def destroy
       @project.destroy
-      redirect_to projects_url, notice: "Project was successfully destroyed."
+
+      respond_with @project, location: -> { projects_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :slug,
-        :description,
-        :location,
-        :author_id,
-        :owner_id,
+        :name, :slug, :description, :location, :author_id, :owner_id
       ]
     end
 
     def set_project
-      @project = Project.find(params[:id])
+      @project = Swattr::Project.find(params[:id])
     end
 
     def project_params

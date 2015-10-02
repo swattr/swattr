@@ -3,9 +3,11 @@ module Swattr
     before_action :set_profile
 
     def show
+      respond_with @profile
     end
 
     def edit
+      respond_with @profile
     end
 
     def update
@@ -17,33 +19,29 @@ module Swattr
                                @profile.update_without_password(profile_params)
                              end
 
-      if successfully_updated
-        sign_in(@profile, bypass: true) if @profile == current_user
-
-        redirect_to profile_path, notice: "Profile was successfully updated."
-      else
-        render :edit
+      if successfully_updated && @profile == current_user
+        sign_in(@profile, bypass: true)
       end
+
+      respond_with @profile, location: -> { profile_path(@profile) }
     end
 
     def destroy
       @profile.destroy
 
-      redirect_to root_url, notice: "Profile was successfully destroyed."
+      respond_with @profile, location: -> { root_path }
     end
 
     protected
 
     def permitted_attributes
       [
-        :name,
-        :email,
-        :password,
+        :name, :email, :password
       ]
     end
 
     def set_profile
-      @profile = User.find(current_user.id)
+      @profile = current_user
     end
 
     def profile_params
