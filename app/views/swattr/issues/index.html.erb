@@ -30,9 +30,9 @@
         <td><%= issue.status_id %></td>
         <td><%= issue.resolution_id %></td>
         <td><%= issue.due_at %></td>
-        <td><%= link_to 'Show', issue %></td>
-        <td><%= link_to 'Edit', edit_issue_path(issue) %></td>
-        <td><%= link_to 'Destroy', issue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to "Show", issue %></td>
+        <td><%= link_to "Edit", edit_issue_path(issue) %></td>
+        <td><%= link_to "Destroy", issue, method: :delete, data: { confirm: "Are you sure?" } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -40,4 +40,4 @@
 
 <br>
 
-<%= link_to 'New Issue', new_issue_path %>
+<%= link_to "New Issue", new_issue_path %>
