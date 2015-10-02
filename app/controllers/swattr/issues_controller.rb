@@ -3,7 +3,7 @@ module Swattr
     before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
     def index
-      @issues = Swattr::Issue.all
+      @issues = Swattr::Issue.page(params[:page]).per(per_page)
 
       respond_with @issues
     end

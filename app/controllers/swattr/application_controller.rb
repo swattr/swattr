@@ -20,6 +20,10 @@ module Swattr
     rescue_from ActionController::RoutingError,
                 Pundit::NotAuthorizedError, with: :render_401
 
+    def per_page
+      params[:limit] || Swattr.configuration.per_page
+    end
+
     protected
 
     def set_layout
