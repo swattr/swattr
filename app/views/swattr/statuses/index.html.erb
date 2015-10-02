@@ -16,9 +16,9 @@
         <td><%= status.name %></td>
         <td><%= status.description %></td>
         <td><%= status.position %></td>
-        <td><%= link_to "Show", status %></td>
-        <td><%= link_to "Edit", edit_status_path(status) %></td>
-        <td><%= link_to "Destroy", status, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to Swattr.t("actions.show"), status %></td>
+        <td><%= link_to Swattr.t("actions.edit"), edit_status_path(status) %></td>
+        <td><%= link_to Swattr.t("actions.destroy"), status, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
       </tr>
     <% end %>
   </tbody>

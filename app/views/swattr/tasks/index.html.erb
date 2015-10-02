@@ -18,9 +18,9 @@
         <td><%= task.issue_id %></td>
         <td><%= task.author_id %></td>
         <td><%= task.position %></td>
-        <td><%= link_to "Show", task %></td>
-        <td><%= link_to "Edit", edit_task_path(task) %></td>
-        <td><%= link_to "Destroy", task, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to Swattr.t("actions.show"), task %></td>
+        <td><%= link_to Swattr.t("actions.edit"), edit_task_path(task) %></td>
+        <td><%= link_to Swattr.t("actions.destroy"), task, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
       </tr>
     <% end %>
   </tbody>

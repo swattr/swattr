@@ -13,5 +13,5 @@
   <%= @status.position %>
 </p>
 
-<%= link_to "Edit", edit_status_path(@status) %> |
-<%= link_to "Back", statuses_path %>
+<%= link_to Swattr.t("actions.edit"), edit_status_path(@status) %> |
+<%= link_to Swattr.t("actions.back"), statuses_path %>

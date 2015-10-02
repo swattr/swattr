@@ -16,9 +16,9 @@
         <td><%= priority.name %></td>
         <td><%= priority.description %></td>
         <td><%= priority.position %></td>
-        <td><%= link_to "Show", priority %></td>
-        <td><%= link_to "Edit", edit_priority_path(priority) %></td>
-        <td><%= link_to "Destroy", priority, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to Swattr.t("actions.show"), priority %></td>
+        <td><%= link_to Swattr.t("actions.edit"), edit_priority_path(priority) %></td>
+        <td><%= link_to Swattr.t("actions.destroy"), priority, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
       </tr>
     <% end %>
   </tbody>

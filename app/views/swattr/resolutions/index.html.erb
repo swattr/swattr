@@ -16,9 +16,9 @@
         <td><%= resolution.name %></td>
         <td><%= resolution.description %></td>
         <td><%= resolution.position %></td>
-        <td><%= link_to "Show", resolution %></td>
-        <td><%= link_to "Edit", edit_resolution_path(resolution) %></td>
-        <td><%= link_to "Destroy", resolution, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to Swattr.t("actions.show"), resolution %></td>
+        <td><%= link_to Swattr.t("actions.edit"), edit_resolution_path(resolution) %></td>
+        <td><%= link_to Swattr.t("actions.destroy"), resolution, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
       </tr>
     <% end %>
   </tbody>

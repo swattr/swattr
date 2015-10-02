@@ -1,9 +1,9 @@
----
 en:
   swattr:
     swattr: Swattr
     and: and
     or: or
+    are_you_sure: Are you sure?
     actions:
       back: Back
       cancel: Cancel
@@ -12,4 +12,5 @@ en:
       edit: Edit
       new: New
       save: Save
+      show: Show
       update: Update

@@ -22,9 +22,9 @@
         <td><%= project.location %></td>
         <td><%= project.author_id %></td>
         <td><%= project.owner_id %></td>
-        <td><%= link_to "Show", project %></td>
-        <td><%= link_to "Edit", edit_project_path(project) %></td>
-        <td><%= link_to "Destroy", project, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to Swattr.t("actions.show"), project %></td>
+        <td><%= link_to Swattr.t("actions.edit"), edit_project_path(project) %></td>
+        <td><%= link_to Swattr.t("actions.destroy"), project, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
       </tr>
     <% end %>
   </tbody>

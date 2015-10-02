@@ -18,9 +18,9 @@
         <td><%= tag.description %></td>
         <td><%= tag.color %></td>
         <td><%= tag.position %></td>
-        <td><%= link_to "Show", tag %></td>
-        <td><%= link_to "Edit", edit_tag_path(tag) %></td>
-        <td><%= link_to "Destroy", tag, method: :delete, data: { confirm: "Are you sure?" } %></td>
+        <td><%= link_to Swattr.t("actions.show"), tag %></td>
+        <td><%= link_to Swattr.t("actions.edit"), edit_tag_path(tag) %></td>
+        <td><%= link_to Swattr.t("actions.destroy"), tag, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
       </tr>
     <% end %>
   </tbody>
