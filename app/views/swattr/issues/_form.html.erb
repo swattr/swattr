@@ -1,53 +1,22 @@
-<%= form_for(@issue) do |f| %>
-  <% if @issue.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@issue.errors.count, "error") %> prohibited this issue from being saved:</h2>
+<%= simple_form_for(@issue,
+                    wrapper: :vertical_form,
+                    html: { class: "form-vertical" }) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @issue.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :content %>
+    <%= f.association :project, as: :select %>
+    <%= f.association :author, as: :select %>
+    <%= f.association :assignee, as: :select %>
+    <%= f.association :priority, as: :select %>
+    <%= f.association :status, as: :select %>
+    <%= f.association :resolution, as: :select %>
+    <%= f.input :due_at, as: :datetime,
+                         order: [:month, :day, :year, :hour, :minute] %>
+  </div>
 
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :content %><br>
-    <%= f.text_area :content %>
-  </div>
-  <div class="field">
-    <%= f.label :project_id %><br>
-    <%= f.number_field :project_id %>
-  </div>
-  <div class="field">
-    <%= f.label :author_id %><br>
-    <%= f.number_field :author_id %>
-  </div>
-  <div class="field">
-    <%= f.label :assignee_id %><br>
-    <%= f.number_field :assignee_id %>
-  </div>
-  <div class="field">
-    <%= f.label :priority_id %><br>
-    <%= f.number_field :priority_id %>
-  </div>
-  <div class="field">
-    <%= f.label :status_id %><br>
-    <%= f.number_field :status_id %>
-  </div>
-  <div class="field">
-    <%= f.label :resolution_id %><br>
-    <%= f.number_field :resolution_id %>
-  </div>
-  <div class="field">
-    <%= f.label :due_at %><br>
-    <%= f.number_field :due_at %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>

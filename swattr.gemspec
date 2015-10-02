@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_dependency "highline", "~> 1.7.7"
   s.add_dependency "pundit", "~> 1.0.1"
   s.add_dependency "responders", "~> 2.1.0"
+  s.add_dependency "simple_form", "~> 3.2.0"
   s.add_dependency "validates", "~> 1.0.0"
   s.add_dependency "jquery-rails", "~> 4.0.5"
 

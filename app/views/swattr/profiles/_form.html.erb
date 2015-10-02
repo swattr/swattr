@@ -1,37 +1,16 @@
-<%= form_for(@profile, url: profile_path, html: { id: "edit_user", class: "edit_user" }) do |f| %>
-  <% if @profile.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+<%= simple_form_for(@profile,
+                    wrapper: :vertical_form,
+                    html: { class: "form-vertical" }) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @profile.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :email, as: :email %>
+    <%= f.input :password, as: :password %>
+    <%= f.input :password_confirmation, as: :password %>
   </div>
 
-  <div class="field">
-    <%= f.label :email %><br>
-    <%= f.email_field :email %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
