@@ -1,5 +1,6 @@
 require "date_validator"
 require "devise"
+require "kaminari"
 require "pundit"
 require "responders"
 require "simple_form"

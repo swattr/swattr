@@ -3,7 +3,7 @@ module Swattr
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-      @projects = Swattr::Project.all
+      @projects = Swattr::Project.page(params[:page]).per(per_page)
 
       respond_with @projects
     end

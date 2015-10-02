@@ -3,7 +3,7 @@ module Swattr
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
-      @users = Swattr::User.all
+      @users = Swattr::User.page(params[:page]).per(per_page)
 
       respond_with @users
     end

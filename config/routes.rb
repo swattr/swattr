@@ -1,4 +1,8 @@
 Swattr::Engine.routes.draw do
+  concern :paginatable do
+    get "(page/:page)", action: :index, on: :collection, as: ""
+  end
+
   devise_for :users,
              module: :devise,
              class_name: "Swattr::User",
@@ -14,14 +18,14 @@ Swattr::Engine.routes.draw do
                sign_up: "signup"
              }
 
-  resources :projects
-  resources :issues
+  resources :projects, concerns: [:paginatable]
+  resources :issues, concerns: [:paginatable]
   resources :priorities
   resources :tags
   resources :tasks
   resources :resolutions
   resources :statuses
-  resources :users
+  resources :users, concerns: [:paginatable]
 
   resource :profile, except: [:new, :create]
 
