@@ -2,6 +2,8 @@ module Swattr
   class User < ActiveRecord::Base
     acts_as_paranoid
 
+    after_destroy :email_reset
+
     devise :database_authenticatable, :registerable, :recoverable, :lockable,
            :rememberable, :trackable, :validatable, :confirmable, :timeoutable,
            :invitable
@@ -18,5 +20,10 @@ module Swattr
 
     # Default scope
     # default_scope { order(name: :asc, email: :asc) }
+
+    # Callbacks
+    def email_reset
+      update(email: "#{Time.current.to_i}_#{email}")
+    end
   end
 end
