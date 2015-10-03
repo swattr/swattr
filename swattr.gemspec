@@ -19,11 +19,13 @@ Gem::Specification.new do |s|
   ]
 
   s.add_dependency "rails", "~> 4.2.4"
+  s.add_dependency "carrierwave", "~> 0.10.0"
   s.add_dependency "date_validator", "~> 0.8.1"
   s.add_dependency "devise", "~> 3.5.2"
   s.add_dependency "devise_invitable", "~> 1.5.3"
   s.add_dependency "highline", "~> 1.7.7"
   s.add_dependency "kaminari", "~> 0.16.3"
+  s.add_dependency "mini_magick", "~> 4.3.2"
   s.add_dependency "paranoia", "~> 2.1.3"
   s.add_dependency "pundit", "~> 1.0.1"
   s.add_dependency "ransack", "~> 1.7.0"
