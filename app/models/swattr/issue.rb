@@ -1,5 +1,7 @@
 module Swattr
   class Issue < ActiveRecord::Base
+    acts_as_paranoid
+
     # Associations
     belongs_to :project, class_name: Swattr::Project
     belongs_to :author, class_name: Swattr::User
