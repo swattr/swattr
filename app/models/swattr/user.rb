@@ -1,5 +1,7 @@
 module Swattr
   class User < ActiveRecord::Base
+    acts_as_paranoid
+
     devise :database_authenticatable, :registerable, :recoverable, :lockable,
            :rememberable, :trackable, :validatable, :confirmable, :timeoutable
 
