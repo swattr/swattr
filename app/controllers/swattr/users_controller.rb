@@ -3,7 +3,9 @@ module Swattr
     before_action :set_user, only: [:show, :edit, :update, :destroy]
 
     def index
-      @users = Swattr::User.page(params[:page]).per(per_page)
+      @q = Swattr::User.ransack(params[:q].try(:merge, m: "or"))
+
+      @users = @q.result(distinct: true).page(params[:page]).per(per_page)
 
       respond_with @users
     end

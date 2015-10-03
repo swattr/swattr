@@ -1,0 +1,21 @@
+en:
+  ransack:
+    asc: ascending
+    desc: descending
+    predicates:
+      cont: contains
+      not_cont: not contains
+      start: starts with
+      end: ends with
+      gt: greater than
+      lt: less than
+    attributes:
+      swattr/project:
+        name: Name
+        description: Description
+      swattr/issue:
+        title: Title
+        content: Content
+      swattr/user:
+        name: Name
+        email: Email

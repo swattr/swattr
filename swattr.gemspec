@@ -26,6 +26,7 @@ Gem::Specification.new do |s|
   s.add_dependency "kaminari", "~> 0.16.3"
   s.add_dependency "paranoia", "~> 2.1.3"
   s.add_dependency "pundit", "~> 1.0.1"
+  s.add_dependency "ransack", "~> 1.7.0"
   s.add_dependency "responders", "~> 2.1.0"
   s.add_dependency "simple_form", "~> 3.2.0"
   s.add_dependency "validates", "~> 1.0.0"

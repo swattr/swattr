@@ -3,7 +3,9 @@ module Swattr
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-      @projects = Swattr::Project.page(params[:page]).per(per_page)
+      @q = Swattr::Project.ransack(params[:q].try(:merge, m: "or"))
+
+      @projects = @q.result(distinct: true).page(params[:page]).per(per_page)
 
       respond_with @projects
     end
