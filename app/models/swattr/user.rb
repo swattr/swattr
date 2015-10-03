@@ -1,7 +1,8 @@
 module Swattr
   class User < ActiveRecord::Base
     devise :database_authenticatable, :registerable, :recoverable, :lockable,
-           :rememberable, :trackable, :validatable, :confirmable, :timeoutable
+           :rememberable, :trackable, :validatable, :confirmable, :timeoutable,
+           :invitable
 
     # Validation
     validates :name, presence: true, allow_blank: true

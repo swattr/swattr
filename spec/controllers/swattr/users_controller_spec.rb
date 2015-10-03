@@ -52,10 +52,7 @@ module Swattr
     describe "POST #create" do
       context "with valid params" do
         let(:attributes) do
-          {
-            email: "fake_email@example.com",
-            password: "password"
-          }
+          { email: "fake_email@example.com" }
         end
 
         it "creates a new User" do
@@ -79,12 +76,9 @@ module Swattr
       end
 
       context "with invalid params" do
-        let(:attributes) { { email: "fake_email@example.com" } }
-
-        it "assigns a newly created but unsaved user as @user" do
-          swattr_post :create, user: attributes
-
-          expect(assigns(:user)).to be_a_new(User)
+        let(:existing_user) { create(:user) }
+        let(:attributes) do
+          { email: existing_user.email }
         end
 
         it "re-renders the 'new' template" do
@@ -96,34 +90,9 @@ module Swattr
     end
 
     describe "PUT #update" do
-      context "with valid params, with password" do
+      context "with valid params" do
         let(:attributes) do
-          {
-            name: "Fancy Name",
-            password: "new password"
-          }
-        end
-
-        it "assigns the requested user as @user" do
-          user = create(:user)
-
-          swattr_put :update, id: user.to_param, user: attributes
-
-          expect(assigns(:user)).to eq(user)
-        end
-
-        it "redirects to the user" do
-          user = create(:user)
-
-          swattr_put :update, id: user.to_param, user: attributes
-
-          expect(response).to redirect_to(user)
-        end
-      end
-
-      context "with valid params, without password" do
-        let(:attributes) do
-          { name: "Fancy Name" }
+          { email: "new_email@example.com" }
         end
 
         it "assigns the requested user as @user" do
@@ -144,11 +113,9 @@ module Swattr
       end
 
       context "with invalid params" do
+        let(:existing_user) { create(:user) }
         let(:attributes) do
-          {
-            name: "Fancy Name",
-            password: "no"
-          }
+          { email: existing_user.email }
         end
 
         it "assigns the user as @user" do

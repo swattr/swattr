@@ -23,23 +23,13 @@ module Swattr
     end
 
     def create
-      @user = Swattr::User.create(user_params)
+      @user = Swattr::User.invite!(user_params)
 
       respond_with @user, location: -> { user_path(@user) }
     end
 
     def update
-      empty_password_params! if user_params[:password].blank?
-
-      successfully_updated = if needs_password?(@user, user_params)
-                               @user.update(user_params)
-                             else
-                               @user.update_without_password(user_params)
-                             end
-
-      if successfully_updated && @user == current_user
-        sign_in(@user, bypass: true)
-      end
+      @user.update_without_password(user_params)
 
       respond_with @user, location: -> { user_path(@user) }
     end
@@ -54,7 +44,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :email, :password
+        :name, :email
       ]
     end
 
@@ -64,15 +54,6 @@ module Swattr
 
     def user_params
       params.require(:user).permit(permitted_attributes)
-    end
-
-    def empty_password_params!
-      user_params.delete(:password)
-      user_params.delete(:password_confirmation)
-    end
-
-    def needs_password?(_user, params)
-      params[:password].present?
     end
   end
 end
