@@ -11,7 +11,7 @@
       <th>Location</th>
       <th>Author</th>
       <th>Owner</th>
-      <th colspan="3"></th>
+      <th colspan="4"></th>
     </tr>
   </thead>
 
@@ -27,6 +27,7 @@
         <td><%= link_to Swattr.t("actions.show"), project %></td>
         <td><%= link_to Swattr.t("actions.edit"), edit_project_path(project) %></td>
         <td><%= link_to Swattr.t("actions.destroy"), project, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+        <td><%= link_to "Issues", project_issues_path(project) %></td>
       </tr>
     <% end %>
   </tbody>

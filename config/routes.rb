@@ -18,8 +18,9 @@ Swattr::Engine.routes.draw do
                sign_up: "signup"
              }
 
-  resources :projects, concerns: [:paginatable]
-  resources :issues, concerns: [:paginatable]
+  resources :projects, concerns: [:paginatable] do
+    resources :issues, concerns: [:paginatable]
+  end
   resources :priorities
   resources :tags
   resources :tasks

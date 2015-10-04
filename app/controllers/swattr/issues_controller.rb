@@ -1,6 +1,6 @@
 module Swattr
   class IssuesController < ApplicationController
-    before_action :set_issue, only: [:show, :edit, :update, :destroy]
+    before_action :set_issue, :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
       @q = Swattr::Issue.ransack(params[:q].try(:merge, m: "or"))
@@ -27,19 +27,19 @@ module Swattr
     def create
       @issue = Swattr::Issue.create(issue_params)
 
-      respond_with @issue, location: -> { issue_path(@issue) }
+      respond_with @issue, location: -> { project_issue_path(@project, @issue) }
     end
 
     def update
       @issue.update(issue_params)
 
-      respond_with @issue, location: -> { issue_path(@issue) }
+      respond_with @issue, location: -> { project_issue_path(@project, @issue) }
     end
 
     def destroy
       @issue.destroy
 
-      respond_with @issue, location: -> { issues_path }
+      respond_with @issue, location: -> { project_issues_path }
     end
 
     protected
@@ -53,6 +53,10 @@ module Swattr
 
     def set_issue
       @issue = Swattr::Issue.find(params[:id])
+    end
+
+    def set_project
+      @project = Swattr::Project.find(@issue.project_id)
     end
 
     def issue_params
