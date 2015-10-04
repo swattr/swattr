@@ -21,5 +21,10 @@ module Swattr
     def slug_reset
       update(slug: "#{Time.current.to_i}_#{slug}")
     end
+
+    # Paramater
+    def to_param
+      slug
+    end
   end
 end
