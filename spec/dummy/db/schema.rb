@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151002141909) do
+ActiveRecord::Schema.define(version: 20151003220909) do
 
   create_table "swattr_issue_tags", force: :cascade do |t|
     t.integer  "issue_id"
@@ -32,7 +32,10 @@ ActiveRecord::Schema.define(version: 20151002141909) do
     t.datetime "due_at"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "swattr_issues", ["deleted_at"], name: "index_swattr_issues_on_deleted_at"
 
   create_table "swattr_priorities", force: :cascade do |t|
     t.string   "name"
@@ -51,7 +54,10 @@ ActiveRecord::Schema.define(version: 20151002141909) do
     t.integer  "owner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.datetime "deleted_at"
   end
+
+  add_index "swattr_projects", ["deleted_at"], name: "index_swattr_projects_on_deleted_at"
 
   create_table "swattr_resolutions", force: :cascade do |t|
     t.string   "name"
@@ -116,9 +122,12 @@ ActiveRecord::Schema.define(version: 20151002141909) do
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
     t.integer  "invitations_count",      default: 0
+    t.datetime "deleted_at"
+    t.string   "avatar"
   end
 
   add_index "swattr_users", ["confirmation_token"], name: "index_swattr_users_on_confirmation_token", unique: true
+  add_index "swattr_users", ["deleted_at"], name: "index_swattr_users_on_deleted_at"
   add_index "swattr_users", ["email"], name: "index_swattr_users_on_email", unique: true
   add_index "swattr_users", ["invitation_token"], name: "index_swattr_users_on_invitation_token", unique: true
   add_index "swattr_users", ["invitations_count"], name: "index_swattr_users_on_invitations_count"

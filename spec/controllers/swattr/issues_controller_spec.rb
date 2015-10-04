@@ -8,7 +8,7 @@ module Swattr
       it "assigns all issues as @issues" do
         issue = create(:issue)
 
-        swattr_get :index
+        swattr_get :index, project_id: issue.project
 
         expect(assigns(:issues)).to eq([issue])
       end
@@ -18,7 +18,7 @@ module Swattr
       it "assigns the requested issue as @issue" do
         issue = create(:issue)
 
-        swattr_get :show, id: issue
+        swattr_get :show, project_id: issue.project, id: issue
 
         expect(assigns(:issue)).to eq(issue)
       end
@@ -26,7 +26,9 @@ module Swattr
 
     describe "GET #new" do
       it "assigns a new issue as @issue" do
-        swattr_get :new
+        project = create(:project)
+
+        swattr_get :new, project_id: project
 
         expect(assigns(:issue)).to be_a_new(Issue)
       end
@@ -36,7 +38,7 @@ module Swattr
       it "assigns the requested issue as @issue" do
         issue = create(:issue)
 
-        swattr_get :edit, id: issue
+        swattr_get :edit, project_id: issue.project, id: issue
 
         expect(assigns(:issue)).to eq(issue)
       end
@@ -44,47 +46,49 @@ module Swattr
 
     describe "POST #create" do
       context "with valid params" do
+        let(:project) { create(:project) }
         let(:params) do
           {
             title: "New Issue",
             content: "This is the body of the issue.",
-            project_id: create(:project)
+            project_id: project.id
           }
         end
 
         it "creates a new Issue" do
           expect do
-            swattr_post :create, issue: params
+            swattr_post :create, project_id: project, issue: params
           end.to change(Issue, :count).by(1)
         end
 
         it "assigns a newly created issue as @issue" do
-          swattr_post :create, issue: params
+          swattr_post :create, project_id: project, issue: params
 
           expect(assigns(:issue)).to be_a(Issue)
           expect(assigns(:issue)).to be_persisted
         end
 
         it "redirects to the created issue" do
-          swattr_post :create, issue: params
+          swattr_post :create, project_id: project, issue: params
 
-          expect(response).to redirect_to(Issue.last)
+          expect(response).to redirect_to([project, Issue.last])
         end
       end
 
       context "with invalid params" do
+        let(:project) { create(:project) }
         let(:params) do
           { title: nil }
         end
 
         it "assigns a newly created but unsaved issue as @issue" do
-          swattr_post :create, issue: params
+          swattr_post :create, project_id: project, issue: params
 
           expect(assigns(:issue)).to be_a_new(Issue)
         end
 
         it "re-renders the 'new' template" do
-          swattr_post :create, issue: params
+          swattr_post :create, project_id: project, issue: params
 
           expect(response).to render_template(:new)
         end
@@ -100,7 +104,7 @@ module Swattr
         it "updates the requested issue" do
           issue = create(:issue)
 
-          swattr_put :update, id: issue, issue: params
+          swattr_put :update, project_id: issue.project, id: issue, issue: params
 
           issue.reload
 
@@ -110,7 +114,7 @@ module Swattr
         it "assigns the requested issue as @issue" do
           issue = create(:issue)
 
-          swattr_put :update, id: issue, issue: params
+          swattr_put :update, project_id: issue.project, id: issue, issue: params
 
           expect(assigns(:issue)).to eq(issue)
         end
@@ -118,9 +122,9 @@ module Swattr
         it "redirects to the issue" do
           issue = create(:issue)
 
-          swattr_put :update, id: issue, issue: params
+          swattr_put :update, project_id: issue.project, id: issue, issue: params
 
-          expect(response).to redirect_to(issue)
+          expect(response).to redirect_to([issue.project, issue])
         end
       end
 
@@ -132,7 +136,7 @@ module Swattr
         it "assigns the issue as @issue" do
           issue = create(:issue)
 
-          swattr_put :update, id: issue, issue: params
+          swattr_put :update, project_id: issue.project, id: issue, issue: params
 
           expect(assigns(:issue)).to eq(issue)
         end
@@ -140,7 +144,7 @@ module Swattr
         it "re-renders the 'edit' template" do
           issue = create(:issue)
 
-          swattr_put :update, id: issue, issue: params
+          swattr_put :update, project_id: issue.project, id: issue, issue: params
 
           expect(response).to render_template(:edit)
         end
@@ -152,16 +156,16 @@ module Swattr
         issue = create(:issue)
 
         expect do
-          swattr_delete :destroy, id: issue
+          swattr_delete :destroy, project_id: issue.project, id: issue
         end.to change(Issue, :count).by(-1)
       end
 
       it "redirects to the issues list" do
         issue = create(:issue)
 
-        swattr_delete :destroy, id: issue
+        swattr_delete :destroy, project_id: issue.project, id: issue
 
-        expect(response).to redirect_to(issues_url)
+        expect(response).to redirect_to(project_issues_url)
       end
     end
   end
