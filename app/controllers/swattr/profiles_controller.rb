@@ -23,7 +23,7 @@ module Swattr
         sign_in(@profile, bypass: true)
       end
 
-      respond_with @profile, location: -> { profile_path(@profile) }
+      respond_with @profile, location: -> { profile_path }
     end
 
     def destroy
@@ -36,7 +36,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :email, :password
+        :name, :email, :password, :avatar
       ]
     end
 
@@ -45,7 +45,7 @@ module Swattr
     end
 
     def profile_params
-      params.require(:user).permit(permitted_attributes)
+      params.require(:profile).permit(permitted_attributes)
     end
 
     def empty_password_params!
