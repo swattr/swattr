@@ -36,7 +36,7 @@ module Swattr
         end
 
         it "assigns the current user as @profile" do
-          swattr_put :update, user: attributes
+          swattr_put :update, profile: attributes
 
           expect(assigns(:profile)).to eq(profile)
         end
@@ -48,7 +48,7 @@ module Swattr
         end
 
         it "assigns the current user as @profile" do
-          swattr_put :update, user: attributes
+          swattr_put :update, profile: attributes
 
           expect(assigns(:profile)).to eq(profile)
         end
@@ -63,13 +63,13 @@ module Swattr
         end
 
         it "assigns the current_user as @profile" do
-          swattr_put :update, user: attributes
+          swattr_put :update, profile: attributes
 
           expect(assigns(:profile)).to eq(profile)
         end
 
         it "re-renders the 'edit' template" do
-          swattr_put :update, user: attributes
+          swattr_put :update, profile: attributes
 
           expect(response).to render_template(:edit)
         end
