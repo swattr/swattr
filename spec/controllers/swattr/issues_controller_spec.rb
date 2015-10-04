@@ -104,7 +104,9 @@ module Swattr
         it "updates the requested issue" do
           issue = create(:issue)
 
-          swattr_put :update, project_id: issue.project, id: issue, issue: params
+          swattr_put :update, project_id: issue.project,
+                              id: issue,
+                              issue: params
 
           issue.reload
 
@@ -114,7 +116,9 @@ module Swattr
         it "assigns the requested issue as @issue" do
           issue = create(:issue)
 
-          swattr_put :update, project_id: issue.project, id: issue, issue: params
+          swattr_put :update, project_id: issue.project,
+                              id: issue,
+                              issue: params
 
           expect(assigns(:issue)).to eq(issue)
         end
@@ -122,7 +126,9 @@ module Swattr
         it "redirects to the issue" do
           issue = create(:issue)
 
-          swattr_put :update, project_id: issue.project, id: issue, issue: params
+          swattr_put :update, project_id: issue.project,
+                              id: issue,
+                              issue: params
 
           expect(response).to redirect_to([issue.project, issue])
         end
@@ -136,7 +142,9 @@ module Swattr
         it "assigns the issue as @issue" do
           issue = create(:issue)
 
-          swattr_put :update, project_id: issue.project, id: issue, issue: params
+          swattr_put :update, project_id: issue.project,
+                              id: issue,
+                              issue: params
 
           expect(assigns(:issue)).to eq(issue)
         end
@@ -144,7 +152,9 @@ module Swattr
         it "re-renders the 'edit' template" do
           issue = create(:issue)
 
-          swattr_put :update, project_id: issue.project, id: issue, issue: params
+          swattr_put :update, project_id: issue.project,
+                              id: issue,
+                              issue: params
 
           expect(response).to render_template(:edit)
         end

@@ -7,6 +7,8 @@ AllCops:
     - "db/migrate/**/*"
     - "spec/dummy/**/*"
     - "config/initializers/devise.rb"
+    - "config/initializers/simple_form.rb"
+    - "config/initializers/simple_form_bootstrap.rb"
 
 Metrics/LineLength:
   Max: 80
