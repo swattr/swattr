@@ -2,5 +2,5 @@
 
 <%= render "form" %>
 
-<%= link_to Swattr.t("actions.show"), @issue %> |
-<%= link_to Swattr.t("actions.back"), issues_path %>
+<%= link_to Swattr.t("actions.show"), project_issue_path(@project, @issue) %> |
+<%= link_to Swattr.t("actions.back"), project_issues_path(@project) %>

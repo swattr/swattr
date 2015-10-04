@@ -10,17 +10,17 @@
 
 <p>
   <strong>Project:</strong>
-  <%= @issue.project_id %>
+  <%= @issue.project.name %>
 </p>
 
 <p>
   <strong>Author:</strong>
-  <%= @issue.author_id %>
+  <%= @issue.author.name %>
 </p>
 
 <p>
   <strong>Assignee:</strong>
-  <%= @issue.assignee_id %>
+  <%= @issue.assignee.name %>
 </p>
 
 <p>
@@ -43,5 +43,5 @@
   <%= @issue.due_at %>
 </p>
 
-<%= link_to Swattr.t("actions.edit"), edit_issue_path(@issue) %> |
-<%= link_to Swattr.t("actions.back"), issues_path %>
+<%= link_to Swattr.t("actions.edit"), edit_project_issue_path(@project, @issue) %> |
+<%= link_to Swattr.t("actions.back"), project_issues_path(@project) %>

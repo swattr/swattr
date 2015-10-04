@@ -1,4 +1,9 @@
-<%= search_form_for @q do |f| %>
+<%= search_form_for(@q,
+                    url: project_issues_path(params[:project_id]),
+                    html: {
+                      id: "project_issue_search",
+                      class: "project_issue_search"
+                    }) do |f| %>
   <%= f.label :title_cont %>
   <%= f.search_field :title_cont %>
 

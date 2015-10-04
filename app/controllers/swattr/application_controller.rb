@@ -13,12 +13,14 @@ module Swattr
     respond_to :html, :json
     responders :flash, :http_cache
 
-    rescue_from Exception, with: :render_500
-    rescue_from ActionController::UnknownController,
-                ::AbstractController::ActionNotFound,
-                ActiveRecord::RecordNotFound, with: :render_404
-    rescue_from ActionController::RoutingError,
-                Pundit::NotAuthorizedError, with: :render_401
+    unless Rails.application.config.consider_all_requests_local
+      rescue_from Exception, with: :render_500
+      rescue_from ActionController::UnknownController,
+                  ::AbstractController::ActionNotFound,
+                  ActiveRecord::RecordNotFound, with: :render_404
+      rescue_from ActionController::RoutingError,
+                  Pundit::NotAuthorizedError, with: :render_401
+    end
 
     def per_page
       params[:limit] || Swattr.configuration.per_page
