@@ -56,7 +56,7 @@ module Swattr
     end
 
     def set_project
-      @project = Swattr::Project.find(@issue.project_id)
+      @project = Swattr::Project.find_by(slug: params[:project_id])
     end
 
     def issue_params
