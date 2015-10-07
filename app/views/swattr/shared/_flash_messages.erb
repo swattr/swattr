@@ -1,6 +1,6 @@
 <% unless flash.empty? %>
 <div id="flash_messages">
-  <% flash.each do |key, value| %>
+  <% flash.delete(:timedout).each do |key, value| %>
     <%= content_tag(:div, value, class: "flash flash-#{key}") %>
   <% end %>
 </div>
