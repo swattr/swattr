@@ -4,6 +4,5 @@ FactoryGirl.define do
     sequence(:slug) { |n| "project-#{n}" }
     location "http://www.example.com/"
     author
-    owner
   end
 end

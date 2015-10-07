@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :user,
           class: Swattr::User,
-          aliases: [:assignee, :author, :owner] do
+          aliases: [:assignee, :author] do
     sequence(:name) { |n| "User #{n}" }
     sequence(:email) { |n| "user#{n}@example.com" }
     password "password"

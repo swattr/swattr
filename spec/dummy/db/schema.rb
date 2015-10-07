@@ -51,7 +51,6 @@ ActiveRecord::Schema.define(version: 20151003220909) do
     t.string   "description"
     t.string   "location"
     t.integer  "author_id"
-    t.integer  "owner_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.datetime "deleted_at"

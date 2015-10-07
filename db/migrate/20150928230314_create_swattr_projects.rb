@@ -6,7 +6,6 @@ class CreateSwattrProjects < ActiveRecord::Migration
       t.string :description
       t.string :location
       t.integer :author_id
-      t.integer :owner_id
 
       t.timestamps null: false
     end

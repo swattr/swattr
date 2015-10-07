@@ -46,7 +46,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :slug, :description, :location, :author_id, :owner_id
+        :name, :slug, :description, :location, :author_id
       ]
     end
 

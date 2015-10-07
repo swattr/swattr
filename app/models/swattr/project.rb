@@ -6,7 +6,6 @@ module Swattr
 
     # Associations
     belongs_to :author, class_name: Swattr::User
-    belongs_to :owner, class_name: Swattr::User
     has_many :issues
 
     # Validation
