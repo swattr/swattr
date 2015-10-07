@@ -1,13 +1,73 @@
----
 en:
   activerecord:
     models:
+      swattr/issue:
+        one: Issue
+        other: Issues
+      swattr/priority:
+        one: Priority
+        other: Priorities
+      swattr/project:
+        one: Project
+        other: Projects
+      swattr/resolution:
+        one: Resolution
+        other: Resolutions
+      swattr/status:
+        one: Status
+        other: Statuses
+      swattr/tag:
+        one: Tag
+        other: Tags
+      swattr/task:
+        one: Task
+        other: Tasks
       swattr/user:
         one: User
         other: Users
+
     attributes:
+      swattr/issue:
+        title: Tilte
+        content: Content
+        project: Project
+        author: Author
+        assignee: Assigned To
+        priority: Priority
+        status: Status
+        resolution: Resolution
+        due_at: Due At
+      swattr/priority:
+        name: Name
+        description: Description
+        position: Position
+      swattr/project:
+        name: Name
+        slug: Slug
+        description: Description
+        location: Location
+        author: Author
+      swattr/resolution:
+        name: Name
+        description: Description
+        position: Position
+      swattr/status:
+        name: Name
+        description: Description
+        position: Position
+      swattr/tag:
+        name: Name
+        description: Description
+        color: Color
+        position: Position
+      swattr/task:
+        title: Title
+        issue: Issue
+        author: Author
+        position: Position
       swattr/user:
         name: Name
         email: Email
         password: Password
         password_confirmation: Confirm Password
+        avatar: Avatar
