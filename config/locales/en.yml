@@ -24,6 +24,8 @@ en:
     email: Email
     issue: Issue
     issues: Issues
+    languages:
+      en: English
     list_issues: Listing Issues
     list_priorities: Listing Priorities
     list_projects: List Projects

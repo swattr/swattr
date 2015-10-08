@@ -3,6 +3,9 @@ module Swattr
     isolate_namespace Swattr
     engine_name "swattr"
 
+    config.i18n.available_locales = [:en]
+    config.i18n.default_locale = :en
+
     config.generators do |g|
       g.test_framework :rspec,
                        fixtures: false,
