@@ -1,0 +1,7 @@
+<tr>
+  <td><%= priority.name %></td>
+  <td><%= priority.description %></td>
+  <td><%= link_to Swattr.t(:show), priority %></td>
+  <td><%= link_to Swattr.t(:edit), edit_priority_path(priority) %></td>
+  <td><%= link_to Swattr.t(:destroy), priority, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+</tr>

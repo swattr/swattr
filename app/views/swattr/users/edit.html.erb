@@ -1,6 +1,6 @@
-<h1>Editing User</h1>
+<h1><%= Swattr.t(:edit_user) %></h1>
 
 <%= render "form" %>
 
-<%= link_to Swattr.t("actions.show"), @user %> |
-<%= link_to Swattr.t("actions.back"), users_path %>
+<%= link_to Swattr.t(:show), @user %> |
+<%= link_to Swattr.t(:back), users_path %>

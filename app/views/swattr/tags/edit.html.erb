@@ -1,6 +1,6 @@
-<h1>Editing Tag</h1>
+<h1><%= Swattr.t(:edit_tag) %></h1>
 
 <%= render "form" %>
 
-<%= link_to Swattr.t("actions.show"), @tag %> |
-<%= link_to Swattr.t("actions.back"), tags_path %>
+<%= link_to Swattr.t(:show), @tag %> |
+<%= link_to Swattr.t(:back), tags_path %>

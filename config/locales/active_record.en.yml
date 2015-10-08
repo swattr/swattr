@@ -40,7 +40,6 @@ en:
       swattr/priority:
         name: Name
         description: Description
-        position: Position
       swattr/project:
         name: Name
         slug: Slug
@@ -50,21 +49,17 @@ en:
       swattr/resolution:
         name: Name
         description: Description
-        position: Position
       swattr/status:
         name: Name
         description: Description
-        position: Position
       swattr/tag:
         name: Name
         description: Description
         color: Color
-        position: Position
       swattr/task:
         title: Title
         issue: Issue
         author: Author
-        position: Position
       swattr/user:
         name: Name
         email: Email

@@ -1,7 +1,7 @@
 module Swattr
   class IssuesController < ApplicationController
+    before_action :set_project
     before_action :set_issue, only: [:show, :edit, :update, :destroy]
-    before_action :set_project, except: [:index]
 
     def index
       @q = Swattr::Issue.ransack(params[:q].try(:merge, m: "or"))

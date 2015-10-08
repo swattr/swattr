@@ -1,6 +1,6 @@
-<h1>Editing Issue</h1>
+<h1><%= Swattr.t(:edit_issue) %></h1>
 
 <%= render "form" %>
 
-<%= link_to Swattr.t("actions.show"), project_issue_path(@project, @issue) %> |
-<%= link_to Swattr.t("actions.back"), project_issues_path(@project) %>
+<%= link_to Swattr.t(:show), project_issue_path(@project, @issue) %> |
+<%= link_to Swattr.t(:back), project_issues_path(@project) %>

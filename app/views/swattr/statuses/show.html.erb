@@ -1,17 +1,12 @@
 <p>
-  <strong>Name:</strong>
+  <strong><%= Swattr.t(:name) %>:</strong>
   <%= @status.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Swattr.t(:description) %>:</strong>
   <%= @status.description %>
 </p>
 
-<p>
-  <strong>Position:</strong>
-  <%= @status.position %>
-</p>
-
-<%= link_to Swattr.t("actions.edit"), edit_status_path(@status) %> |
-<%= link_to Swattr.t("actions.back"), statuses_path %>
+<%= link_to Swattr.t(:edit), edit_status_path(@status) %> |
+<%= link_to Swattr.t(:back), statuses_path %>

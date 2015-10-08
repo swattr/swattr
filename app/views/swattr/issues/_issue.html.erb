@@ -1,0 +1,14 @@
+<tr>
+  <td><%= issue.title %></td>
+  <td><%= issue.content %></td>
+  <td><%= issue.project.name %></td>
+  <td><%= issue.author.name %></td>
+  <td><%= issue.assignee_id %></td>
+  <td><%= issue.priority_id %></td>
+  <td><%= issue.status_id %></td>
+  <td><%= issue.resolution_id %></td>
+  <td><%= issue.due_at %></td>
+  <td><%= link_to Swattr.t(:show), project_issue_path(@project, issue) %></td>
+  <td><%= link_to Swattr.t(:edit), edit_project_issue_path(@project, issue) %></td>
+  <td><%= link_to Swattr.t(:destroy), project_issue_path(@project, issue), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+</tr>

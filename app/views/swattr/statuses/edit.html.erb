@@ -1,6 +1,6 @@
-<h1>Editing Status</h1>
+<h1><%= Swattr.t(:edit_status) %></h1>
 
 <%= render "form" %>
 
-<%= link_to Swattr.t("actions.show"), @status %> |
-<%= link_to Swattr.t("actions.back"), statuses_path %>
+<%= link_to Swattr.t(:show), @status %> |
+<%= link_to Swattr.t(:back), statuses_path %>

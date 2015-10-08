@@ -1,36 +1,24 @@
-<h1>Listing Projects</h1>
+<h1><%= Swattr.t(:list_projects) %></h1>
 
 <%= render "search" %>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Description</th>
-      <th>Location</th>
-      <th>Author</th>
+      <th><%= Swattr.t(:name) %></th>
+      <th><%= Swattr.t(:slug) %></th>
+      <th><%= Swattr.t(:description) %></th>
+      <th><%= Swattr.t(:location) %></th>
+      <th><%= Swattr.t(:author) %></th>
       <th colspan="4"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= project.name %></td>
-        <td><%= project.slug %></td>
-        <td><%= project.description %></td>
-        <td><%= project.location %></td>
-        <td><%= project.author_id %></td>
-        <td><%= link_to Swattr.t("actions.show"), project %></td>
-        <td><%= link_to Swattr.t("actions.edit"), edit_project_path(project) %></td>
-        <td><%= link_to Swattr.t("actions.destroy"), project, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
-        <td><%= link_to "Issues", project_issues_path(project) %></td>
-      </tr>
-    <% end %>
+    <%= render @projects %>
   </tbody>
 </table>
 
 <%= paginate @projects %>
 
-<%= link_to "New Project", new_project_path %>
+<%= link_to Swattr.t(:new_project), new_project_path %>

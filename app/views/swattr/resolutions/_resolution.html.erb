@@ -1,0 +1,7 @@
+<tr>
+  <td><%= resolution.name %></td>
+  <td><%= resolution.description %></td>
+  <td><%= link_to Swattr.t(:show), resolution %></td>
+  <td><%= link_to Swattr.t(:edit), edit_resolution_path(resolution) %></td>
+  <td><%= link_to Swattr.t(:destroy), resolution, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+</tr>
