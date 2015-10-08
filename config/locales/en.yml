@@ -1,16 +1,64 @@
 en:
   swattr:
-    swattr: Swattr
-    and: and
-    or: or
     are_you_sure: Are you sure?
-    actions:
-      back: Back
-      cancel: Cancel
-      create: Create
-      destroy: Destroy
-      edit: Edit
-      new: New
-      save: Save
-      show: Show
-      update: Update
+    assignee: Assignee
+    author: Author
+    avatar: Avatar
+    back: Back
+    dashboard: Dashboard
+    description: Description
+    destroy: Destroy
+    color: Color
+    content: Content
+    due:at: DueAt
+    edit: Edit
+    edit_issue: Editing Issue
+    edit_priority: Editing Priority
+    edit_profile: Editing Profile
+    edit_project: Editing Project
+    edit_resolution: Editing Resolution
+    edit_status: Editing Status
+    edit_tag: Editing Tag
+    edit_task: Editing Task
+    edit_user: Editing User
+    email: Email
+    issue: Issue
+    issues: Issues
+    list_issues: Listing Issues
+    list_priorities: Listing Priorities
+    list_projects: List Projects
+    list_resolutions: Listing Resolutions
+    list_statuses: Listing Statuses
+    list_tags: Listing Tags
+    list_tasks: Listing Tasks
+    list_users: Listing Users
+    location: Location
+    logout: Logout
+    name: Name
+    new_issue: New Issue
+    new_priority: New Priority
+    new_project: New Project
+    new_resolution: New Resolution
+    new_status: New Status
+    new_tag: New Tag
+    new_task: New Task
+    new_user: New User
+    profile: Profile
+    project: Project
+    projects: Projects
+    priority: Priority
+    priorities: Priorities
+    resolution: Resolution
+    resolutions: Resolutions
+    show: Show
+    slug: Slug
+    status: Status
+    statuses: Statuses
+    swattr: Swattr
+    tas: Tag
+    tags: Tags
+    task: Task
+    tasks: Tasks
+    title: Title
+    user: User
+    users: Users

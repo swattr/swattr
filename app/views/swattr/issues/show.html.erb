@@ -1,47 +1,47 @@
 <p>
-  <strong>Title:</strong>
+  <strong><%= Swattr.t(:title) %>:</strong>
   <%= @issue.title %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong><%= Swattr.t(:content) %>:</strong>
   <%= @issue.content %>
 </p>
 
 <p>
-  <strong>Project:</strong>
+  <strong><%= Swattr.t(:project) %>:</strong>
   <%= @issue.project.name %>
 </p>
 
 <p>
-  <strong>Author:</strong>
+  <strong><%= Swattr.t(:author) %>:</strong>
   <%= @issue.author.name %>
 </p>
 
 <p>
-  <strong>Assignee:</strong>
-  <%= @issue.assignee.name %>
+  <strong><%= Swattr.t(:assignee) %>:</strong>
+  <%= @issue.assignee_id %>
 </p>
 
 <p>
-  <strong>Priority:</strong>
+  <strong><%= Swattr.t(:priority) %>:</strong>
   <%= @issue.priority_id %>
 </p>
 
 <p>
-  <strong>Status:</strong>
+  <strong><%= Swattr.t(:status) %>:</strong>
   <%= @issue.status_id %>
 </p>
 
 <p>
-  <strong>Resolution:</strong>
+  <strong><%= Swattr.t(:resolution) %>:</strong>
   <%= @issue.resolution_id %>
 </p>
 
 <p>
-  <strong>Due At:</strong>
+  <strong><%= Swattr.t(:due_at) %>:</strong>
   <%= @issue.due_at %>
 </p>
 
-<%= link_to Swattr.t("actions.edit"), edit_project_issue_path(@project, @issue) %> |
-<%= link_to Swattr.t("actions.back"), project_issues_path(@project) %>
+<%= link_to Swattr.t(:edit), edit_project_issue_path(@project, @issue) %> |
+<%= link_to Swattr.t(:back), project_issues_path(@project) %>

@@ -1,31 +1,20 @@
-<h1>Listing Tags</h1>
+<h1><%= Swattr.t(:list_tags) %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Color</th>
-      <th>Position</th>
+      <th><%= Swattr.t(:name) %></th>
+      <th><%= Swattr.t(:description) %></th>
+      <th><%= Swattr.t(:color) %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @tags.each do |tag| %>
-      <tr>
-        <td><%= tag.name %></td>
-        <td><%= tag.description %></td>
-        <td><%= tag.color %></td>
-        <td><%= tag.position %></td>
-        <td><%= link_to Swattr.t("actions.show"), tag %></td>
-        <td><%= link_to Swattr.t("actions.edit"), edit_tag_path(tag) %></td>
-        <td><%= link_to Swattr.t("actions.destroy"), tag, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
-      </tr>
-    <% end %>
+    <%= render @tags %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to "New Tag", new_tag_path %>
+<%= link_to Swattr.t(:new_tag), new_tag_path %>

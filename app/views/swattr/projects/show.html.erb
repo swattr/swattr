@@ -1,27 +1,27 @@
 <p>
-  <strong>Name:</strong>
+  <strong><%= Swattr.t(:name) %>:</strong>
   <%= @project.name %>
 </p>
 
 <p>
-  <strong>Slug:</strong>
+  <strong><%= Swattr.t(:slug) %>:</strong>
   <%= @project.slug %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Swattr.t(:description) %>:</strong>
   <%= @project.description %>
 </p>
 
 <p>
-  <strong>Location:</strong>
+  <strong><%= Swattr.t(:location) %>:</strong>
   <%= @project.location %>
 </p>
 
 <p>
-  <strong>Author:</strong>
+  <strong><%= Swattr.t(:author) %>:</strong>
   <%= @project.author_id %>
 </p>
 
-<%= link_to Swattr.t("actions.edit"), edit_project_path(@project) %> |
-<%= link_to Swattr.t("actions.back"), projects_path %>
+<%= link_to Swattr.t(:edit), edit_project_path(@project) %> |
+<%= link_to Swattr.t(:back), projects_path %>

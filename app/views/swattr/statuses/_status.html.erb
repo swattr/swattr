@@ -1,0 +1,7 @@
+<tr>
+  <td><%= status.name %></td>
+  <td><%= status.description %></td>
+  <td><%= link_to Swattr.t(:show), status %></td>
+  <td><%= link_to Swattr.t(:edit), edit_status_path(status) %></td>
+  <td><%= link_to Swattr.t(:destroy), status, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+</tr>

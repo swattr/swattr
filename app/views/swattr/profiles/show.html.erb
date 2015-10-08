@@ -1,13 +1,13 @@
 <%= image_tag(@profile.avatar.thumb.url) %>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Swattr.t(:name) %>:</strong>
   <%= @profile.name %>
 </p>
 
 <p>
-  <strong>Email:</strong>
+  <strong><%= Swattr.t(:email) %>:</strong>
   <%= @profile.email %>
 </p>
 
-<%= link_to Swattr.t("actions.edit"), edit_profile_path %>
+<%= link_to Swattr.t(:edit), edit_profile_path %>
