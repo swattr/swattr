@@ -2,6 +2,7 @@ module Swattr
   class User < ActiveRecord::Base
     acts_as_paranoid
 
+    # Callbacks
     after_destroy :email_reset
 
     # Devise
@@ -25,7 +26,7 @@ module Swattr
     # Default scope
     # default_scope { order(name: :asc, email: :asc) }
 
-    # Callbacks
+    # Callback methods
     def email_reset
       update(email: "#{Time.current.to_i}_#{email}")
     end
