@@ -2,12 +2,11 @@ module Swattr
   class Configuration
     DEFAULT_VALUE = nil
 
-    attr_accessor :application,
-                  :per_page
+    attr_accessor :application, :per_page
 
     def initialize
       @application = "swattr"
-      @per_page    = 24
+      @per_page = 24
     end
 
     def method_missing(method_name, *args)

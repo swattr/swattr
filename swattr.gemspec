@@ -25,6 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency "devise_invitable", "~> 1.5.3"
   s.add_dependency "highline", "~> 1.7.7"
   s.add_dependency "kaminari", "~> 0.16.3"
+  s.add_dependency "local_time", "~> 1.0.3"
   s.add_dependency "mini_magick", "~> 4.3.2"
   s.add_dependency "paranoia", "~> 2.1.3"
   s.add_dependency "pundit", "~> 1.0.1"
