@@ -2,15 +2,11 @@ module Swattr
   class Configuration
     DEFAULT_VALUE = nil
 
-    attr_accessor :application, :date_time_format, :date_format, :per_page,
-                  :time_format
+    attr_accessor :application, :per_page
 
     def initialize
       @application = "swattr"
-      @date_time_format = "%B %e, %Y %l:%M %p"
-      @date_format = "%B %e, %Y"
       @per_page = 24
-      @time_format = "%l:%M %p"
     end
 
     def method_missing(method_name, *args)
