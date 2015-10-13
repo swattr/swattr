@@ -36,7 +36,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :email, :password, :avatar
+        :name, :email, :password, :avatar, :remove_avatar
       ]
     end
 
