@@ -9,6 +9,14 @@
     <%= f.input :description, as: :text %>
     <%= f.input :location %>
     <%= f.association :author, as: :select %>
+
+    <%= image_tag(@project.hero.thumb.url) %>
+    <%= f.input :hero, as: :file %>
+    <%= f.input :hero_cache, as: :hidden %>
+
+    <%= f.input :remove_hero, as: :boolean,
+                              checked_value: true,
+                              unchecked_value: false if @project.hero? %>
   </div>
 
   <div class="form-actions">

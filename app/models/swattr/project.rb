@@ -2,6 +2,9 @@ module Swattr
   class Project < ActiveRecord::Base
     acts_as_paranoid
 
+    # Uploader
+    mount_uploader :hero, Swattr::HeroUploader
+
     # Callbacks
     after_destroy :slug_reset
 
