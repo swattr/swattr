@@ -26,7 +26,12 @@ module Swattr
     end
 
     def create
-      @issue = Swattr::Issue.create(issue_params)
+      new_issue_params = issue_params.merge(
+        project_id: @project.id,
+        author_id: current_user.id,
+      )
+
+      @issue = Swattr::Issue.create(new_issue_params)
 
       respond_with @issue, location: -> { project_issue_path(@project, @issue) }
     end
@@ -47,8 +52,8 @@ module Swattr
 
     def permitted_attributes
       [
-        :title, :content, :project_id, :author_id, :assignee_id, :priority_id,
-        :status_id, :resolution_id, :due_at
+        :title, :content, :assignee_id, :priority_id, :status_id,
+        :resolution_id, :due_at
       ]
     end
 

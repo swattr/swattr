@@ -9,6 +9,8 @@ module Swattr
 
     # Validation
     validates :title, presence: true
+    validates :issue_id, presence: true
+    validates :author_id, presence: true
 
     # Default scope
     # default_scope { order(position: :asc, created_at: :desc) }

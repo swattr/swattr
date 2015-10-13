@@ -25,7 +25,11 @@ module Swattr
     end
 
     def create
-      @project = Swattr::Project.create(project_params)
+      new_project_params = project_params.merge(
+        author_id: current_user.id
+      )
+
+      @project = Swattr::Project.create(new_project_params)
 
       respond_with @project, location: -> { project_path(@project) }
     end
@@ -46,7 +50,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :slug, :description, :location, :author_id, :hero, :remove_hero
+        :name, :slug, :description, :location, :hero, :remove_hero
       ]
     end
 

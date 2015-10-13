@@ -16,6 +16,8 @@ module Swattr
     # Validation
     validates :title, presence: true
     validates :content, presence: true
+    validates :project_id, presence: true
+    validates :author_id, presence: true
     validates :due_at, date: { allow_blank: true }
 
     # Default scope

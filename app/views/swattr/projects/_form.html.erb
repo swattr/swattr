@@ -8,7 +8,6 @@
     <%= f.input :slug %>
     <%= f.input :description, as: :text %>
     <%= f.input :location %>
-    <%= f.association :author, as: :select %>
 
     <%= image_tag(@project.hero.thumb.url) %>
     <%= f.input :hero, as: :file %>
