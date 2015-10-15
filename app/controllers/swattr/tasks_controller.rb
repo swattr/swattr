@@ -23,7 +23,11 @@ module Swattr
     end
 
     def create
-      @task = Swattr::Task.create(task_params)
+      new_task_params = task_params.merge(
+        author_id: current_user.id
+      )
+
+      @task = Swattr::Task.create(new_task_params)
 
       respond_with @task, location: -> { task_path(@task) }
     end
@@ -44,7 +48,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :title, :task_id, :author_id, :position
+        :title, :issue_id, :position
       ]
     end
 

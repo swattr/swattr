@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Swattr
   RSpec.describe IssuesController, type: :controller do
-    before { stub_authorization! }
+    before { stub_authorization! create(:user) }
 
     describe "GET #index" do
       it "assigns all issues as @issues" do

@@ -2,7 +2,7 @@ require "rails_helper"
 
 module Swattr
   RSpec.describe TasksController, type: :controller do
-    before { stub_authorization! }
+    before { stub_authorization! create(:user) }
 
     describe "GET #index" do
       it "assigns all tasks as @tasks" do
@@ -44,9 +44,11 @@ module Swattr
 
     describe "POST #create" do
       context "with valid params" do
+        let(:issue) { create(:issue) }
         let(:params) do
           {
-            title: "New Task"
+            title: "New Task",
+            issue_id: issue.id
           }
         end
 
