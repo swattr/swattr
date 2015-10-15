@@ -35,6 +35,7 @@ Gem::Specification.new do |s|
   s.add_dependency "validates", "~> 1.0.0"
   s.add_dependency "jquery-rails", "~> 4.0.5"
 
+  s.add_development_dependency "rake", "~> 10.4.2"
   s.add_development_dependency "rspec-rails", "~> 3.3.3"
   s.add_development_dependency "factory_girl_rails", "~> 4.5.0"
   s.add_development_dependency "sqlite3", "~> 1.3.10"
