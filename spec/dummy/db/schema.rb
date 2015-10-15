@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003220909) do
+ActiveRecord::Schema.define(version: 20151013030752) do
 
   create_table "swattr_issue_tags", force: :cascade do |t|
     t.integer  "issue_id"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20151003220909) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.datetime "deleted_at"
+    t.string   "hero"
   end
 
   add_index "swattr_projects", ["deleted_at"], name: "index_swattr_projects_on_deleted_at"
