@@ -19,9 +19,7 @@ module Swattr
                                @profile.update_without_password(profile_params)
                              end
 
-      if successfully_updated && @profile == current_user
-        sign_in(@profile, bypass: true)
-      end
+      reauth_current_user(successfully_updated)
 
       respond_with @profile, location: -> { profile_path }
     end
@@ -55,6 +53,10 @@ module Swattr
 
     def needs_password?(_profile, params)
       params[:password].present?
+    end
+
+    def reauth_current_user(successful)
+      sign_in(@profile, bypass: true) if successful && @profile == current_user
     end
   end
 end

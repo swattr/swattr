@@ -24,7 +24,7 @@ module Swattr
 
     # Callback methods
     def slugify_slug
-      self.slug = self.slug.downcase.parameterize
+      self.slug = slug.downcase.parameterize
     end
 
     def slug_reset
