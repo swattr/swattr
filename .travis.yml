@@ -2,7 +2,7 @@ language: ruby
 bundler_args: --without development production --quiet
 script:
   - bundle exec rake db:drop db:create db:migrate RAILS_ENV=test
-  - bundle exec rake spec
+  - bundle exec rspec spec
 rvm:
   - 2.1
   - 2.2
