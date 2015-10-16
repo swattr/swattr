@@ -28,7 +28,7 @@ module Swattr
     def create
       new_issue_params = issue_params.merge(
         project_id: @project.id,
-        author_id: current_user.id,
+        author_id: current_user.id
       )
 
       @issue = Swattr::Issue.create(new_issue_params)
