@@ -1,5 +1,6 @@
 module Swattr
   class ProjectsController < ApplicationController
+    before_action :add_project_defaults_on_create, only: [:create]
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -25,11 +26,7 @@ module Swattr
     end
 
     def create
-      new_project_params = project_params.merge(
-        author_id: current_user.id
-      )
-
-      @project = Swattr::Project.create(new_project_params)
+      @project = Swattr::Project.create(project_params)
 
       respond_with @project, location: -> { project_path(@project) }
     end
@@ -50,7 +47,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :slug, :description, :location, :hero, :remove_hero
+        :name, :slug, :description, :location, :hero, :remove_hero, :author_id
       ]
     end
 
@@ -60,6 +57,12 @@ module Swattr
 
     def project_params
       params.require(:project).permit(permitted_attributes)
+    end
+
+    def add_project_defaults_on_create
+      author_id = current_user.id
+
+      params.deep_merge!(project: { author_id: author_id })
     end
   end
 end

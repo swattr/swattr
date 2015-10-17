@@ -1,10 +1,13 @@
 module Swattr
   class IssuesController < ApplicationController
     before_action :set_project
+    before_action :add_issue_defaults_on_create, only: [:create]
     before_action :set_issue, only: [:show, :edit, :update, :destroy]
 
     def index
-      @q = Swattr::Issue.ransack(params[:q].try(:merge, m: "or"))
+      @q = Swattr::Issue.where(project_id: @project.id)
+        .ransack(params[:q]
+        .try(:merge, m: "or"))
 
       @issues = @q.result(distinct: true).page(params[:page]).per(per_page)
 
@@ -26,12 +29,7 @@ module Swattr
     end
 
     def create
-      new_issue_params = issue_params.merge(
-        project_id: @project.id,
-        author_id: current_user.id
-      )
-
-      @issue = Swattr::Issue.create(new_issue_params)
+      @issue = Swattr::Issue.create(issue_params)
 
       respond_with @issue, location: -> { project_issue_path(@project, @issue) }
     end
@@ -53,7 +51,7 @@ module Swattr
     def permitted_attributes
       [
         :title, :content, :assignee_id, :priority_id, :status_id,
-        :resolution_id, :due_at
+        :resolution_id, :due_at, :project_id, :author_id
       ]
     end
 
@@ -67,6 +65,16 @@ module Swattr
 
     def issue_params
       params.require(:issue).permit(permitted_attributes)
+    end
+
+    def add_issue_defaults_on_create
+      project_id = @project.id
+      author_id = current_user.id
+
+      params.deep_merge!(issue: {
+        project_id: project_id,
+        author_id: author_id
+      })
     end
   end
 end

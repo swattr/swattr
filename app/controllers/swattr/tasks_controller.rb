@@ -1,5 +1,6 @@
 module Swattr
   class TasksController < ApplicationController
+    before_action :add_task_defaults_on_create, only: [:create]
     before_action :set_task, only: [:show, :edit, :update, :destroy]
 
     def index
@@ -23,11 +24,7 @@ module Swattr
     end
 
     def create
-      new_task_params = task_params.merge(
-        author_id: current_user.id
-      )
-
-      @task = Swattr::Task.create(new_task_params)
+      @task = Swattr::Task.create(task_params)
 
       respond_with @task, location: -> { task_path(@task) }
     end
@@ -48,7 +45,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :title, :issue_id, :position
+        :title, :issue_id, :position, :author_id
       ]
     end
 
@@ -58,6 +55,12 @@ module Swattr
 
     def task_params
       params.require(:task).permit(permitted_attributes)
+    end
+
+    def add_task_defaults_on_create
+      author_id = current_user.id
+
+      params.deep_merge!(task: { author_id: author_id })
     end
   end
 end
