@@ -46,6 +46,7 @@ en:
         description: Description
         location: Location
         author: Author
+        remove_hero: Remove project image
       swattr/resolution:
         name: Name
         description: Description
