@@ -39,9 +39,9 @@ Gem::Specification.new do |s|
   s.add_development_dependency "factory_girl_rails", "~> 4.5.0"
   s.add_development_dependency "sqlite3", "~> 1.3.10"
   s.add_development_dependency "simplecov", "~> 0.10.0"
-  s.add_development_dependency "database_cleaner", "~> 1.5.0"
+  s.add_development_dependency "database_cleaner", "~> 1.5.1"
   s.add_development_dependency "capybara", "~> 2.5.0"
-  s.add_development_dependency "poltergeist", "~> 1.6.0"
+  s.add_development_dependency "poltergeist", "~> 1.7.0"
   s.add_development_dependency "pry-byebug"
   s.add_development_dependency "launchy"
 end
