@@ -4,7 +4,7 @@
 
 [![Build Status](https://travis-ci.org/swattr/swattr.svg?branch=master)](https://travis-ci.org/swattr/swattr)
 [![Code Climate](https://codeclimate.com/github/swattr/swattr/badges/gpa.svg)](https://codeclimate.com/github/swattr/swattr)
-[![Test Coverage](https://codeclimate.com/github/swattr/swattr/badges/coverage.svg)](https://codeclimate.com/github/swattr/swattr/coverage)
+[![Coverage Status](https://coveralls.io/repos/swattr/swattr/badge.svg?branch=master&service=github)](https://coveralls.io/github/swattr/swattr?branch=master)
 [![Dependency Status](https://gemnasium.com/swattr/swattr.svg)](https://gemnasium.com/swattr/swattr)
 
 The new kid on the block. The one that promises not to take your lunch money.
