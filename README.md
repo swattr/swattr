@@ -23,7 +23,8 @@ Swattr is a bug and issue tracker meant to be a lightweight, simple to set up an
 
 ## Requirements
 
-- Rails 4.2.4+
+- Ruby >= 2.2.2
+- Rails >= 4.2.4
 
 ## Installation
 
