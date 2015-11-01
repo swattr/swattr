@@ -13,6 +13,9 @@ en:
       swattr/resolution:
         one: Resolution
         other: Resolutions
+      swattr/setting:
+        one: Settings
+        other: Settings
       swattr/status:
         one: Status
         other: Statuses
@@ -46,10 +49,15 @@ en:
         description: Description
         location: Location
         author: Author
-        remove_hero: Remove project image
+        remove_hero: Remove Project Image
       swattr/resolution:
         name: Name
         description: Description
+      swattr/settings:
+        title: Title
+        logo: Logo
+        remove_logo: Remove Logo
+        per_page: Per Page
       swattr/status:
         name: Name
         description: Description

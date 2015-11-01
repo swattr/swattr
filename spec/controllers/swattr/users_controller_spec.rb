@@ -4,12 +4,6 @@ module Swattr
   RSpec.describe Swattr::UsersController, type: :controller do
     before { stub_authorization! }
 
-    it "uses correct layout" do
-      swattr_get :index
-
-      expect(response).to render_template(layout: "swattr/layouts/application")
-    end
-
     describe "GET #index" do
       it "assigns all users as @users" do
         user = create(:user)

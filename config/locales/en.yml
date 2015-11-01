@@ -17,6 +17,7 @@ en:
     edit_profile: Editing Profile
     edit_project: Editing Project
     edit_resolution: Editing Resolution
+    edit_settings: Editing Settings
     edit_status: Editing Status
     edit_tag: Editing Tag
     edit_task: Editing Task
@@ -52,6 +53,7 @@ en:
     priorities: Priorities
     resolution: Resolution
     resolutions: Resolutions
+    settings: Settings
     show: Show
     slug: Slug
     status: Status
