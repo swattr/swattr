@@ -24,12 +24,12 @@ module Swattr
                   Pundit::NotAuthorizedError, with: :render_401
     end
 
-    def per_page
-      params[:limit] || Swattr.configuration.per_page
-    end
-
     def settings
       @settings ||= Swattr::Setting.settings
+    end
+
+    def per_page
+      params[:limit] || settings.per_page
     end
 
     protected
