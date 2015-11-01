@@ -1,0 +1,13 @@
+<%= image_tag(@settings.logo.thumb.url) %>
+
+<p>
+  <strong><%= Swattr.t(:title) %>:</strong>
+  <%= @settings.title %>
+</p>
+
+<p>
+  <strong><%= Swattr.t(:per_page) %>:</strong>
+  <%= @settings.per_page %>
+</p>
+
+<%= link_to Swattr.t(:edit), edit_settings_path %>

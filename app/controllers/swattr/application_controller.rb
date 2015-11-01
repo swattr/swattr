@@ -13,6 +13,8 @@ module Swattr
     respond_to :html, :json
     responders :flash, :http_cache
 
+    helper_method :settings
+
     unless Rails.application.config.consider_all_requests_local
       rescue_from Exception, with: :render_500
       rescue_from ActionController::UnknownController,
@@ -22,8 +24,12 @@ module Swattr
                   Pundit::NotAuthorizedError, with: :render_401
     end
 
+    def settings
+      @settings ||= Swattr::Setting.settings
+    end
+
     def per_page
-      params[:limit] || Swattr.configuration.per_page
+      params[:limit] || settings.per_page
     end
 
     protected
