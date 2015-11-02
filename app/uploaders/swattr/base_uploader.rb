@@ -7,9 +7,11 @@ module Swattr
     end
 
     def default_url
-      ActionController::Base.helpers.asset_path(
-        "swattr/fallback/" + [version_name, "default.png"].compact.join("_")
-      )
+      ActionController::Base.helpers.asset_path(default_path)
+    end
+
+    def default_path
+      "swattr/fallback/" + [version_name, "default.png"].compact.join("_")
     end
 
     def extension_white_list

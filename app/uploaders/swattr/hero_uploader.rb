@@ -1,9 +1,7 @@
 module Swattr
   class HeroUploader < BaseUploader
-    def default_url
-      ActionController::Base.helpers.asset_path(
-        "swattr/fallback/" + [version_name, "hero.jpg"].compact.join("_")
-      )
+    def default_path
+      "swattr/fallback/" + [version_name, "hero.jpg"].compact.join("_")
     end
 
     version :thumb do

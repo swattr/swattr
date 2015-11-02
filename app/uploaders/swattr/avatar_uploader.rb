@@ -1,9 +1,7 @@
 module Swattr
   class AvatarUploader < BaseUploader
-    def default_url
-      ActionController::Base.helpers.asset_path(
-        "swattr/fallback/" + [version_name, "avatar.png"].compact.join("_")
-      )
+    def default_path
+      "swattr/fallback/" + [version_name, "avatar.png"].compact.join("_")
     end
 
     version :medium do
