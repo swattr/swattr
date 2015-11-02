@@ -17,7 +17,8 @@ module Swattr
     end
 
     def destroy
-      @task.destroy
+      @task.update_attributes(deleted_at: Time.current,
+                              deleted_by: current_user.id)
 
       respond_with @task, location: -> { project_issue_path(@project, @issue) }
     end

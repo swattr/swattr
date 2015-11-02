@@ -4,5 +4,10 @@ FactoryGirl.define do
     issue
     author
     position 0
+
+    trait :deleted do
+      deleted_at { Time.current }
+      deleted_by { author }
+    end
   end
 end

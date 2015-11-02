@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151101200131) do
+ActiveRecord::Schema.define(version: 20151102051906) do
 
   create_table "swattr_issue_tags", force: :cascade do |t|
     t.integer  "issue_id"
@@ -99,7 +99,11 @@ ActiveRecord::Schema.define(version: 20151101200131) do
     t.integer  "position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.integer  "deleted_by"
   end
+
+  add_index "swattr_tasks", ["deleted_at"], name: "index_swattr_tasks_on_deleted_at"
 
   create_table "swattr_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

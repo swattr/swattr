@@ -89,17 +89,6 @@ module Swattr
     describe "DELETE #destroy" do
       let(:issue) { create(:issue) }
 
-      it "destroys the requested task" do
-        task = create(:task)
-
-        expect do
-          swattr_delete :destroy, project_id: issue.project.slug,
-                                  issue_id: issue.id,
-                                  id: task
-
-        end.to change(Task, :count).by(-1)
-      end
-
       it "redirects to the tasks list" do
         task = create(:task)
 

@@ -4,7 +4,7 @@
   <% if @issue.tasks.any? %>
   <ul>
   <% @issue.tasks.each do |task| %>
-    <li class="task">
+    <li class="task<% unless task.deleted_at.nil? %> task-deleted<% end %>">
       <p class="title">
         <%= task.title %>
       </p>
@@ -13,9 +13,11 @@
         <%= task.author.email %>
       </div>
 
+      <% if task.deleted_at.nil? %>
       <div class="resolve">
         <%= link_to Swattr.t(:destroy), project_issue_task_path(@project, @issue, task), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
       </div>
+      <% end %>
     </li>
   <% end %>
   </ul>
