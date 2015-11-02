@@ -15,7 +15,9 @@ module Swattr
     end
 
     def show
-      respond_with @issue
+       @task = Swattr::Task.new
+
+      respond_with @issue, @task
     end
 
     def new

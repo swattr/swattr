@@ -45,5 +45,9 @@
   <%= @issue.due_at %>
 </p>
 
+<%= render "tasks" %>
+
+<%= render "tasks_form" %>
+
 <%= link_to Swattr.t(:edit), edit_project_issue_path(@project, @issue) %> |
 <%= link_to Swattr.t(:back), project_issues_path(@project) %>
