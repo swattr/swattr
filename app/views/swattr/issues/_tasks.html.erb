@@ -1,0 +1,27 @@
+<div id="issue_tasks">
+  <% if @issue.tasks.any? %>
+  <h2><%= Swattr.t(:tasks) %></h2>
+
+  <ul>
+  <% @issue.tasks.each do |task| %>
+    <li class="task">
+      <p class="title">
+        <%= task.title %>
+      </p>
+
+      <div class="footer">
+        <%= task.author.email %>
+      </div>
+
+      <div class="resolve">
+        <%= link_to Swattr.t(:destroy), project_issue_task_path(@project, @issue, task), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+  <% else %>
+  <p class="no-tasks">
+    <%= Swattr.t(:no_tasks) %>
+  </p>
+  <% end %>
+</div>

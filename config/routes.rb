@@ -19,11 +19,12 @@ Swattr::Engine.routes.draw do
              }
 
   resources :projects, concerns: [:paginatable] do
-    resources :issues, concerns: [:paginatable]
+    resources :issues, concerns: [:paginatable] do
+      resources :tasks, only: [:create, :update, :destroy]
+    end
   end
   resources :priorities
   resources :tags
-  resources :tasks
   resources :resolutions
   resources :statuses
   resources :users, concerns: [:paginatable]
