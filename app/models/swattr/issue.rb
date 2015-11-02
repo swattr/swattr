@@ -13,6 +13,9 @@ module Swattr
     has_many :issue_tags
     has_many :tags, through: :issue_tags
 
+    # Nested attributes
+    accepts_nested_attributes_for :tags
+
     # Validation
     validates :title, presence: true
     validates :content, presence: true

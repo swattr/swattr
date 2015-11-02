@@ -51,7 +51,7 @@ module Swattr
     def permitted_attributes
       [
         :title, :content, :assignee_id, :priority_id, :status_id,
-        :resolution_id, :due_at, :project_id, :author_id
+        :resolution_id, :due_at, :project_id, :author_id, tag_ids: []
       ]
     end
 

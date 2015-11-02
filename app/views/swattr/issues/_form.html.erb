@@ -4,6 +4,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+    <%= f.association :tags, as: :check_boxes %>
+
     <%= f.input :title %>
     <%= f.input :content %>
     <%= f.association :assignee, as: :select %>
