@@ -1,0 +1,13 @@
+<div id="tags">
+  <h2><%= Swattr.t(:tags) %></h2>
+
+  <div class="tags">
+  <% if @issue.tags.any? %>
+    <% @issue.tags.each do |tag| %>
+    <span class="tag tag-<%= tag.name.parameterize %> %>"><%= tag.name %></span>
+    <% end %>
+  <% else %>
+    <span class="tag tag-none"><%= Swattr.t(:none) %></span>
+  <% end %>
+  </div>
+</div>

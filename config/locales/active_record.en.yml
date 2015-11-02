@@ -31,7 +31,7 @@ en:
 
     attributes:
       swattr/issue:
-        title: Tilte
+        title: Title
         content: Content
         project: Project
         author: Author

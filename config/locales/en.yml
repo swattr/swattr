@@ -46,6 +46,7 @@ en:
     new_tag: New Tag
     new_task: New Task
     new_user: New User
+    none: None
     profile: Profile
     project: Project
     projects: Projects
@@ -59,7 +60,7 @@ en:
     status: Status
     statuses: Statuses
     swattr: Swattr
-    tas: Tag
+    tag: Tag
     tags: Tags
     task: Task
     tasks: Tasks
