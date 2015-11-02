@@ -14,21 +14,21 @@ end
 
 # Priorities
 %w(High Low Normal Urgent).each_with_index do |name, index|
-  Swattr::Priority.where(name: name).first_or_create! do |item|
+  Swattr::Priority.find_or_create_by(name: name) do |item|
     item.position = index
   end
 end
 
 # Resolutions
 ["Can Not Reproduce", "Resolved"].each_with_index do |name, index|
-  Swattr::Resolution.where(name: name).first_or_create! do |item|
+  Swattr::Resolution.find_or_create_by(name: name) do |item|
     item.position = index
   end
 end
 
 # Statuses
 ["In Progress", "Blocked"].each_with_index do |name, index|
-  Swattr::Status.where(name: name).first_or_create! do |item|
+  Swattr::Status.find_or_create_by(name: name) do |item|
     item.position = index
   end
 end
@@ -36,7 +36,7 @@ end
 # Tags
 ["Bug", "Feature", "Invalid", "Question", "Won't Fix"]
   .each_with_index do |name, index|
-  Swattr::Tag.where(name: name).first_or_create! do |item|
+  Swattr::Tag.find_or_create_by(name: name) do |item|
     item.position = index
   end
 end
