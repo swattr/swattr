@@ -71,10 +71,8 @@ module Swattr
       project_id = @project.id
       author_id = current_user.id
 
-      params.deep_merge!(issue: {
-        project_id: project_id,
-        author_id: author_id
-      })
+      params.deep_merge!(issue: { project_id: project_id,
+                                  author_id: author_id })
     end
   end
 end
