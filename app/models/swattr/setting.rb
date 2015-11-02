@@ -5,7 +5,9 @@ module Swattr
 
     # Validation
     validates :title, presence: true
-    validates :per_page, numericality: { only_integer: true }, inclusion: 1..500
+    validates :per_page, numericality: { only_integer: true,
+                                         greater_than: 0,
+                                         less_than_or_equal_to: 500 }
 
     # Scope
     def self.settings
