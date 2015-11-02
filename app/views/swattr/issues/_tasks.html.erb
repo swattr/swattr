@@ -1,7 +1,7 @@
 <div id="issue_tasks">
-  <% if @issue.tasks.any? %>
   <h2><%= Swattr.t(:tasks) %></h2>
 
+  <% if @issue.tasks.any? %>
   <ul>
   <% @issue.tasks.each do |task| %>
     <li class="task">
