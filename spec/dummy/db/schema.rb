@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102051906) do
+ActiveRecord::Schema.define(version: 20151102190119) do
+
+  create_table "swattr_attachments", force: :cascade do |t|
+    t.integer  "issue_id"
+    t.integer  "uploader_id"
+    t.string   "title"
+    t.string   "description"
+    t.string   "source"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "swattr_issue_tags", force: :cascade do |t|
     t.integer  "issue_id"
