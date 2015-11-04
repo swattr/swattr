@@ -25,7 +25,9 @@ Gem::Specification.new do |s|
   s.add_dependency "date_validator", "~> 0.8.1"
   s.add_dependency "devise", "~> 3.5.2"
   s.add_dependency "devise_invitable", "~> 1.5.3"
+  s.add_dependency "file_validators", "~> 2.0.2"
   s.add_dependency "highline", "~> 1.7.7"
+  s.add_dependency "human_bytes", "~> 0.11.0"
   s.add_dependency "kaminari", "~> 0.16.3"
   s.add_dependency "local_time", "~> 1.0.3"
   s.add_dependency "mini_magick", "~> 4.3.2"
@@ -35,7 +37,6 @@ Gem::Specification.new do |s|
   s.add_dependency "responders", "~> 2.1.0"
   s.add_dependency "simple_form", "~> 3.2.0"
   s.add_dependency "validates", "~> 1.0.0"
-  s.add_dependency "jquery-rails", "~> 4.0.5"
 
   s.add_development_dependency "rspec-rails", "~> 3.3.3"
   s.add_development_dependency "factory_girl_rails", "~> 4.5.0"

@@ -13,8 +13,13 @@
         <%= attachment.description %>
       </p>
 
+      <p class="image">
+        <%= image_tag(attachment.source.thumb.type_url) %>
+      </p>
+
       <p class="attachment">
-        <%= image_tag(attachment.source.thumb.url) %>
+        <%= link_to(Swattr.t(:view), attachment.source.url) %>
+        (<%= filesize_format(attachment.file_size) %>)
       </p>
 
       <div class="footer">

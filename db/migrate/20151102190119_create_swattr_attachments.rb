@@ -6,6 +6,8 @@ class CreateSwattrAttachments < ActiveRecord::Migration
       t.string :title
       t.string :description
       t.string :source
+      t.string :content_type
+      t.integer :file_size
 
       t.timestamps null: false
     end
