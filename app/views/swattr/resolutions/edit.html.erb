@@ -2,5 +2,7 @@
 
 <%= render "form" %>
 
-<%= link_to Swattr.t(:show), @resolution %> |
+<% if policy(@resolution).show? %>
+  <%= link_to Swattr.t(:show), @resolution %> |
+<% end %>
 <%= link_to Swattr.t(:back), resolutions_path %>

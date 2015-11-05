@@ -1,9 +1,11 @@
 module Swattr
   class StatusesController < ApplicationController
-    before_action :set_status, only: [:show, :edit, :update, :destroy]
+    before_action :set_status, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @statuses = Swattr::Status.all
+
+      authorize @statuses
 
       respond_with @statuses
     end
@@ -13,8 +15,6 @@ module Swattr
     end
 
     def new
-      @status = Swattr::Status.new
-
       respond_with @status
     end
 
@@ -23,7 +23,11 @@ module Swattr
     end
 
     def create
-      @status = Swattr::Status.create(status_params)
+      @status = Swattr::Status.new(status_params)
+
+      authorize @status
+
+      @status.save
 
       respond_with @status, location: -> { status_path(@status) }
     end
@@ -49,7 +53,13 @@ module Swattr
     end
 
     def set_status
-      @status = Swattr::Status.find(params[:id])
+      if action_name.to_sym == :new
+        @status = Swattr::Status.new
+      else
+        @status = Swattr::Status.find(params[:id])
+      end
+
+      authorize @status
     end
 
     def status_params

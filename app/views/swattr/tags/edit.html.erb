@@ -2,5 +2,7 @@
 
 <%= render "form" %>
 
-<%= link_to Swattr.t(:show), @tag %> |
+<% if policy(@tag).show? %>
+  <%= link_to Swattr.t(:show), @tag %> |
+<% end %>
 <%= link_to Swattr.t(:back), tags_path %>

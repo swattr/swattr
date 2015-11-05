@@ -1,6 +1,7 @@
 module Swattr
   class ProfilesController < ApplicationController
     before_action :set_profile
+    after_action :skip_authorization
 
     def show
       respond_with @profile

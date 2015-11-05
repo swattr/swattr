@@ -8,7 +8,8 @@ end
 
 require "spec_helper"
 require "rspec/rails"
-require "pry-byebug"
+require "pry"
+require "byebug"
 require "launchy"
 
 Dir[Rails.root.join("../support/**/*.rb")].each { |f| require f }

@@ -1,9 +1,11 @@
 module Swattr
   class PrioritiesController < ApplicationController
-    before_action :set_priority, only: [:show, :edit, :update, :destroy]
+    before_action :set_priority, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @priorities = Swattr::Priority.all
+
+      authorize @priorities
 
       respond_with @priorities
     end
@@ -13,8 +15,6 @@ module Swattr
     end
 
     def new
-      @priority = Swattr::Priority.new
-
       respond_with @priority
     end
 
@@ -23,7 +23,11 @@ module Swattr
     end
 
     def create
-      @priority = Swattr::Priority.create(priority_params)
+      @priority = Swattr::Priority.new(priority_params)
+
+      authorize @priority
+
+      @priority.save
 
       respond_with @priority, location: -> { priority_path(@priority) }
     end
@@ -49,7 +53,13 @@ module Swattr
     end
 
     def set_priority
-      @priority = Swattr::Priority.find(params[:id])
+      if action_name.to_sym == :new
+        @priority = Swattr::Priority.new
+      else
+        @priority = Swattr::Priority.find(params[:id])
+      end
+
+      authorize @priority
     end
 
     def priority_params

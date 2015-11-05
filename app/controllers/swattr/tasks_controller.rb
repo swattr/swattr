@@ -5,7 +5,11 @@ module Swattr
     before_action :set_task, only: [:update, :destroy]
 
     def create
-      @task = Swattr::Task.create(task_params)
+      @task = Swattr::Task.new(task_params)
+
+      authorize @task
+
+      @task.save
 
       respond_with @task, location: -> { project_issue_path(@project, @issue) }
     end
@@ -38,6 +42,8 @@ module Swattr
 
     def set_task
       @task = Swattr::Task.find(params[:id])
+
+      authorize @task
     end
 
     def task_params

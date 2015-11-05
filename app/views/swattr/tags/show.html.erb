@@ -13,5 +13,7 @@
   <%= @tag.color %>
 </p>
 
-<%= link_to Swattr.t(:edit), edit_tag_path(@tag) %> |
+<% if policy(@tag).edit? %>
+  <%= link_to Swattr.t(:edit), edit_tag_path(@tag) %> |
+<% end %>
 <%= link_to Swattr.t(:back), tags_path %>

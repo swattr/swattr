@@ -25,5 +25,7 @@
   <%= @project.author_id %>
 </p>
 
-<%= link_to Swattr.t(:edit), edit_project_path(@project) %> |
+<% if policy(@project).edit? %>
+  <%= link_to Swattr.t(:edit), edit_project_path(@project) %> |
+<% end %>
 <%= link_to Swattr.t(:back), projects_path %>

@@ -15,7 +15,9 @@
 
       <% if task.deleted_at.nil? %>
       <div class="resolve">
-        <%= link_to Swattr.t(:destroy), project_issue_task_path(@project, @issue, task), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+        <% if policy(task).destroy? %>
+          <%= link_to Swattr.t(:destroy), project_issue_task_path(@project, @issue, task), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+        <% end %>
       </div>
       <% end %>
     </li>

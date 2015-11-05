@@ -1,11 +1,13 @@
 module Swattr
   class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update, :destroy]
+    before_action :set_user, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @q = Swattr::User.ransack(params[:q].try(:merge, m: "or"))
 
       @users = @q.result(distinct: true).page(params[:page]).per(per_page)
+
+      authorize @users
 
       respond_with @users
     end
@@ -15,8 +17,6 @@ module Swattr
     end
 
     def new
-      @user = Swattr::User.new
-
       respond_with @user
     end
 
@@ -26,6 +26,8 @@ module Swattr
 
     def create
       @user = Swattr::User.invite!(user_params)
+
+      authorize @user
 
       respond_with @user, location: -> { user_path(@user) }
     end
@@ -51,7 +53,13 @@ module Swattr
     end
 
     def set_user
-      @user = Swattr::User.find(params[:id])
+      if action_name.to_sym == :new
+        @user = Swattr::User.new
+      else
+        @user = Swattr::User.find(params[:id])
+      end
+
+      authorize @user
     end
 
     def user_params

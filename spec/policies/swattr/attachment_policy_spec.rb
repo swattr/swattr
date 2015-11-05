@@ -1,11 +1,11 @@
 require "rails_helper"
 
 module Swattr
-  RSpec.describe UserPolicy, type: :policy do
-    subject { UserPolicy.new(user, record) }
+  RSpec.describe AttachmentPolicy, type: :policy do
+    subject { AttachmentPolicy.new(user, record) }
 
     let(:user) { create(:user) }
-    let(:record) { create(:user) }
+    let(:record) { create(:attachment) }
 
     context "for a user" do
       it { should permit(:index) }

@@ -5,7 +5,7 @@
     <tr>
       <th><%= Swattr.t(:name) %></th>
       <th><%= Swattr.t(:description) %></th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -16,4 +16,6 @@
 
 <br>
 
-<%= link_to Swattr.t(:new_resolution), new_resolution_path %>
+<% if policy(@resolutions).new? %>
+  <%= link_to Swattr.t(:new_resolution), new_resolution_path %>
+<% end %>
