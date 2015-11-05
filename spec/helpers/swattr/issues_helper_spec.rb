@@ -11,12 +11,12 @@ module Swattr
         expect(helper.filesize_format(1000)).to eq "1 KB"
       end
 
-      it "with 1000000 byte size file" do
-        expect(helper.filesize_format(1000000)).to eq "1 MB"
+      it "with 1_000_000 byte size file" do
+        expect(helper.filesize_format(1_000_000)).to eq "1 MB"
       end
 
-      it "with 1000000000 byte size file" do
-        expect(helper.filesize_format(1000000000)).to eq "1 GB"
+      it "with 1_000_000_000 byte size file" do
+        expect(helper.filesize_format(1_000_000_000)).to eq "1 GB"
       end
 
       it "with 1234 byte size file" do

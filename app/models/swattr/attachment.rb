@@ -9,8 +9,8 @@ module Swattr
 
     # Validation
     validates :source, presence: true, file_size: {
-                                         less_than_or_equal_to: 2.megabytes
-                                       }
+      less_than_or_equal_to: 2.megabytes
+    }
     validates :issue_id, presence: true
     validates :uploader_id, presence: true
 

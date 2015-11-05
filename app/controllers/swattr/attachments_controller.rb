@@ -56,7 +56,7 @@ module Swattr
       uploader_id = current_user.id
 
       params.deep_merge!(attachment: { uploader_id: uploader_id,
-                                       issue_id: @issue.id, })
+                                       issue_id: @issue.id })
     end
   end
 end

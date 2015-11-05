@@ -54,7 +54,7 @@ module Swattr
       author_id = current_user.id
 
       params.deep_merge!(task: { author_id: author_id,
-                                 issue_id: @issue.id, })
+                                 issue_id: @issue.id })
     end
   end
 end

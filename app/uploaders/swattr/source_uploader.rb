@@ -18,7 +18,6 @@ module Swattr
       process resize_to_fit: [150, 150]
     end
 
-
     def default_path
       "swattr/fallback/" + [version_name, "source.gif"].compact.join("_")
     end
@@ -26,14 +25,12 @@ module Swattr
     def type_url
       type = model.content_type
 
-      if known_image_formats.include? type
+      if known_image_formats.include?(type)
         model.source.versions[version_name].url
-      elsif known_formats.include? type
-        "swattr/fallback/mime/" + [version_name, "#{type.parameterize}.png"]
-          .compact.join("_")
+      elsif known_formats.include?(type)
+        format_path("#{type.parameterize}.png")
       else
-        "swattr/fallback/mime/" + [version_name, "unknown.png"]
-          .compact.join("_")
+        format_path("unknown.png")
       end
     end
 
@@ -52,11 +49,15 @@ module Swattr
       model.file_size = file.size
     end
 
-    def secure_token(length=16)
+    def secure_token(length = 16)
       var = :"@#{mounted_as}_secure_token"
 
       model.instance_variable_get(var) ||
-      model.instance_variable_set(var, SecureRandom.hex(length/2))
+        model.instance_variable_set(var, SecureRandom.hex(length / 2))
+    end
+
+    def format_path(asset)
+      "swattr/fallback/mime/" + [version_name, asset].compact.join("_")
     end
 
     def known_image_formats
