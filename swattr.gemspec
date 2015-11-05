@@ -46,6 +46,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency "capybara", "~> 2.5.0"
   s.add_development_dependency "poltergeist", "~> 1.7.0"
   s.add_development_dependency "coveralls"
-  s.add_development_dependency "pry-byebug"
+  s.add_development_dependency "pry"
+  s.add_development_dependency "byebug"
   s.add_development_dependency "launchy"
 end
