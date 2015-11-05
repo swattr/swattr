@@ -8,5 +8,7 @@
   <%= @status.description %>
 </p>
 
-<%= link_to Swattr.t(:edit), edit_status_path(@status) %> |
+<% if policy(@status).edit? %>
+  <%= link_to Swattr.t(:edit), edit_status_path(@status) %> |
+<% end %>
 <%= link_to Swattr.t(:back), statuses_path %>

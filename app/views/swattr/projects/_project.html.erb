@@ -5,8 +5,16 @@
   <td><%= project.description %></td>
   <td><%= project.location %></td>
   <td><%= project.author_id %></td>
-  <td><%= link_to Swattr.t(:show), project %></td>
-  <td><%= link_to Swattr.t(:edit), edit_project_path(project) %></td>
-  <td><%= link_to Swattr.t(:destroy), project, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
-  <td><%= link_to Swattr.t(:issues), project_issues_path(project) %></td>
+  <td>
+    <% if policy(project).show? %>
+      <%= link_to Swattr.t(:show), project %>
+    <% end %>
+    <% if policy(project).edit? %>
+      <%= link_to Swattr.t(:edit), edit_project_path(project) %>
+    <% end %>
+    <% if policy(project).destroy? %>
+      <%= link_to Swattr.t(:destroy), project, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+    <% end %>
+    <%= link_to Swattr.t(:issues), project_issues_path(project) %>
+  </td>
 </tr>

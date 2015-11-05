@@ -2,5 +2,7 @@
 
 <%= render "form" %>
 
-<%= link_to Swattr.t(:show), @project %> |
+<% if policy(@project).show? %>
+  <%= link_to Swattr.t(:show), project_path(@project) %> |
+<% end %>
 <%= link_to Swattr.t(:back), projects_path %>

@@ -8,5 +8,7 @@
   <%= @priority.description %>
 </p>
 
-<%= link_to Swattr.t(:edit), edit_priority_path(@priority) %> |
+<% if policy(@priority).edit? %>
+  <%= link_to Swattr.t(:edit), edit_priority_path(@priority) %> |
+<% end %>
 <%= link_to Swattr.t(:back), priorities_path %>

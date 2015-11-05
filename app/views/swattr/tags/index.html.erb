@@ -6,7 +6,7 @@
       <th><%= Swattr.t(:name) %></th>
       <th><%= Swattr.t(:description) %></th>
       <th><%= Swattr.t(:color) %></th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -17,4 +17,6 @@
 
 <br>
 
-<%= link_to Swattr.t(:new_tag), new_tag_path %>
+<% if policy(@tags).new? %>
+  <%= link_to Swattr.t(:new_tag), new_tag_path %>
+<% end %>

@@ -7,6 +7,7 @@ module Swattr
     include Pundit
 
     before_action :authenticate_user!
+    after_action :verify_authorized
 
     layout :set_layout
 

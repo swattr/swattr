@@ -2,5 +2,7 @@
 
 <%= render "form" %>
 
-<%= link_to Swattr.t(:show), project_issue_path(@project, @issue) %> |
+<% if policy(@issue).show? %>
+  <%= link_to Swattr.t(:show), project_issue_path(@project, @issue) %> |
+<% end %>
 <%= link_to Swattr.t(:back), project_issues_path(@project) %>

@@ -26,6 +26,8 @@ module Swattr
 
     def set_settings
       @settings = Swattr::Setting.settings
+
+      authorize @settings
     end
 
     def settings_params

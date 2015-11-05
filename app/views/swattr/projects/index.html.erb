@@ -11,7 +11,7 @@
       <th><%= Swattr.t(:description) %></th>
       <th><%= Swattr.t(:location) %></th>
       <th><%= Swattr.t(:author) %></th>
-      <th colspan="4"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -22,4 +22,6 @@
 
 <%= paginate @projects %>
 
+<% if policy(@projects).new? %>
 <%= link_to Swattr.t(:new_project), new_project_path %>
+<% end %>

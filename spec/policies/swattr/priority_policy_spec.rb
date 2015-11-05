@@ -1,11 +1,11 @@
 require "rails_helper"
 
 module Swattr
-  RSpec.describe UserPolicy, type: :policy do
-    subject { UserPolicy.new(user, record) }
+  RSpec.describe PriorityPolicy, type: :policy do
+    subject { PriorityPolicy.new(user, record) }
 
     let(:user) { create(:user) }
-    let(:record) { create(:user) }
+    let(:record) { create(:priority) }
 
     context "for a user" do
       it { should permit(:index) }

@@ -1,9 +1,11 @@
 module Swattr
   class TagsController < ApplicationController
-    before_action :set_tag, only: [:show, :edit, :update, :destroy]
+    before_action :set_tag, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @tags = Swattr::Tag.all
+
+      authorize @tags
 
       respond_with @tags
     end
@@ -13,8 +15,6 @@ module Swattr
     end
 
     def new
-      @tag = Swattr::Tag.new
-
       respond_with @tag
     end
 
@@ -23,7 +23,11 @@ module Swattr
     end
 
     def create
-      @tag = Swattr::Tag.create(tag_params)
+      @tag = Swattr::Tag.new(tag_params)
+
+      authorize @tag
+
+      @tag.save
 
       respond_with @tag, location: -> { tag_path(@tag) }
     end
@@ -49,7 +53,13 @@ module Swattr
     end
 
     def set_tag
-      @tag = Swattr::Tag.find(params[:id])
+      if action_name.to_sym == :new
+        @tag = Swattr::Tag.new
+      else
+        @tag = Swattr::Tag.find(params[:id])
+      end
+
+      authorize @tag
     end
 
     def tag_params

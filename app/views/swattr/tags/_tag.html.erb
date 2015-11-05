@@ -2,7 +2,15 @@
   <td><%= tag.name %></td>
   <td><%= tag.description %></td>
   <td><%= tag.color %></td>
-  <td><%= link_to Swattr.t(:show), tag %></td>
-  <td><%= link_to Swattr.t(:edit), edit_tag_path(tag) %></td>
-  <td><%= link_to Swattr.t(:destroy), tag, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+  <td>
+    <% if policy(tag).show? %>
+      <%= link_to Swattr.t(:show), tag %>
+    <% end %>
+    <% if policy(tag).edit? %>
+      <%= link_to Swattr.t(:edit), edit_tag_path(tag) %>
+    <% end %>
+    <% if policy(tag).destroy? %>
+      <%= link_to Swattr.t(:destroy), tag, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+    <% end %>
+  </td>
 </tr>

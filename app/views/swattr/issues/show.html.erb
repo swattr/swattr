@@ -53,5 +53,7 @@
 
 <%= render "attachments_form" %>
 
-<%= link_to Swattr.t(:edit), edit_project_issue_path(@project, @issue) %> |
+<% if policy(@issue).edit? %>
+  <%= link_to Swattr.t(:edit), edit_project_issue_path(@project, @issue) %> |
+<% end %>
 <%= link_to Swattr.t(:back), project_issues_path(@project) %>

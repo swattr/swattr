@@ -1,9 +1,11 @@
 module Swattr
   class ResolutionsController < ApplicationController
-    before_action :set_resolution, only: [:show, :edit, :update, :destroy]
+    before_action :set_resolution, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @resolutions = Swattr::Resolution.all
+
+      authorize @resolutions
 
       respond_with @resolutions
     end
@@ -13,8 +15,6 @@ module Swattr
     end
 
     def new
-      @resolution = Swattr::Resolution.new
-
       respond_with @resolution
     end
 
@@ -23,7 +23,11 @@ module Swattr
     end
 
     def create
-      @resolution = Swattr::Resolution.create(resolution_params)
+      @resolution = Swattr::Resolution.new(resolution_params)
+
+      authorize @resolution
+
+      @resolution.save
 
       respond_with @resolution, location: -> { resolution_path(@resolution) }
     end
@@ -49,7 +53,13 @@ module Swattr
     end
 
     def set_resolution
-      @resolution = Swattr::Resolution.find(params[:id])
+      if action_name.to_sym == :new
+        @resolution = Swattr::Resolution.new
+      else
+        @resolution = Swattr::Resolution.find(params[:id])
+      end
+
+      authorize @resolution
     end
 
     def resolution_params

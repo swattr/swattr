@@ -5,7 +5,11 @@ module Swattr
     before_action :set_attachment, only: [:update, :destroy]
 
     def create
-      @attachment = Swattr::Attachment.create(attachment_params)
+      @attachment = Swattr::Attachment.new(attachment_params)
+
+      authorize @attachment
+
+      @attachment.save
 
       respond_with @attachment,
                    location: -> { project_issue_path(@project, @issue) }
@@ -40,6 +44,8 @@ module Swattr
 
     def set_attachment
       @attachment = Swattr::Attachment.find(params[:id])
+
+      authorize @attachment
     end
 
     def attachment_params

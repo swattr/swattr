@@ -8,5 +8,7 @@
   <%= @resolution.description %>
 </p>
 
-<%= link_to Swattr.t(:edit), edit_resolution_path(@resolution) %> |
+<% if policy(@resolution).edit? %>
+  <%= link_to Swattr.t(:edit), edit_resolution_path(@resolution) %> |
+<% end %>
 <%= link_to Swattr.t(:back), resolutions_path %>

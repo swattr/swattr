@@ -2,5 +2,7 @@
 
 <%= render "form" %>
 
-<%= link_to Swattr.t(:show), @priority %> |
+<% if policy(@priority).show? %>
+  <%= link_to Swattr.t(:show), @priority %> |
+<% end %>
 <%= link_to Swattr.t(:back), priorities_path %>

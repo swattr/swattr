@@ -1,15 +1,16 @@
 require "rails_helper"
 
 module Swattr
-  RSpec.describe UserPolicy, type: :policy do
-    subject { UserPolicy.new(user, record) }
+  RSpec.describe IssuePolicy, type: :policy do
+    subject { IssuePolicy.new(user, record) }
 
     let(:user) { create(:user) }
-    let(:record) { create(:user) }
+    let(:record) { create(:issue) }
 
     context "for a user" do
       it { should permit(:index) }
       it { should permit(:show) }
+
       it { should permit(:create) }
       it { should permit(:new) }
       it { should permit(:update) }

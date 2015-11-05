@@ -12,4 +12,6 @@
   <%= @settings.per_page %>
 </p>
 
-<%= link_to Swattr.t(:edit), edit_settings_path %>
+<% if policy(@settings).edit? %>
+  <%= link_to Swattr.t(:edit), edit_settings_path %>
+<% end %>

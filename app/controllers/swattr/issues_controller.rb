@@ -2,7 +2,7 @@ module Swattr
   class IssuesController < ApplicationController
     before_action :set_project
     before_action :add_issue_defaults_on_create, only: [:create]
-    before_action :set_issue, only: [:show, :edit, :update, :destroy]
+    before_action :set_issue, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @q = Swattr::Issue.where(project_id: @project.id)
@@ -10,6 +10,8 @@ module Swattr
         .try(:merge, m: "or"))
 
       @issues = @q.result(distinct: true).page(params[:page]).per(per_page)
+
+      authorize @issues
 
       respond_with @issues
     end
@@ -22,8 +24,6 @@ module Swattr
     end
 
     def new
-      @issue = Swattr::Issue.new
-
       respond_with @issue
     end
 
@@ -32,7 +32,11 @@ module Swattr
     end
 
     def create
-      @issue = Swattr::Issue.create(issue_params)
+      @issue = Swattr::Issue.new(issue_params)
+
+      authorize @issue
+
+      @issue.save
 
       respond_with @issue, location: -> { project_issue_path(@project, @issue) }
     end
@@ -59,7 +63,13 @@ module Swattr
     end
 
     def set_issue
-      @issue = Swattr::Issue.find(params[:id])
+      if action_name.to_sym == :new
+        @issue = Swattr::Issue.new
+      else
+        @issue = Swattr::Issue.find(params[:id])
+      end
+
+      authorize @issue
     end
 
     def set_project

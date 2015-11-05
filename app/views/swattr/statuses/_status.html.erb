@@ -1,7 +1,15 @@
 <tr>
   <td><%= status.name %></td>
   <td><%= status.description %></td>
-  <td><%= link_to Swattr.t(:show), status %></td>
-  <td><%= link_to Swattr.t(:edit), edit_status_path(status) %></td>
-  <td><%= link_to Swattr.t(:destroy), status, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %></td>
+  <td>
+    <% if policy(status).show? %>
+      <%= link_to Swattr.t(:show), status %>
+    <% end %>
+    <% if policy(status).edit? %>
+      <%= link_to Swattr.t(:edit), edit_status_path(status) %>
+    <% end %>
+    <% if policy(status).destroy? %>
+      <%= link_to Swattr.t(:destroy), status, method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+    <% end %>
+  </td>
 </tr>

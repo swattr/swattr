@@ -1,12 +1,14 @@
 module Swattr
   class ProjectsController < ApplicationController
     before_action :add_project_defaults_on_create, only: [:create]
-    before_action :set_project, only: [:show, :edit, :update, :destroy]
+    before_action :set_project, only: [:show, :new, :edit, :update, :destroy]
 
     def index
       @q = Swattr::Project.ransack(params[:q].try(:merge, m: "or"))
 
       @projects = @q.result(distinct: true).page(params[:page]).per(per_page)
+
+      authorize @projects
 
       respond_with @projects
     end
@@ -16,8 +18,6 @@ module Swattr
     end
 
     def new
-      @project = Swattr::Project.new
-
       respond_with @project
     end
 
@@ -26,7 +26,11 @@ module Swattr
     end
 
     def create
-      @project = Swattr::Project.create(project_params)
+      @project = Swattr::Project.new(project_params)
+
+      authorize @project
+
+      @project.save
 
       respond_with @project, location: -> { project_path(@project) }
     end
@@ -52,7 +56,13 @@ module Swattr
     end
 
     def set_project
-      @project = Swattr::Project.find_by(slug: params[:id])
+      if action_name.to_sym == :new
+        @project = Swattr::Project.new
+      else
+        @project = Swattr::Project.find_by(slug: params[:id])
+      end
+
+      authorize @project
     end
 
     def project_params
