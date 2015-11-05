@@ -20,6 +20,7 @@ Swattr::Engine.routes.draw do
 
   resources :projects, concerns: [:paginatable] do
     resources :issues, concerns: [:paginatable] do
+      resources :attachments, only: [:create, :update, :destroy]
       resources :tasks, only: [:create, :update, :destroy]
     end
   end

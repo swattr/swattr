@@ -1,0 +1,20 @@
+<div id="issue_attachments_create">
+  <h2><%= Swattr.t(:new_attachment) %></h2>
+
+  <%= simple_form_for([@project, @issue, @attachment],
+                      wrapper: :vertical_form,
+                      html: { class: "form-vertical" }) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <%= f.input :title %>
+      <%= f.input :description %>
+      <%= f.input :source, as: :file %>
+      <%= f.input :source_cache, as: :hidden %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit %>
+    </div>
+  <% end %>
+</div>

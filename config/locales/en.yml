@@ -43,10 +43,13 @@ en:
     new_project: New Project
     new_resolution: New Resolution
     new_status: New Status
+    new_attachment: New Attachment
     new_tag: New Tag
     new_task: New Task
     new_user: New User
-    no_tasks: No tasks
+    no_attachments: No Attachments
+    no_tags: No Tags
+    no_tasks: No Tasks
     none: None
     profile: Profile
     project: Project
@@ -68,3 +71,4 @@ en:
     title: Title
     user: User
     users: Users
+    view: View

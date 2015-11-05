@@ -1,6 +1,9 @@
 en:
   activerecord:
     models:
+      swattr/attachment:
+        one: Attachment
+        other: Attachments
       swattr/issue:
         one: Issue
         other: Issues
@@ -30,6 +33,10 @@ en:
         other: Users
 
     attributes:
+      swattr/attachment:
+        title: Title
+        description: Description
+        source: Source
       swattr/issue:
         title: Title
         content: Content
