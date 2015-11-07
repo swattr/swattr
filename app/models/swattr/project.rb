@@ -11,7 +11,7 @@ module Swattr
 
     # Associations
     belongs_to :author, class_name: Swattr::User
-    has_many :issues
+    has_many :issues, dependent: :destroy
 
     # Validation
     validates :name, presence: true

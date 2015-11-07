@@ -9,9 +9,9 @@ module Swattr
     belongs_to :priority, class_name: Swattr::Priority
     belongs_to :status, class_name: Swattr::Status
     belongs_to :resolution, class_name: Swattr::Resolution
-    has_many :attachments
-    has_many :comments
-    has_many :tasks
+    has_many :attachments, dependent: :destroy
+    has_many :comments, dependent: :destroy
+    has_many :tasks, dependent: :destroy
     has_many :issue_tags
     has_many :tags, through: :issue_tags
 
