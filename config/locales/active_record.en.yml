@@ -4,6 +4,9 @@ en:
       swattr/attachment:
         one: Attachment
         other: Attachments
+      swattr/comment:
+        one: Comment
+        other: Comments
       swattr/issue:
         one: Issue
         other: Issues
@@ -37,6 +40,8 @@ en:
         title: Title
         description: Description
         source: Source
+      swattr/comment:
+        body: Body
       swattr/issue:
         title: Title
         content: Content

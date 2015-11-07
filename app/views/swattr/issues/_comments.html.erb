@@ -1,0 +1,29 @@
+<div id="issue_comments">
+  <h2><%= Swattr.t(:comments) %></h2>
+
+  <% if @issue.comments.any? %>
+  <ul>
+  <% @issue.comments.each do |comment| %>
+    <li class="comment comment-<%= comment.id %>" id="comment-<%= comment.id %>">
+      <p class="title">
+        <%= comment.body %>
+      </p>
+
+      <div class="footer">
+        <%= comment.author.email %>
+      </div>
+
+      <div class="delete">
+        <% if policy(comment).destroy? %>
+          <%= link_to Swattr.t(:destroy), project_issue_comment_path(@project, @issue, comment), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
+        <% end %>
+      </div>
+    </li>
+  <% end %>
+  </ul>
+  <% else %>
+  <p class="no-comments">
+    <%= Swattr.t(:no_comments) %>
+  </p>
+  <% end %>
+</div>

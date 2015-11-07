@@ -2,6 +2,7 @@ en:
   swattr:
     are_you_sure: Are you sure?
     assignee: Assignee
+    attachments: Attachments
     author: Author
     avatar: Avatar
     back: Back
@@ -9,6 +10,7 @@ en:
     description: Description
     destroy: Destroy
     color: Color
+    comments: Comments
     content: Content
     due:at: DueAt
     edit: Edit
@@ -38,16 +40,18 @@ en:
     location: Location
     logout: Logout
     name: Name
+    new_attachment: New Attachment
+    new_comment: New Comment
     new_issue: New Issue
     new_priority: New Priority
     new_project: New Project
     new_resolution: New Resolution
     new_status: New Status
-    new_attachment: New Attachment
     new_tag: New Tag
     new_task: New Task
     new_user: New User
     no_attachments: No Attachments
+    no_comments: No Comments
     no_tags: No Tags
     no_tasks: No Tasks
     none: None
