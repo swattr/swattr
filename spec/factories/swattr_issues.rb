@@ -40,5 +40,25 @@ FactoryGirl.define do
         create_list(:issue_tag, evaluator.tag_count, issue: issue, tag: tag)
       end
     end
+
+    trait :with_tasks do
+      transient do
+        task_count 3
+      end
+
+      after(:create) do |issue, evaluator|
+        create_list(:task, evaluator.task_count, issue: issue)
+      end
+    end
+
+    trait :with_comments do
+      transient do
+        comment_count 3
+      end
+
+      after(:create) do |issue, evaluator|
+        create_list(:comment, evaluator.comment_count, issue: issue)
+      end
+    end
   end
 end

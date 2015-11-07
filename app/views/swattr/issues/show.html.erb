@@ -53,6 +53,10 @@
 
 <%= render "attachments_form" %>
 
+<%= render "comments" %>
+
+<%= render "comments_form" %>
+
 <% if policy(@issue).edit? %>
   <%= link_to Swattr.t(:edit), edit_project_issue_path(@project, @issue) %> |
 <% end %>

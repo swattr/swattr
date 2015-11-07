@@ -17,10 +17,11 @@ module Swattr
     end
 
     def show
-      @task       = Swattr::Task.new
       @attachment = Swattr::Attachment.new
+      @comment = Swattr::Comment.new
+      @task = Swattr::Task.new
 
-      respond_with @issue, @task, @attachment
+      respond_with @issue, @attachment, @comment, @task
     end
 
     def new
