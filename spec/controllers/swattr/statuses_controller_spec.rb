@@ -64,7 +64,7 @@ module Swattr
         it "redirects to the created status" do
           swattr_post :create, status: params
 
-          expect(response).to redirect_to(Status.last)
+          expect(response).to redirect_to(statuses_path)
         end
       end
 
@@ -116,7 +116,7 @@ module Swattr
 
           swattr_put :update, id: status, status: params
 
-          expect(response).to redirect_to(status)
+          expect(response).to redirect_to(statuses_path)
         end
       end
 

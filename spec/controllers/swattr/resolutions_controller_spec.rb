@@ -64,7 +64,7 @@ module Swattr
         it "redirects to the created resolution" do
           swattr_post :create, resolution: params
 
-          expect(response).to redirect_to(Resolution.last)
+          expect(response).to redirect_to(resolutions_path)
         end
       end
 
@@ -116,7 +116,7 @@ module Swattr
 
           swattr_put :update, id: resolution, resolution: params
 
-          expect(response).to redirect_to(resolution)
+          expect(response).to redirect_to(resolutions_path)
         end
       end
 

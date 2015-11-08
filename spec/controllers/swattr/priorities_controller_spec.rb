@@ -64,7 +64,7 @@ module Swattr
         it "redirects to the created priority" do
           swattr_post :create, priority: params
 
-          expect(response).to redirect_to(Priority.last)
+          expect(response).to redirect_to(priorities_path)
         end
       end
 
@@ -116,7 +116,7 @@ module Swattr
 
           swattr_put :update, id: priority, priority: params
 
-          expect(response).to redirect_to(priority)
+          expect(response).to redirect_to(priorities_path)
         end
       end
 

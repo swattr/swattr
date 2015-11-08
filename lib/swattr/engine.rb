@@ -9,6 +9,11 @@ module Swattr
     config.time_zone = :utc
     config.active_record.default_timezone = :utc
 
+    config.autoload_paths += [
+      "#{config.root}/app/modules",
+      "#{config.root}/app/services"
+    ]
+
     config.generators do |g|
       g.test_framework :rspec,
                        fixtures: false,

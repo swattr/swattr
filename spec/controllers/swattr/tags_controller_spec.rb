@@ -64,7 +64,7 @@ module Swattr
         it "redirects to the created tag" do
           swattr_post :create, tag: params
 
-          expect(response).to redirect_to(Tag.last)
+          expect(response).to redirect_to(tags_path)
         end
       end
 
@@ -116,7 +116,7 @@ module Swattr
 
           swattr_put :update, id: tag, tag: params
 
-          expect(response).to redirect_to(tag)
+          expect(response).to redirect_to(tags_path)
         end
       end
 

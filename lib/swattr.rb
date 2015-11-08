@@ -15,6 +15,7 @@ require "simple_form"
 require "validates"
 
 require "swattr/engine"
+require "swattr/concern/resourceful"
 require "swattr/configuration"
 require "swattr/i18n"
 
