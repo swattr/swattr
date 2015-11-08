@@ -167,11 +167,11 @@ module Swattr
       end
 
       def edit_resource_path(resource, options = {})
-        swattr.polymorphic_path([resource, :edit], options)
+        swattr.edit_polymorphic_path([resource], options)
       end
 
       def edit_resource_url(resource, options = {})
-        swattr.polymorphic_url([resource, :edit], options)
+        swattr.edit_polymorphic_url([resource], options)
       end
     end
   end
