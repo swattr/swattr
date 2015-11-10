@@ -6,8 +6,7 @@ module Swattr
 
     def index
       @q = Swattr::Issue.where(project_id: @project.id)
-        .ransack(params[:q]
-        .try(:merge, m: "or"))
+                        .ransack(params[:q].try(:merge, m: "or"))
 
       @issues = @q.result(distinct: true).page(params[:page]).per(per_page)
 
