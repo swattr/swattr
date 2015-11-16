@@ -1,3 +1,4 @@
+require "bootstrap-sass"
 require "carrierwave"
 require "date_validator"
 require "devise"

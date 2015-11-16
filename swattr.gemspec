@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", ">= 4.2.2"
 
+  s.add_dependency "bootstrap-sass", "~> 3.3.5"
   s.add_dependency "carrierwave", "~> 0.10.0"
   s.add_dependency "date_validator", "~> 0.8.1"
   s.add_dependency "devise", "~> 3.5.2"
