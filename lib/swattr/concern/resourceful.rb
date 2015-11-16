@@ -5,12 +5,27 @@ module Swattr
 
       included do
         attr_reader :resource, :resources
+        attr_accessor :find_by, :authorization, :searchable
 
         before_action :load_resource
 
         helper_method :resources_path, :resources_url, :new_resource_path,
                       :new_resource_url, :edit_resource_path,
                       :edit_resource_url, :resource_path, :resource_url
+
+        def find_by
+          @find_by ||= :id
+        end
+
+        def authorization
+          @authorization ||= true
+        end
+        alias :authorization? :authorization
+
+        def searchable
+          @searchable ||= false
+        end
+        alias :searchable? :searchable
       end
 
       def index
@@ -53,6 +68,10 @@ module Swattr
         []
       end
 
+      def location_after_save
+        resources_url
+      end
+
       def location_after_destroy
         resources_url
       end
@@ -65,28 +84,26 @@ module Swattr
         location_after_save
       end
 
-      def location_after_save
-        resources_url
-      end
-
       def load_resource
-        # TODO: Less duplication
         if member_action?
-          @resource = load_resource_instance
+          set_resource_instance("resource",
+                                model_name,
+                                load_resource_instance)
 
-          instance_variable_set("@#{model_name}", @resource)
-
-          # TODO: Make this configurable
-          authorize @resource
+          authorize(@resource) if authorization?
         else
           # TODO: Make this work with Ransack
-          @resources = model_class.where(nil)
+          set_resource_instance("resources",
+                                controller_name,
+                                model_class.where(nil))
 
-          instance_variable_set("@#{controller_name}", @resources)
-
-          # TODO: Make this configurable
-          authorize @resources
+          authorize(@resources) if authorization?
         end
+      end
+
+      def set_resource_instance(local_resource, controller_resource, value)
+        instance_variable_set("@#{local_resource}", value)
+        instance_variable_set("@#{controller_resource}", value)
       end
 
       def load_resource_instance
@@ -98,8 +115,7 @@ module Swattr
       end
 
       def find_resource
-        # TODO: Configurable find by
-        model_class.find(params[:id])
+        model_class.find_by("#{find_by}": params[:id])
       end
 
       def build_resource

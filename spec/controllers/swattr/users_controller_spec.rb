@@ -64,7 +64,7 @@ module Swattr
         it "redirects to the created user" do
           swattr_post :create, user: attributes
 
-          expect(response).to redirect_to(User.last)
+          expect(response).to redirect_to(swattr.users_path)
         end
       end
 
@@ -101,7 +101,7 @@ module Swattr
 
           swattr_put :update, id: user.to_param, user: attributes
 
-          expect(response).to redirect_to(user)
+          expect(response).to redirect_to(swattr.users_path)
         end
       end
 

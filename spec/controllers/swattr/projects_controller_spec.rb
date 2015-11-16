@@ -67,7 +67,7 @@ module Swattr
         it "redirects to the created project" do
           swattr_post :create, project: params
 
-          expect(response).to redirect_to(Project.last)
+          expect(response).to redirect_to(swattr.projects_path)
         end
       end
 
@@ -119,7 +119,7 @@ module Swattr
 
           swattr_put :update, id: project, project: params
 
-          expect(response).to redirect_to(project)
+          expect(response).to redirect_to(swattr.projects_path)
         end
       end
 
