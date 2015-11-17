@@ -1,5 +1,6 @@
-# namespace :swattr do
-#   desc "Explaining what the task does"
-#   task :something do
-#   end
-# end
+namespace :swattr do
+  desc "Current Swattr version"
+  task :version do
+    puts Swattr::VERSION
+  end
+end
