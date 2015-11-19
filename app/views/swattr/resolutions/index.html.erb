@@ -1,20 +1,22 @@
-<h1><%= Swattr.t(:list_resolutions) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_resolutions) %></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Swattr.t(:name) %></th>
-      <th><%= Swattr.t(:description) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th><%= Swattr.t(:name) %></th>
+        <th><%= Swattr.t(:description) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @resolutions %>
-  </tbody>
-</table>
-
-<br>
+    <tbody>
+      <%= render @resolutions %>
+    </tbody>
+  </table>
+</div>
 
 <% if policy(@resolutions).new? %>
   <%= link_to Swattr.t(:new_resolution), new_resolution_path %>

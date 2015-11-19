@@ -1,7 +1,9 @@
 <% unless flash.empty? %>
-<div id="flash_messages">
+<div id="alert-messages">
   <% flash.delete(:timedout).each do |key, value| %>
-    <%= content_tag(:div, value, class: "flash flash-#{key}") %>
+  <div class="alert alert-<%= flash_class_for(key) %> alert-dismissible" role="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <%= value %>
   <% end %>
 </div>
 <% end %>

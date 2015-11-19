@@ -6,6 +6,8 @@ module Swattr
     config.i18n.available_locales = [:en]
     config.i18n.default_locale = :en
 
+    config.responders.flash_keys = [ :success, :error ]
+
     config.time_zone = :utc
     config.active_record.default_timezone = :utc
 

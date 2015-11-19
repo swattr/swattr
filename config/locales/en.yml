@@ -7,10 +7,12 @@ en:
     avatar: Avatar
     back: Back
     dashboard: Dashboard
+    dashboard_subtext: Where the world comes to dash when they are board
     description: Description
     destroy: Destroy
     color: Color
     comments: Comments
+    configuration: Configuration
     content: Content
     due:at: DueAt
     edit: Edit
