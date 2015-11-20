@@ -36,7 +36,7 @@ end
 # Tags
 ["Bug", "Feature", "Invalid", "Question", "Won't Fix"]
   .each_with_index do |name, index|
-  Swattr::Tag.find_or_create_by(name: name) do |item|
+  Swattr::Tag.find_or_create_by(name: name, tag: name.parameterize) do |item|
     item.position = index
   end
 end

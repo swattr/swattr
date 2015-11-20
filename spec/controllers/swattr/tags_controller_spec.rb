@@ -45,7 +45,10 @@ module Swattr
     describe "POST #create" do
       context "with valid params" do
         let(:params) do
-          { name: "New Tag" }
+          {
+            name: "New Tag",
+            slug: "new-tag"
+          }
         end
 
         it "creates a new Tag" do

@@ -9,6 +9,7 @@ module Swattr
 
     # Validation
     validates :name, presence: true, uniqueness: true
+    validates :slug, presence: true, uniqueness: true
 
     # Callback methods
     def set_default_position

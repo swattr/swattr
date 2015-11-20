@@ -75,6 +75,7 @@ en:
         description: Description
       swattr/tag:
         name: Name
+        slug: Slug
         description: Description
         color: Color
       swattr/task:
