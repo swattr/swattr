@@ -48,7 +48,7 @@ module Swattr
 
     def permitted_attributes
       [
-        :name, :description, :color, :position
+        :name, :slug, :description, :color, :position
       ]
     end
 
