@@ -70,6 +70,26 @@ rake db:migrate
 
 ## Testing
 
+First, generate a dummy application. You will be required to generate a dummy application before running tests.
+
+```
+bundle exec rake dummy_app
+```
+
+Run tests
+
+```
+bundle exec rake
+```
+
+or
+
+```
+bundle exec rake spec
+```
+
+or
+
 ```
 bundle exec rspec spec
 ```

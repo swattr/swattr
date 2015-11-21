@@ -1,6 +1,11 @@
 ENV["RAILS_ENV"] ||= "test"
 
-require File.expand_path("../dummy/config/environment", __FILE__)
+begin
+  require File.expand_path("../dummy/config/environment", __FILE__)
+rescue LoadError
+  puts "Could not load test application. Run `bundle exec rake dummy_app` first"
+  exit
+end
 
 if Rails.env.production?
   abort("The Rails environment is running in production mode!")
