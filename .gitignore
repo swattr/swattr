@@ -6,11 +6,7 @@ rspec.log
 pkg/
 /coverage
 /tmp
-/spec/dummy/db/*.sqlite3
-/spec/dummy/db/*.sqlite3-journal
-/spec/dummy/log
-/spec/dummy/tmp
-/spec/dummy/.sass-cache
+/spec/dummy
 /spec/examples.txt
 .DS_Store
 Desktop.ini

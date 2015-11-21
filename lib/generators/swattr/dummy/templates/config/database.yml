@@ -1,0 +1,48 @@
+<% case ENV["DB"] when "mysql" %>
+default: &default
+  adapter: mysql2
+  encoding: utf8
+
+development:
+  <<: *default
+  database: swattr_<%= options[:lib_name] %>_development
+
+test:
+  <<: *default
+  database: swattr_<%= options[:lib_name] %>_test
+
+production:
+  <<: *default
+  database: swattr_<%= options[:lib_name] %>_production
+<% when "postgres" %>
+default: &default
+  adapter: postgresql
+  username: postgres
+
+development:
+  <<: *default
+  database: swattr_<%= options[:lib_name] %>_development
+
+test:
+  <<: *default
+  database: swattr_<%= options[:lib_name] %>_test
+
+production:
+  <<: *default
+  database: swattr_<%= options[:lib_name] %>_production
+<% else %>
+default: &default
+  adapter: sqlite3
+
+development:
+  <<: *default
+  database: db/swattr_development.sqlite3
+
+test:
+  <<: *default
+  database: db/swattr_test.sqlite3
+
+production:
+  <<: *default
+  database: db/swattr_production.sqlite3
+<% end %>

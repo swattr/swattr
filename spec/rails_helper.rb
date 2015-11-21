@@ -14,8 +14,6 @@ require "launchy"
 
 Dir[Rails.root.join("../support/**/*.rb")].each { |f| require f }
 
-ActiveRecord::Migration.maintain_test_schema!
-
 RSpec.configure do |config|
   config.color = true
   config.fail_fast = ENV["FAIL_FAST"] || false
