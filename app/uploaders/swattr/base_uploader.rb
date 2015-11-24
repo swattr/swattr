@@ -17,5 +17,9 @@ module Swattr
     def extension_white_list
       %w(jpg jpeg gif png)
     end
+
+    def remove_animation
+      manipulate! { |image| image.collapse! } if content_type == "image/gif"
+    end
   end
 end
