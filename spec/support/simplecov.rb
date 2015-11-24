@@ -1,5 +1,10 @@
 require "simplecov"
 
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter[
+  Coveralls::SimpleCov::Formatter,
+  SimpleCov::Formatter::HTMLFormatter
+]
+
 SimpleCov.start :rails do
   add_group "Policies", "app/policies"
   # add_group "Modules", "app/modules"
