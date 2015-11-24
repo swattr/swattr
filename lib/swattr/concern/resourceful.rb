@@ -5,7 +5,9 @@ module Swattr
 
       included do
         attr_reader :resource, :resources
-        attr_accessor :find_by, :authorization, :searchable
+        attr_accessor :find_by, :authorization, :searchable, :paginatable,
+                      :search_param, :ransack_merge, :ransack_distinct,
+                      :pagination_param, :pagination_per
 
         before_action :load_resource
 
@@ -26,6 +28,32 @@ module Swattr
           @searchable ||= false
         end
         alias :searchable? :searchable
+
+        def paginatable
+          @paginatable ||= false
+        end
+        alias :paginatable? :paginatable
+
+        def search_param
+          @search_param ||= :q
+        end
+
+        def ransack_merge
+          @ransack_merge ||= "or"
+        end
+
+        def ransack_distinct
+          @ransack_distinct ||= true
+        end
+        alias :ransack_distinct? :ransack_distinct
+
+        def pagination_param
+          @pagination_param ||= :page
+        end
+
+        def pagination_per
+          @pagination_per ||= 24
+        end
       end
 
       def index
@@ -47,25 +75,35 @@ module Swattr
       def create
         @resource.save
 
-        respond_with @resource, location: -> { location_after_create }
+        respond_with @resource, location: location_after_create,
+                                action: action_after_failed_create
       end
 
       def update
         @resource.update(resource_params)
 
-        respond_with @resource, location: -> { location_after_update }
+        respond_with @resource, location: location_after_update,
+                                action: action_after_failed_update
       end
 
       def destroy
         @resource.destroy
 
-        respond_with @resource, location: -> { location_after_destroy }
+        respond_with @resource, location: location_after_destroy
       end
 
       protected
 
       def permitted_attributes
         []
+      end
+
+      def action_after_failed_create
+        :new
+      end
+
+      def action_after_failed_update
+        :edit
       end
 
       def location_after_save
@@ -86,19 +124,31 @@ module Swattr
 
       def load_resource
         if member_action?
-          set_resource_instance("resource",
-                                model_name,
-                                load_resource_instance)
+          set_resource_instance("resource", model_name, load_resource_instance)
 
           authorize(@resource) if authorization?
         else
-          # TODO: Make this work with Ransack
-          set_resource_instance("resources",
-                                controller_name,
-                                model_class.where(nil))
-
-          authorize(@resources) if authorization?
+          load_resources
         end
+      end
+
+      def load_resources
+        if searchable?
+          ransack_params = params[search_param].try(:merge, m: ransack_merge)
+
+          query = model_class.ransack(ransack_params)
+                             .result(distinct: ransack_distinct)
+        else
+          query = model_class.where(nil)
+        end
+
+        if paginatable?
+          query = query.page(params[pagination_param]).per(pagination_per)
+        end
+
+        set_resource_instance("resources", controller_name, query)
+
+        authorize(@resources) if authorization?
       end
 
       def set_resource_instance(local_resource, controller_resource, value)
@@ -107,7 +157,7 @@ module Swattr
       end
 
       def load_resource_instance
-        if new_actions.include?(action)
+        if new_action?
           build_resource
         elsif params[:id]
           find_resource
@@ -148,6 +198,10 @@ module Swattr
 
       def member_action?
         !collection_actions.include?(action)
+      end
+
+      def new_action?
+        new_actions.include?(action)
       end
 
       def collection_actions
