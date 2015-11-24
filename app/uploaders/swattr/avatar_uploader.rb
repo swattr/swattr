@@ -4,6 +4,8 @@ module Swattr
       "swattr/fallback/" + [version_name, "avatar.png"].compact.join("_")
     end
 
+    process :remove_animation
+
     version :medium do
       process resize_to_fit: [300, 300]
     end
