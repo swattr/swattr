@@ -2,6 +2,7 @@
   <td><%= image_tag(user.avatar.thumb.url) %></td>
   <td><%= user.name %></td>
   <td><%= user.email %></td>
+  <td><%= user.role %></td>
   <td>
     <% if policy(user).show? %>
       <%= link_to Swattr.t(:show), user %>

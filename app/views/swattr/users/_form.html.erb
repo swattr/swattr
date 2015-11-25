@@ -6,6 +6,7 @@
   <div class="form-inputs">
     <%= f.input :name %>
     <%= f.input :email, as: :email %>
+    <%= f.input :role, as: :role %>
 
     <%= image_tag(@user.avatar.thumb.url) %>
     <%= f.input :avatar_cache, as: :hidden %>
