@@ -37,54 +37,55 @@ en:
 
     attributes:
       swattr/attachment:
-        title: Title
         description: Description
         source: Source
+        title: Title
       swattr/comment:
         body: Body
       swattr/issue:
-        title: Title
-        content: Content
-        project: Project
-        author: Author
         assignee: Assigned To
-        priority: Priority
-        status: Status
-        resolution: Resolution
+        author: Author
+        content: Content
         due_at: Due At
+        priority: Priority
+        project: Project
+        resolution: Resolution
+        status: Status
+        title: Title
       swattr/priority:
-        name: Name
         description: Description
-      swattr/project:
         name: Name
-        slug: Slug
+      swattr/project:
+        author: Author
         description: Description
         location: Location
-        author: Author
+        name: Name
         remove_hero: Remove Project Image
+        slug: Slug
       swattr/resolution:
-        name: Name
         description: Description
+        name: Name
       swattr/settings:
-        title: Title
         logo: Logo
-        remove_logo: Remove Logo
         per_page: Per Page
+        remove_logo: Remove Logo
+        title: Title
       swattr/status:
-        name: Name
         description: Description
+        name: Name
       swattr/tag:
+        color: Color
+        description: Description
         name: Name
         slug: Slug
-        description: Description
-        color: Color
       swattr/task:
-        title: Title
-        issue: Issue
         author: Author
+        issue: Issue
+        title: Title
       swattr/user:
-        name: Name
+        avatar: Avatar
         email: Email
+        name: Name
         password: Password
         password_confirmation: Confirm Password
-        avatar: Avatar
+        role: Role

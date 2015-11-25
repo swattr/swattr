@@ -8,6 +8,15 @@ FactoryGirl.define do
     sequence(:confirmation_token) { |n| "token-#{n}" }
     confirmed_at { Time.current }
     confirmation_sent_at { Time.current }
+    role "user"
+
+    trait :admin do
+      role "admin"
+    end
+
+    trait :manager do
+      role "manager"
+    end
 
     trait :unconfirmed do
       confirmation_token nil

@@ -10,6 +10,11 @@
   <%= @user.email %>
 </p>
 
+<p>
+  <strong><%= Swattr.t(:role) %>:</strong>
+  <%= @user.role %>
+</p>
+
 <% if policy(@user).edit? %>
   <%= link_to Swattr.t(:edit), edit_user_path(@user) %> |
 <% end %>
