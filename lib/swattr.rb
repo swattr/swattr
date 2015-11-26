@@ -17,6 +17,8 @@ require "validates"
 require "swattr/engine"
 require "swattr/configuration"
 require "swattr/i18n"
+require "swattr/roles"
+require "swattr/version"
 
 module Swattr
   class << self

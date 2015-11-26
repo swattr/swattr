@@ -2,9 +2,6 @@ module Swattr
   class User < ActiveRecord::Base
     acts_as_paranoid
 
-    # Roles
-    ROLES = %w(user manager admin).freeze
-
     # Callbacks
     after_destroy :email_reset
 
@@ -25,7 +22,7 @@ module Swattr
     validates :password, allow_blank: true,
                          length: { minimum: 5, maximum: 120 },
                          on: :update
-    validates :role, presence: true, inclusion: { in: ROLES }
+    validates :role, presence: true, inclusion: { in: Swattr::ROLES }
 
     # Default scope
     # default_scope { order(name: :asc, email: :asc) }

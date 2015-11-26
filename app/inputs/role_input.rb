@@ -7,7 +7,7 @@ class RoleInput < SimpleForm::Inputs::CollectionSelectInput
     @collection ||= begin
       collection = []
 
-      Swattr::User::ROLES.each do |role|
+      Swattr::ROLES.each do |role|
         collection << [I18n.t(:"swattr.roles.#{role}"), role]
       end
 
