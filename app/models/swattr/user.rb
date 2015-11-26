@@ -31,5 +31,22 @@ module Swattr
     def email_reset
       update(email: "#{Time.current.to_i}_#{email}")
     end
+
+    # Methods
+    def self.user?
+      has_role(:user) || !Swattr::ROLES.include?(role.downcase)
+    end
+
+    def self.manager?
+      has_role :manager
+    end
+
+    def self.admin?
+      has_role :admin
+    end
+
+    def self.has_role?(role_type)
+      role.downcase == role_type.to_s.downcase
+    end
   end
 end

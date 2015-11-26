@@ -34,5 +34,11 @@ module Swattr
     def destroy?
       true
     end
+
+    protected
+
+    def has_management_role?
+      user.manager? || user.admin?
+    end
   end
 end
