@@ -2,10 +2,11 @@ module Swattr
   class Configuration
     DEFAULT_VALUE = nil
 
-    attr_accessor :application, :per_page
+    attr_accessor :application, :attachment_white_list, :per_page
 
     def initialize
       @application = "swattr"
+      @attachment_white_list = %w(jpg jpeg gif png pdf)
       @per_page = 24
     end
 

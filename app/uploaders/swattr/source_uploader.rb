@@ -5,7 +5,7 @@ module Swattr
     include CarrierWave::MimeTypes
 
     def extension_white_list
-      %w(jpg jpeg gif png pdf doc docx txt)
+      Swattr.configuration.attachment_white_list
     end
 
     process :save_attributes
@@ -35,7 +35,7 @@ module Swattr
     end
 
     def image?(new_file)
-      new_file.content_type.start_with? "image"
+      known_image_formats.include?(new_file.content_type)
     end
 
     def filename
