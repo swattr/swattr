@@ -1,3 +1,3 @@
 require "coveralls"
 
-Coveralls.wear!
+Coveralls.wear! if ENV["CI"]
