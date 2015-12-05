@@ -15,5 +15,10 @@ module Swattr
     def set_default_position
       self.position = Tag.count
     end
+
+    # Paramater
+    def to_param
+      slug
+    end
   end
 end

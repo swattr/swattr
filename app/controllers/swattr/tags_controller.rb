@@ -56,7 +56,7 @@ module Swattr
       if action_name.to_sym == :new
         @tag = Swattr::Tag.new
       else
-        @tag = Swattr::Tag.find(params[:id])
+        @tag = Swattr::Tag.find_by(slug: params[:id])
       end
 
       authorize @tag
