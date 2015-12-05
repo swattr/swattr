@@ -22,13 +22,13 @@ module Swattr
 
       reauth_current_user(successfully_updated)
 
-      respond_with @profile, location: profile_path
+      respond_with @profile, location: -> { profile_path }
     end
 
     def destroy
       @profile.destroy
 
-      respond_with @profile, location: root_path
+      respond_with @profile, location: -> { root_path }
     end
 
     protected

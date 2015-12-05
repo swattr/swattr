@@ -29,19 +29,19 @@ module Swattr
 
       @status.save
 
-      respond_with @status, location: status_path(@status)
+      respond_with @status, location: -> { status_path(@status) }
     end
 
     def update
       @status.update(status_params)
 
-      respond_with @status, location: status_path(@status)
+      respond_with @status, location: -> { status_path(@status) }
     end
 
     def destroy
       @status.destroy
 
-      respond_with @status, location: statuses_path
+      respond_with @status, location: -> { statuses_path }
     end
 
     protected

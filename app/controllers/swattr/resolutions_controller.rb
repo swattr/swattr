@@ -29,19 +29,19 @@ module Swattr
 
       @resolution.save
 
-      respond_with @resolution, location: resolution_path(@resolution)
+      respond_with @resolution, location: -> { resolution_path(@resolution) }
     end
 
     def update
       @resolution.update(resolution_params)
 
-      respond_with @resolution, location: resolution_path(@resolution)
+      respond_with @resolution, location: -> { resolution_path(@resolution) }
     end
 
     def destroy
       @resolution.destroy
 
-      respond_with @resolution, location: resolutions_path
+      respond_with @resolution, location: -> { resolutions_path }
     end
 
     protected

@@ -29,19 +29,19 @@ module Swattr
 
       @priority.save
 
-      respond_with @priority, location: priority_path(@priority)
+      respond_with @priority, location: -> { priority_path(@priority) }
     end
 
     def update
       @priority.update(priority_params)
 
-      respond_with @priority, location: priority_path(@priority)
+      respond_with @priority, location: -> { priority_path(@priority) }
     end
 
     def destroy
       @priority.destroy
 
-      respond_with @priority, location: priorities_path
+      respond_with @priority, location: -> { priorities_path }
     end
 
     protected

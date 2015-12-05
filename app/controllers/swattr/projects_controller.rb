@@ -32,19 +32,19 @@ module Swattr
 
       @project.save
 
-      respond_with @project, location: project_path(@project)
+      respond_with @project, location: -> { project_path(@project) }
     end
 
     def update
       @project.update(project_params)
 
-      respond_with @project, location: project_path(@project)
+      respond_with @project, location: -> { project_path(@project) }
     end
 
     def destroy
       @project.destroy
 
-      respond_with @project, location: projects_path
+      respond_with @project, location: -> { projects_path }
     end
 
     protected

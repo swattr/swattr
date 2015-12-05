@@ -29,19 +29,19 @@ module Swattr
 
       authorize @user
 
-      respond_with @user, location: user_path(@user)
+      respond_with @user, location: -> { user_path(@user) }
     end
 
     def update
       @user.update_without_password(user_params)
 
-      respond_with @user, location: user_path(@user)
+      respond_with @user, location: -> { user_path(@user) }
     end
 
     def destroy
       @user.destroy
 
-      respond_with @user, location: users_path
+      respond_with @user, location: -> { users_path }
     end
 
     protected
