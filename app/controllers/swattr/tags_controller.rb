@@ -29,19 +29,19 @@ module Swattr
 
       @tag.save
 
-      respond_with @tag, location: -> { tag_path(@tag) }
+      respond_with @tag, location: tag_path(@tag)
     end
 
     def update
       @tag.update(tag_params)
 
-      respond_with @tag, location: -> { tag_path(@tag) }
+      respond_with @tag, location: tag_path(@tag)
     end
 
     def destroy
       @tag.destroy
 
-      respond_with @tag, location: -> { tags_path }
+      respond_with @tag, location: tags_path
     end
 
     protected

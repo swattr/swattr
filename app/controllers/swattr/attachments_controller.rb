@@ -12,21 +12,21 @@ module Swattr
       @attachment.save
 
       respond_with @attachment,
-                   location: -> { project_issue_path(@project, @issue) }
+                   location: project_issue_path(@project, @issue)
     end
 
     def update
       @attachment.update(attachment_params)
 
       respond_with @attachment,
-                   location: -> { project_issue_path(@project, @issue) }
+                   location: project_issue_path(@project, @issue)
     end
 
     def destroy
       @attachment.destroy
 
       respond_with @attachment,
-                   location: -> { project_issue_path(@project, @issue) }
+                   location: project_issue_path(@project, @issue)
     end
 
     protected

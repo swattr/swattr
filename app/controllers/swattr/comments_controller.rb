@@ -12,21 +12,21 @@ module Swattr
       @comment.save
 
       respond_with @comment,
-                   location: -> { project_issue_path(@project, @issue) }
+                   location: project_issue_path(@project, @issue)
     end
 
     def update
       @comment.update(comment_params)
 
       respond_with @comment,
-                   location: -> { project_issue_path(@project, @issue) }
+                   location: project_issue_path(@project, @issue)
     end
 
     def destroy
       @comment.destroy
 
       respond_with @comment,
-                   location: -> { project_issue_path(@project, @issue) }
+                   location: project_issue_path(@project, @issue)
     end
 
     protected

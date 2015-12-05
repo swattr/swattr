@@ -38,19 +38,19 @@ module Swattr
 
       @issue.save
 
-      respond_with @issue, location: -> { project_issue_path(@project, @issue) }
+      respond_with @issue, location: project_issue_path(@project, @issue)
     end
 
     def update
       @issue.update(issue_params)
 
-      respond_with @issue, location: -> { project_issue_path(@project, @issue) }
+      respond_with @issue, location: project_issue_path(@project, @issue)
     end
 
     def destroy
       @issue.destroy
 
-      respond_with @issue, location: -> { project_issues_path }
+      respond_with @issue, location: project_issues_path
     end
 
     protected

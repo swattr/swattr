@@ -11,20 +11,20 @@ module Swattr
 
       @task.save
 
-      respond_with @task, location: -> { project_issue_path(@project, @issue) }
+      respond_with @task, location: project_issue_path(@project, @issue)
     end
 
     def update
       @task.update(task_params)
 
-      respond_with @task, location: -> { project_issue_path(@project, @issue) }
+      respond_with @task, location: project_issue_path(@project, @issue)
     end
 
     def destroy
       @task.update_attributes(deleted_at: Time.current,
                               deleted_by: current_user.id)
 
-      respond_with @task, location: -> { project_issue_path(@project, @issue) }
+      respond_with @task, location: project_issue_path(@project, @issue)
     end
 
     protected

@@ -13,7 +13,7 @@ module Swattr
     def update
       @settings.update(settings_params)
 
-      respond_with @settings, location: -> { settings_path }
+      respond_with @settings, location: settings_path
     end
 
     protected
