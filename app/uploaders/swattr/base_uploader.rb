@@ -19,7 +19,7 @@ module Swattr
     end
 
     def remove_animation
-      manipulate! { |image| image.collapse! } if content_type == "image/gif"
+      manipulate!(&:collapse!) if content_type == "image/gif"
     end
   end
 end

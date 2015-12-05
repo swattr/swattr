@@ -34,18 +34,18 @@ module Swattr
 
     # Methods
     def self.user?
-      has_role(:user) || !Swattr::ROLES.include?(role.downcase)
+      role?(:user) || !Swattr::ROLES.include?(role.downcase)
     end
 
     def self.manager?
-      has_role :manager
+      role? :manager
     end
 
     def self.admin?
-      has_role :admin
+      role? :admin
     end
 
-    def self.has_role?(role_type)
+    def self.role?(role_type)
       role.downcase == role_type.to_s.downcase
     end
   end

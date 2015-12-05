@@ -37,7 +37,7 @@ module Swattr
 
     protected
 
-    def has_management_role?
+    def management_role?
       user.manager? || user.admin?
     end
   end
