@@ -6,9 +6,8 @@ module Swattr
     after_destroy :email_reset
 
     # Devise
-    devise :database_authenticatable, :recoverable, :lockable,
-           :rememberable, :trackable, :validatable, :confirmable, :timeoutable,
-           :invitable
+    devise :database_authenticatable, :recoverable, :lockable, :rememberable,
+           :trackable, :validatable, :confirmable, :timeoutable, :invitable
 
     # Uploader
     mount_uploader :avatar, Swattr::AvatarUploader
