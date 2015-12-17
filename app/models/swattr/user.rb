@@ -6,7 +6,7 @@ module Swattr
     after_destroy :email_reset
 
     # Devise
-    devise :database_authenticatable, :registerable, :recoverable, :lockable,
+    devise :database_authenticatable, :recoverable, :lockable,
            :rememberable, :trackable, :validatable, :confirmable, :timeoutable,
            :invitable
 

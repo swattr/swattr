@@ -13,9 +13,7 @@ Swattr::Engine.routes.draw do
                sign_out: "logout",
                password: "password",
                confirmation: "verification",
-               unlock: "unlock",
-               registration: "register",
-               sign_up: "signup"
+               unlock: "unlock"
              }
 
   resources :projects, concerns: [:paginatable] do
