@@ -1,22 +1,25 @@
-<h1><%= Swattr.t(:list_users) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_users) %></h1>
+</div>
 
 <%= render "search" %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Swattr.t(:avatar) %></th>
-      <th><%= Swattr.t(:name) %></th>
-      <th><%= Swattr.t(:email) %></th>
-      <th><%= Swattr.t(:role) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th><%= Swattr.t(:avatar) %></th>
+        <th><%= Swattr.t(:name) %></th>
+        <th><%= Swattr.t(:email) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @users %>
-  </tbody>
-</table>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
+</div>
 
 <%= paginate @users %>
 

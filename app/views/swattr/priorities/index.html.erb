@@ -1,20 +1,22 @@
-<h1><%= Swattr.t(:list_priorities) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_priorities) %></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Swattr.t(:name) %></th>
-      <th><%= Swattr.t(:description) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th><%= Swattr.t(:name) %></th>
+        <th><%= Swattr.t(:description) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @priorities %>
-  </tbody>
-</table>
-
-<br>
+    <tbody>
+      <%= render @priorities %>
+    </tbody>
+  </table>
+</div>
 
 <% if policy(@priorities).new? %>
   <%= link_to Swattr.t(:new_priority), new_priority_path %>

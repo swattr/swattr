@@ -9,6 +9,8 @@ module Swattr
     config.time_zone = :utc
     config.active_record.default_timezone = :utc
 
+    config.responders.flash_keys = [ :success, :error ]
+
     config.generators do |g|
       g.test_framework :rspec,
                        fixtures: false,

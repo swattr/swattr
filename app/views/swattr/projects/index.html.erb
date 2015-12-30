@@ -1,27 +1,31 @@
-<h1><%= Swattr.t(:list_projects) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_projects) %></h1>
+</div>
 
 <%= render "search" %>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th><%= Swattr.t(:name) %></th>
-      <th><%= Swattr.t(:slug) %></th>
-      <th><%= Swattr.t(:description) %></th>
-      <th><%= Swattr.t(:location) %></th>
-      <th><%= Swattr.t(:author) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th></th>
+        <th><%= Swattr.t(:name) %></th>
+        <th><%= Swattr.t(:slug) %></th>
+        <th><%= Swattr.t(:description) %></th>
+        <th><%= Swattr.t(:location) %></th>
+        <th><%= Swattr.t(:author) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @projects %>
-  </tbody>
-</table>
+    <tbody>
+      <%= render @projects %>
+    </tbody>
+  </table>
+</div>
 
 <%= paginate @projects %>
 
 <% if policy(@projects).new? %>
-<%= link_to Swattr.t(:new_project), new_project_path %>
+  <%= link_to Swattr.t(:new_project), new_project_path %>
 <% end %>

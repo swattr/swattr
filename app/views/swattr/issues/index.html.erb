@@ -1,27 +1,31 @@
-<h1><%= Swattr.t(:list_issues) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_issues) %></h1>
+</div>
 
 <%= render "search" %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Swattr.t(:title) %></th>
-      <th><%= Swattr.t(:content) %></th>
-      <th><%= Swattr.t(:project) %></th>
-      <th><%= Swattr.t(:author) %></th>
-      <th><%= Swattr.t(:assignee) %></th>
-      <th><%= Swattr.t(:priority) %></th>
-      <th><%= Swattr.t(:status) %></th>
-      <th><%= Swattr.t(:resolution) %></th>
-      <th><%= Swattr.t(:due_at) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th><%= Swattr.t(:title) %></th>
+        <th><%= Swattr.t(:content) %></th>
+        <th><%= Swattr.t(:project) %></th>
+        <th><%= Swattr.t(:author) %></th>
+        <th><%= Swattr.t(:assignee) %></th>
+        <th><%= Swattr.t(:priority) %></th>
+        <th><%= Swattr.t(:status) %></th>
+        <th><%= Swattr.t(:resolution) %></th>
+        <th><%= Swattr.t(:due_at) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @issues %>
-  </tbody>
-</table>
+    <tbody>
+      <%= render @issues %>
+    </tbody>
+  </table>
+</div>
 
 <%= paginate @issues %>
 

@@ -1,40 +1,30 @@
-<div id="issue_attachments">
+<div id="issue_attachments" class="row">
   <h2><%= Swattr.t(:attachments) %></h2>
 
   <% if @issue.attachments.any? %>
-  <ul class="issue_attachments">
+  <div class="col-sm-6 col-md-4">
   <% @issue.attachments.each do |attachment| %>
-    <li class="attachment attachment-<%= attachment.id %>">
-      <p class="title">
-        <%= attachment.title %>
-      </p>
+    <div class="thumbnail attachment attachment-<%= attachment.id %>">
+      <%= image_tag(attachment.source.thumb.type_url) %>
 
-      <p class="description">
-        <%= attachment.description %>
-      </p>
+      <div class="caption">
+        <p>(<%= filesize_format(attachment.file_size) %>)</p>
 
-      <p class="image">
-        <%= image_tag(attachment.source.thumb.type_url) %>
-      </p>
+        <h3><%= attachment.title %></h3>
 
-      <p class="attachment">
-        <%= link_to(Swattr.t(:view), attachment.source.url) %>
-        (<%= filesize_format(attachment.file_size) %>)
-      </p>
+        <p><%= attachment.description %></p>
 
-      <div class="footer">
-        <%= attachment.uploader.email %>
+        <p>
+          <%= link_to Swattr.t(:view), attachment.source.url, class: "btn btn-default", role: "button" %>
+          <%= link_to Swattr.t(:destroy), project_issue_attachment_path(@project, @issue, attachment), method: :delete, class: "btn btn-danger", role: "button", data: { confirm: Swattr.t(:are_you_sure) } %>
+        </p>
+
       </div>
-
-      <div class="remove">
-        <%= link_to Swattr.t(:destroy), project_issue_attachment_path(@project, @issue, attachment), method: :delete, data: { confirm: Swattr.t(:are_you_sure) } %>
-      </div>
-    </li>
   <% end %>
-  </ul>
-  <% else %>
+  </div>
+<% else %>
   <p class="no-attachments">
     <%= Swattr.t(:no_attachments) %>
   </p>
-  <% end %>
+<% end %>
 </div>

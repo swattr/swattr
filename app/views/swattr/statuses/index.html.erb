@@ -1,21 +1,23 @@
-<h1><%= Swattr.t(:list_statuses) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_statuses) %></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Swattr.t(:name) %></th>
-      <th><%= Swattr.t(:description) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th><%= Swattr.t(:name) %></th>
+        <th><%= Swattr.t(:description) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @statuses %>
-  </tbody>
-</table>
-
-<br>
+    <tbody>
+      <%= render @statuses %>
+    </tbody>
+  </table>
+</div>
 
 <% if policy(@statuses).new? %>
-<%= link_to Swattr.t(:new_status), new_status_path %>
+  <%= link_to Swattr.t(:new_status), new_status_path %>
 <% end %>

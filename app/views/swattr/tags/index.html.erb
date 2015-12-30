@@ -1,22 +1,23 @@
-<h1><%= Swattr.t(:list_tags) %></h1>
+<div class="page-header">
+  <h1><%= Swattr.t(:list_tags) %></h1>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Swattr.t(:name) %></th>
-      <th><%= Swattr.t(:slug) %></th>
-      <th><%= Swattr.t(:description) %></th>
-      <th><%= Swattr.t(:color) %></th>
-      <th></th>
-    </tr>
-  </thead>
+<div class="table-responsive">
+  <table class="table-striped">
+    <thead>
+      <tr>
+        <th><%= Swattr.t(:name) %></th>
+        <th><%= Swattr.t(:description) %></th>
+        <th><%= Swattr.t(:color) %></th>
+        <th></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <%= render @tags %>
-  </tbody>
-</table>
-
-<br>
+    <tbody>
+      <%= render @tags %>
+    </tbody>
+  </table>
+<div>
 
 <% if policy(@tags).new? %>
   <%= link_to Swattr.t(:new_tag), new_tag_path %>

@@ -11,6 +11,7 @@ en:
     destroy: Destroy
     color: Color
     comments: Comments
+    configuration: Configuration
     content: Content
     due:at: DueAt
     edit: Edit
@@ -25,6 +26,12 @@ en:
     edit_task: Editing Task
     edit_user: Editing User
     email: Email
+    error_401_page_header: 401 - Unauthorized
+    error_401_page_content: Access is denied due to invalid credentials.
+    error_404_page_header: 404 - Not Found
+    error_404_page_content: Could not find what was requested
+    error_500_page_header: 404 - Internal Server Error
+    error_500_page_content: Unexpected condition
     issue: Issue
     issues: Issues
     languages:
