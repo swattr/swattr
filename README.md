@@ -17,7 +17,6 @@ Swattr is a bug and issue tracker meant to be a lightweight, simple to set up an
 * [Installation](#installation)
 * [Updating](#updating)
 * [Testing](#testing)
-* [Bugs and feature requests](#bugs-and-feature-requests)
 * [License](#license)
 * [Contributing](#contributing)
 
@@ -74,17 +73,11 @@ rake db:migrate
 bundle exec rspec spec
 ```
 
-## Bugs and feature requests
-
-Have a bug or a feature request? First read the [issue guidelines](https://github.com/swattr/swattr/blob/master/CONTRIBUTING.md#using-the-issue-tracker) and search for existing and closed issues. If your problem or idea is not addressed yet, [please open a new issue](https://github.com/swattr/swattr/issues/new).
-
 ## License
 
 Code released under the [MIT license](https://github.com/swattr/swattr/blob/master/MIT-LICENSE).
 
 ## Contributing
-
-Please read through our [contributing guidelines](https://github.com/swattr/swattr/blob/master/CONTRIBUTING.md).
 
 1. Fork it ( https://github.com/swattr/swattr/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
